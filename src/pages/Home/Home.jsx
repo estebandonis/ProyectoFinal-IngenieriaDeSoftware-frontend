@@ -28,9 +28,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      boton
-      
-      <div >
+  sd sdsd
       <Carousel responsive={responsive}>
         <div className='card'>
           <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'
@@ -53,7 +51,7 @@ const Home = () => {
           <h2>Hospital san juan de dios</h2>
         </div>
       </Carousel> 
-      </div>
+    
     </>
   );
 };
