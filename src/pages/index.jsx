@@ -2,6 +2,7 @@ import { useStoreon } from 'storeon/react'
 import { default as Login } from './Login'
 import { default as Signin } from './Signin'
 import { default as Home } from './Home'
+import { default as Info_Hospitales } from './Info_Hospitales'
 import { routerKey } from '@storeon/router'
 
 const Page = () =>{
@@ -17,6 +18,9 @@ const Page = () =>{
       break
     case 'signin':
       Component = <Signin />
+      break
+    case 'info_hospitales':
+      Component = <Info_Hospitales />
       break
     default:
       Component = <h1>404 Error</h1>
