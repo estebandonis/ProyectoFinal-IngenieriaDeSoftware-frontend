@@ -32,8 +32,10 @@ const Home = () => {
       <Carousel responsive={responsive}>
         <div className='card'>
           <h2>Hospital san juan de dios</h2>
+          
           <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'
           />
+          <p> Infomracion hospital </p>
         </div>
         <div className='card1'>
           <h2>Hospital san juan de dios</h2>
