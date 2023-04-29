@@ -28,8 +28,8 @@ const Home = () => {
   return (
     <>
       <Navbar />
-  sd sdsd
-      <Carousel responsive={responsive}>
+      A
+      <Carousel responsive={responsive} showDots = {true}>
         <div className='card'>
           <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'
           />
@@ -51,7 +51,6 @@ const Home = () => {
           <h2>Hospital san juan de dios</h2>
         </div>
       </Carousel> 
-    
     </>
   );
 };
