@@ -1,7 +1,7 @@
 import { useStoreon } from 'storeon/react'
-import { default as Login } from './Login'
-import { default as Signin } from './Signin'
-import { default as Home } from './Home'
+import { default as Login } from '@pages/LogIn'
+import { default as Signin } from '@pages/SignIn'
+import { default as Home } from '@pages/Home'
 import { routerKey } from '@storeon/router'
 
 const Page = () =>{

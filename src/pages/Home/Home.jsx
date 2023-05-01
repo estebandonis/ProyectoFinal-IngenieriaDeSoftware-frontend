@@ -1,56 +1,44 @@
 import React, { useState } from 'react';
 import { styles } from './Home.module.css';
 import Navbar from '../../assets/Components/Navbar';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import {CarouselProvider, Slider, Slide, ButtonBack, ButtonNext} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 import { Button } from 'react-bootstrap';
 
 const Home = () => {
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
   return (
     <>
       <Navbar />
-  sd sdsd
-      <Carousel responsive={responsive}>
-        <div className='card'>
-          <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'
-          />
-          <h2>Hospital san juan de dios</h2>
-        </div>
-        <div className='card1'>
-        <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'
-          />
-          <h2>Hospital san juan de dios</h2>
-        </div>
-        <div>
-        <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'
-          />
-          <h2>Hospital san juan de dios</h2>
-        </div>
-        <div>
-        <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'
-          />
-          <h2>Hospital san juan de dios</h2>
-        </div>
-      </Carousel> 
+      <CarouselProvider
+        naturalSlideWidth={200}
+        naturalSlideHeight={200}
+        visibleSlides={3}
+        totalSlides={4}
+        isIntrinsicHeight={true}
+      >
+        <Slider>
+          <Slide index={0} className='card'>
+            <div>
+            <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'/>
+            <h2>Hospital san juan de dios</h2>
+            </div>
+          </Slide>
+          <Slide index={1} className='card'>
+            <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'/>
+            <h2>Hospital san juan de dios</h2>
+          </Slide>
+          <Slide index={2} className='card'>
+            <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'/>
+            <h2>Hospital san juan de dios</h2>
+          </Slide>
+          <Slide index={3} className='card'>
+            <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'/>
+            <h2>Hospital san juan de dios</h2>
+          </Slide>
+        </Slider>
+        <ButtonBack>Back</ButtonBack>
+        <ButtonNext>Next</ButtonNext>
+      </CarouselProvider> 
     
     </>
   );

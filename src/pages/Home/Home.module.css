@@ -12,4 +12,11 @@
   flex-basis: 33.33%;
 }
 
+.carousel-container {
+  width: 100%;
+}
+
+.carousel-item {
+  width: 100%;
+}
 
