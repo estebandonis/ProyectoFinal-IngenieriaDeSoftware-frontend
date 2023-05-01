@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { styles, info_section, description, informacion, lower_parts, reviews, servicios } from './Info_Hospitales.module.css';
-import {Navbar} from '@components';
+import { Divider, Review, Servicio } from '@components';
 import 'react-multi-carousel/lib/styles.css';
 
 const Info_Hospitales = () => {
@@ -20,11 +20,18 @@ const Info_Hospitales = () => {
 
       <div className={lower_parts}>
         <div className={reviews}>
-          <h1>Reviews</h1>
+          <h1>Reseñas</h1>
+          <h2>Puntuación Media: 9.5/10</h2>
+          <div className='seccionReviews'>
+            <Review nombre={"Esteban"} comentario={"fkjlajfkdsñlajfdklsñajfkdlsñajfkdlsñajfkdlsñajfkdlsñajfkldsñajfklañdjfkñsdjkdsñajfkdsñajfkdlñsajfkldñajfkdsjfklñdsjfklñsdjkñf"} />
+          </div>
         </div>
-        
+        <Divider />
         <div className={servicios}>
           <h1>Servicio</h1>
+          <div className='seccionServicios'>
+            <Servicio examen={"Endoscopía"} precio={"Q.100.00"}/>
+          </div>
         </div>
       </div>
     </div>

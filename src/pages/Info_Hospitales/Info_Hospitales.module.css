@@ -5,12 +5,12 @@
 
 .info_section {
   width: 100%;
-  height: 400px;
+  height: 450px;
   background-color: gray;
   border-radius: 50px 50px 0px 0px;
   border-width: 5px;
   border-style: solid;
-  border-color: white;
+  border-color: black;
 }
 
 .informacion {
@@ -48,18 +48,21 @@
   border-radius: 50px 50px 0px 0px;
   border-width: 5px;
   border-style: solid;
-  border-color: white;
+  border-color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-top: -50px;
 }
 
 .reviews {
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
 
 .servicios {
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
