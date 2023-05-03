@@ -1,0 +1,12 @@
+.styles {
+  width: 600px;
+  height: 100%;
+  border: solid;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+}
