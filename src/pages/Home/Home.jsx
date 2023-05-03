@@ -18,10 +18,8 @@ const Home = () => {
       >
         <Slider>
           <Slide index={0} className='card'>
-            <div>
             <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'/>
             <h2>Hospital san juan de dios</h2>
-            </div>
           </Slide>
           <Slide index={1} className='card'>
             <img  src='https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png' alt='product'/>
