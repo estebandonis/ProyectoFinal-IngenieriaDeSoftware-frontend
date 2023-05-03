@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { styles } from './Home.module.css';
-import Navbar from '../../assets/Components/Navbar';
+import {Navbar} from '@components';
 import {CarouselProvider, Slider, Slide, ButtonBack, ButtonNext} from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { Button } from 'react-bootstrap';
