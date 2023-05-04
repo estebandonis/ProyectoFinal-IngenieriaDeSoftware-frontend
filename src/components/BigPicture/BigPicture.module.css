@@ -1,5 +1,24 @@
 .styles {
-  width: 5px;
+  width: 100%;
   height: auto;
-  background-color: black;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  background-color: gray;
+  border-radius: 20px;
+  border: solid;
+  border-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.styles img {
+  width: 400px;
+  height: 300px;
 }
