@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { styles } from './Home.module.css';
+import { styles, content } from './Home.module.css';
 import {Navbar} from '@components';
 import { Button } from 'react-bootstrap';
 import Slider from 'react-slick'
@@ -54,7 +54,7 @@ const Home = () => {
   ]
 
   return (
-    <div className='content'>
+    <div className={content}>
       <Navbar />
       <Slider {...sliderSettings}>
         {hotelCards.map((card, index) => (
