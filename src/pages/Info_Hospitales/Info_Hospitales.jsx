@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { styles, info_section, description, informacion, lower_parts, reviews, servicios } from './Info_Hospitales.module.css';
 import { Divider, Review, Servicio } from '@components';
-import 'react-multi-carousel/lib/styles.css';
 
 const Info_Hospitales = () => {
   return (
