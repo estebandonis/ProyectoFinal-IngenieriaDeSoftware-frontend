@@ -71,7 +71,24 @@ const Home = () => {
           </div>
         ))}
       </Slider>
-    </div>
+      <div className='contenedor-filtros'>
+        <form className='filtro_zona'>
+          <h4>Zona de preferencia</h4>
+          <select>
+            <option value={15}>Zona 15</option>
+            <option value={10}>Zona 10</option>
+          </select>
+        </form>
+        <form className='filtro_examen'>
+          <h4>Examen de interés</h4>
+          <select>
+            <option value={1}>Examen 1</option>
+            <option value={2}>Examen 2</option>
+          </select>
+        </form>
+      </div>
+      
+   </div>
   );
 }
 
