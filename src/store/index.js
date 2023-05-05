@@ -1,11 +1,13 @@
 import { storeonDevtools } from 'storeon/devtools'
 import { createStoreon } from 'storeon'
+import user from './user'
 import router from './router'
 import { routerKey, routerNavigate } from '@storeon/router'
 
 
 const store = createStoreon([
   router,
+  user,
   storeonDevtools
 ])
 
