@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { navigate } from '@store'
+import { useStoreon } from 'storeon/react';
 import { styles, content } from './Home.module.css';
 import { Navbar, BigPicture } from '@components';
 import { useApi } from '@hooks'
@@ -10,6 +11,8 @@ import 'slick-carousel/slick/slick-theme.css'
 
 const Home = () => {
   const { loading, data, handleRequest } = useApi()
+  
+  const { dispatch, hospital } = useStoreon('hospital');
 
   const reson = async() => {
     const response = await handleRequest('GET', '/hospitales')
@@ -29,47 +32,9 @@ const Home = () => {
     infinite: false,
   }
 
-  const hotelCards = [
-    {
-      imageSrc:
-        'https://i0.wp.com/tvaztecaguate.com/wp-content/uploads/2022/05/IMG-20210124-WA0015-e1611522270373.jpeg?resize=740%2C416&ssl=1',
-      title: 'San Juan de Dios',
-      description: 'Lorem ipsum dolor sit amet, consectur dolori',
-      pricingText: 'USD 50/Day',
-      features: ['Free Wifi', 'Free breakfast'],
-    },
-    {
-      imageSrc:
-        'https://images.unsplash.com/photo-1616940844649-535215ae4eb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-      title: 'Deluxe Room',
-      description: 'Lorem ipsum dolor sit amet, consectur dolori',
-      pricingText: 'USD 80/Day',
-      features: ['Free Wifi', 'Free breakfast'],
-    },
-    {
-      imageSrc:
-        'https://images.unsplash.com/photo-1599619351208-3e6c839d6828?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80',
-      title: 'King Deluxe Room',
-      description: 'Lorem ipsum dolor sit amet, consectur dolori',
-      pricingText: 'USD 150/Day',
-      features: ['Free Wifi', 'Free breakfast', 'Discounted Meals'],
-    },
-    {
-      imageSrc:
-        'https://images.unsplash.com/photo-1461092746677-7b4afb1178f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-      title: 'Royal Suite',
-      description: 'Lorem ipsum dolor sit amet, consectur dolori',
-      pricingText: 'USD 299/Day',
-      features: [
-        'Free Wifi',
-        'Free breakfast',
-        'Discounted Meals',
-        "MacBook for work use (hotel's property)",
-      ],
-    },
-  ]
-
-  const handleClick = async() => {
+  const handleClick = async(id, nombre, descripcion, direccion, estado, tipo, zona) => {
+    const nuevo = { hospitalid: id, nombre: nombre, descripcion: descripcion, direccion: direccion, estado: estado, tipo: tipo, zona: zona }
+    dispatch('hospital/set', nuevo)
     navigate('/info_hospitales')
   }
 
@@ -82,7 +47,8 @@ const Home = () => {
         <Slider {...sliderSettings}>
         {data.map((card, index) => (
           
-          <BigPicture key={index} nombre={card.nombre} tipo={card.tipo} imagen={"https://images.unsplash.com/photo-1461092746677-7b4afb1178f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"} rating={card.zona} click={handleClick}/>
+          <BigPicture key={index} nombre={card.nombre} tipo={card.tipo} imagen={"https://images.unsplash.com/photo-1461092746677-7b4afb1178f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"} rating={card.zona} 
+          click={() => handleClick(card.hospitalid, card.nombre, card.descripcion, card.direccion, card.estado, card.tipo, card.zona)}/>
 
         ))}
         </Slider>

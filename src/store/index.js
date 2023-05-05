@@ -1,6 +1,7 @@
 import { storeonDevtools } from 'storeon/devtools'
 import { createStoreon } from 'storeon'
 import user from './user'
+import hospital from './hospital'
 import router from './router'
 import { routerKey, routerNavigate } from '@storeon/router'
 
@@ -8,6 +9,7 @@ import { routerKey, routerNavigate } from '@storeon/router'
 const store = createStoreon([
   router,
   user,
+  hospital,
   storeonDevtools
 ])
 

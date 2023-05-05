@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import store, { navigate } from '@store'
+import { useStoreon } from 'storeon/react';
 import { styles, info_section, description, informacion, lower_parts, reviews, servicios } from './Info_Hospitales.module.css';
 import { Divider, Review, Servicio } from '@components';
 
 const Info_Hospitales = () => {
+  
+  const { hospital } = useStoreon('hospital');
+
   return (
     <div className={styles}>
       <div className={info_section}>
-        <h1>Hospital San Juan de Dios</h1>
+        <h1>{hospital.nombre}</h1>
         <div className={informacion}>
           <div className={description}>
             <h2>Informacion General:</h2>
-            <p>jfkdla;jfkdlsa;jfkds;ajfkds;lajfkds;ajfkds;ajfksajdfkl;dsjakfjdslka;fjdklsajfkds;lajfl;ds</p>
+            <p>{hospital.descripcion}</p>
           </div>
 
           <img src="https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png" alt="" />
