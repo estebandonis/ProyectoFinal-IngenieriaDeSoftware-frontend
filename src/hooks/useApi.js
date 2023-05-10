@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const apiUrl = 'http://127.0.0.1:5000'
+const apiUrl = 'http://localhost:3000/api/v1'
 
 const useApi = () => {
   const [ data, setData ] = useState(null)
@@ -25,7 +25,6 @@ const useApi = () => {
 
     try {
       console.info('API CALL', method, path)
-
       const fetchResponse = await fetch(`${apiUrl}${path}`, options)
       const jsonResponse = await fetchResponse.json()
 

@@ -16,13 +16,12 @@
 .informacion {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-around;
 }
 
 .informacion img {
-  width: 150px;
-  height: 150px;
+  width: 350px;
+  height: 250px;
 }
 
 .description {
