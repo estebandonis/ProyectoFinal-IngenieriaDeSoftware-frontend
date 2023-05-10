@@ -1,11 +1,9 @@
-import { persistState } from '@storeon/localstorage'
-
 const user = store => {
-  store.on('@init', () => ({ user: { username: '', token: '', isLoggedIn: false } }))
-  store.on('user/login', (_, { username, token }) => ({ user: { username, token, isLoggedIn: true } }))
-  store.on('user/logout', (_) => ({ user: { username: '', token: '', isLoggedIn: false } }))
-
-  persistState(['user'])(store)
+  store.on('@init', () => ({ user: { correo: '', password: '', isLoggedIn: false } }))
+  store.on('user/login', (state, newUser) => {
+    return { user: { correo: newUser.email, password: newUser.contra, isLoggedIn: true } }
+  })
+  store.on('user/logout', (state) => ({ user: { correo: '', password: '', isLoggedIn: false } }))
 }
 
 export default user

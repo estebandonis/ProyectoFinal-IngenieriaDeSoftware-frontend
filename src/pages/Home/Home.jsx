@@ -12,7 +12,7 @@ import 'slick-carousel/slick/slick-theme.css'
 const Home = () => {
   const { loading, data, handleRequest } = useApi()
   
-  const { dispatch, hospital } = useStoreon('hospital');
+  const { dispatch, hospital } = useStoreon('hospital')
 
   const reson = async() => {
     const response = await handleRequest('GET', '/hospitales')
@@ -21,7 +21,6 @@ const Home = () => {
 
   useEffect(() => {
     let ignore = false;
-    
     if (!ignore)  reson()
     return () => { ignore = true; }
   },[]);
@@ -32,7 +31,7 @@ const Home = () => {
     infinite: false,
   }
 
-  const handleClick = async(id, nombre, descripcion, direccion, estado, tipo, zona) => {
+  const handleClick = async (id, nombre, descripcion, direccion, estado, tipo, zona) => {
     const nuevo = { hospitalid: id, nombre: nombre, descripcion: descripcion, direccion: direccion, estado: estado, tipo: tipo, zona: zona }
     dispatch('hospital/set', nuevo)
     navigate('/info_hospitales')

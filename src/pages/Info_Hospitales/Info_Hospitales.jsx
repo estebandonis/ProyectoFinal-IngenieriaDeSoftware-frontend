@@ -7,6 +7,7 @@ import { Divider, Review, Servicio } from '@components';
 const Info_Hospitales = () => {
   
   const { hospital } = useStoreon('hospital');
+  const { user } = useStoreon('user')
 
   return (
     <div className={styles}>
@@ -18,7 +19,7 @@ const Info_Hospitales = () => {
             <p>{hospital.descripcion}</p>
           </div>
 
-          <img src="https://ropisoni.files.wordpress.com/2012/05/bob-esponja.png" alt="" />
+          <img src="https://chlapaz.files.wordpress.com/2021/01/foto-occidente.jpg" alt="" />
         </div>
       </div>
 
