@@ -8,6 +8,13 @@
   flex-wrap: wrap;
 }
 
+.content {
+  margin-left: 50px;
+  margin-right: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
 .card {
   flex-basis: 33.33%;
 }

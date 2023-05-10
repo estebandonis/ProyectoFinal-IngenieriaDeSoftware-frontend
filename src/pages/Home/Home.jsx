@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { styles } from './Home.module.css';
-import {Navbar} from '@components';
+import { navigate } from '@store'
+import { styles, content } from './Home.module.css';
+import { Navbar, BigPicture } from '@components';
 import { Button } from 'react-bootstrap';
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -53,22 +54,18 @@ const Home = () => {
     },
   ]
 
+  const handleClick = async() => {
+    navigate('/login')
+  }
+
   return (
-    <div className='content'>
+    <div className={content}>
       <Navbar />
       <Slider {...sliderSettings}>
         {hotelCards.map((card, index) => (
-          <div key={index}>
-            <h2>{card.title}</h2>
-            <img alt={card.title} src={card.imageSrc} width="400" height="250" />
-            <p>{card.description}</p>
-            <ul>
-              {card.features.map((feature, index) => (
-                <li key={index}>{feature}</li>
-              ))}
-            </ul>
-            <button className='btn'>Buy Now</button>
-          </div>
+          
+          <BigPicture nombre={card.title} tipo={card.pricingText} imagen={card.imageSrc} rating={card.description} click={handleClick}/>
+
         ))}
       </Slider>
       <div className='contenedor-filtros'>
