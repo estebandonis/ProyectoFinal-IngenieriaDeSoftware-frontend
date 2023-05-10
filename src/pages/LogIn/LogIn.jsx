@@ -1,13 +1,25 @@
 import React from 'react'
+import Joi from 'joi'
 import { useState } from 'react'
 import { navigate } from '@store'
 
 import { styles } from './LogIn.module.css'
 
+const schema = Joi.object({
+  username: Joi.string()
+      .alphanum()
+      .min(3)
+      .max(30)
+      .required(),
+  password: Joi.string()
+      .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
+})
+
 const LogIn = () => {
 
   const [correo, setCorreo] = useState("");
   const [contraseña, setContraseña] = useState("");
+
 
   const handleChangeCorreo = (valor) => {
     // 👇 Store the input value to local state

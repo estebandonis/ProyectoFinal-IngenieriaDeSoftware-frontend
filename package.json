@@ -13,7 +13,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.2",
     "@storeon/router": "^2.0.1",
-    "pure-react-carousel": "^1.30.1",
+    "joi": "^17.9.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
