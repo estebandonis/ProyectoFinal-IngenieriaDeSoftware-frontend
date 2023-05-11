@@ -3,7 +3,8 @@
   background-color: white;
   border-radius: 20px;
   width: 400px;
-  height: 530px;
+  height: auto;
+  padding-bottom: 20px;
   background: '#CCC';
   color: black;
   display: flex;

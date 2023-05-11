@@ -8,7 +8,8 @@ const useApi = () => {
 
   const handleRequest = async (method, path, body = {}, headers = {}) => {
     const options = {
-      method,
+      method: method,
+      mode: 'cors',
       headers: {
         ...headers,
         'Content-Type': 'application/json'
@@ -25,10 +26,7 @@ const useApi = () => {
 
     try {
       console.info('API CALL', method, path)
-      const fetchResponse = await fetch(`${apiUrl}${path}`, {
-        method: method,
-        mode: 'cors',
-      }, options)
+      const fetchResponse = await fetch(`${apiUrl}${path}`, options)
       const jsonResponse = await fetchResponse.json()
 
       console.info('API RESPONSE', jsonResponse)
