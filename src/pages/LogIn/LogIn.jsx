@@ -18,7 +18,8 @@ const LogIn = () => {
 
   const respond = async() => {
     const response = await handleRequest('GET', `/users/validateUser/${values.email}&${values.password}`)
-    return response.data
+    console.log("Respuesta: "+response)
+    return response
   }
 
   const handleChangeCorreo = (valor) => {
@@ -35,25 +36,18 @@ const LogIn = () => {
     })
   }
 
-  const validate = () => {
-    if (data == null){
-      validate()
-    }
-    else{
-      if (data == true){
-        dispatch('user/login', usuario)
-        navigate('/info_hospitales')
-      }
-      else
-        console.log("fallo")
-    }
-  }
-
   const handleClick = async() => {
     const usuario = {email: values.email, contra: values.password}
-    await respond()
-    console.log("Data: "+data)
-    validate()
+    console.log("email: "+values.email)
+    console.log("contra: "+values.password)
+    const response = await respond()
+    if (response == true){
+      dispatch('user/login', usuario)
+      navigate('/info_hospitales')
+    }
+    else{
+      console.log("fallo")
+    }
   }
 
   return (

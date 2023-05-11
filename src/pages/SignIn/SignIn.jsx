@@ -1,14 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
 import { navigate } from '@store'
+import { useApi } from '@hooks'
 
 import { styles } from './SignIn.module.css'
 
 const SignIn = () => {
-
+  const { handleRequest } = useApi();
   const [correo, setCorreo] = useState("");
   const [contraseña, setContraseña] = useState("");
-  const [num_colegiado, setNum_colegiado] = useState("");
 
   const handleChangeCorreo = (valor) => {
     // 👇 Store the input value to local state
@@ -20,13 +20,21 @@ const SignIn = () => {
     setContraseña(valor.target.value);
   };
 
-  const handleChangeNum = (valor) => {
-    // 👇 Store the input value to local state
-    setNum_colegiado(valor.target.value);
-  }
-
   const handleClick = async() => {
-    navigate('/')
+    // Crea un objeto con los datos del usuario
+    const user = {
+      correo,
+      contraseña,
+    }
+  
+    // Llama al endpoint de la API para guardar los datos del usuario
+    const response = await handleRequest('POST', `/users/addUser/${correo}&${contraseña}`, user);
+  
+    // Si la respuesta indica que los datos se guardaron correctamente, navega al inicio
+    if (!response.error) {
+      console.log("Error")
+    }
+    //navigate('/')
   }
 
   return (
@@ -36,8 +44,6 @@ const SignIn = () => {
       <input type="text" placeholder="Escriba su correo" onChange={handleChangeCorreo}/>
       <h2>Contraseña</h2>
       <input type="text" placeholder="Escriba su contraseña" onChange={handleChangeContraseña}/>
-      <h2>Numero de colegiado</h2>
-      <input type="text" placeholder="Escriba el numero" onChange={handleChangeNum}/>
       <br />
       <button onClick={handleClick}>Registrarse</button>
     </div>

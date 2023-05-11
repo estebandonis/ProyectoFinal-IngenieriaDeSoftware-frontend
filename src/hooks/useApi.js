@@ -25,7 +25,10 @@ const useApi = () => {
 
     try {
       console.info('API CALL', method, path)
-      const fetchResponse = await fetch(`${apiUrl}${path}`, options)
+      const fetchResponse = await fetch(`${apiUrl}${path}`, {
+        method: method,
+        mode: 'cors',
+      }, options)
       const jsonResponse = await fetchResponse.json()
 
       console.info('API RESPONSE', jsonResponse)
