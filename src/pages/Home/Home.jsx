@@ -50,8 +50,10 @@ const Home = () => {
           click={() => handleClick(card.hospitalid, card.nombre, card.descripcion, card.direccion, card.estado, card.tipo, card.zona)}/>
 
         ))}
-<<<<<<< HEAD
-      </Slider>
+        </Slider>
+      :<h2>Cargando</h2>
+      }
+
       <div className='contenedor-filtros'>
         <form className='filtro_zona'>
           <h4>Zona de preferencia</h4>
@@ -70,13 +72,6 @@ const Home = () => {
       </div>
       
    </div>
-=======
-        </Slider>
-      :<h2>Cargando</h2>
-      }
-
-    </div>
->>>>>>> main
   );
 }
 
