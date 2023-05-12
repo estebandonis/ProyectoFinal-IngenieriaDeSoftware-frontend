@@ -16,6 +16,7 @@
     "@mui/material": "^5.12.2",
     "@storeon/localstorage": "^1.5.0",
     "@storeon/router": "^2.0.1",
+    "joi": "^17.9.2",
     "jquery": "^3.6.4",
     "pure-react-carousel": "^1.30.1",
     "react": "^18.2.0",

@@ -8,7 +8,8 @@ const useApi = () => {
 
   const handleRequest = async (method, path, body = {}, headers = {}) => {
     const options = {
-      method,
+      method: method,
+      mode: 'cors',
       headers: {
         ...headers,
         'Content-Type': 'application/json'
