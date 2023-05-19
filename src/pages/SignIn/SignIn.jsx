@@ -57,7 +57,7 @@ const SignIn = () => {
       <h2>Correo</h2>
       <input type="text" placeholder="Escriba su correo" value={form.values.email} onChange={form.onChange('email')}/>
       <h2>Contraseña</h2>
-      <input type="text" placeholder="Escriba su contraseña" value={form.values.password} onChange={form.onChange('password')}/>
+      <input type="password" placeholder="Escriba su contraseña" value={form.values.password} onChange={form.onChange('password')}/>
       <br />
       {
         data == true || data == null ?
