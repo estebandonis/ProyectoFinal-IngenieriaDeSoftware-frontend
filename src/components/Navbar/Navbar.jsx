@@ -2,8 +2,11 @@ import { AppBar, Toolbar, IconButton, Typography, Button, Menu, MenuItem } from 
 import React, { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import { navigate } from '@store'
+import { useStoreon } from 'storeon/react'
+
 const Navbar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
+    const {dispatch, user } = useStoreon('user')
 
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -15,6 +18,11 @@ const Navbar = () => {
 
     const handleregisterClick = () => {
         navigate('/signin')
+    };
+
+    const handleLogoutClick = () => {
+        dispatch('user/logout')
+        navigate('/')
     };
 
     const handleMenuClose = () => {
@@ -33,8 +41,15 @@ const Navbar = () => {
                         open={Boolean(anchorEl)}
                         onClose={handleMenuClose}
                     >
-                        <MenuItem onClick={handleLoginClick}>Iniciar sesión</MenuItem>
-                        <MenuItem onClick={handleregisterClick}>Registrarse</MenuItem>
+                        {
+                            user.isLoggedIn ? null : <MenuItem onClick={handleLoginClick}>Iniciar sesión</MenuItem>
+                        }
+                        {
+                            user.isLoggedIn ? null : <MenuItem onClick={handleregisterClick}>Registrarse</MenuItem>
+                        }
+                        {
+                            user.isLoggedIn ? <MenuItem onClick={handleLogoutClick}>Cerrar sesión</MenuItem> : null
+                        }
                     </Menu>
                     <Typography variant="h5" flexGrow={1}>
                         MedicEasy
