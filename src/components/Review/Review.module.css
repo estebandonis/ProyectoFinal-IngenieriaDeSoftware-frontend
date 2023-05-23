@@ -1,5 +1,6 @@
 .styles {
-  width: 600px;
+  max-width: 600px;
+  max-height: 200px;
   height: 100%;
   border: solid;
   border-radius: 30px;
@@ -8,6 +9,7 @@
   flex-direction: column;
   justify-content: center;
   background-color: white;
+  color: black;
 }
 
 .upper {

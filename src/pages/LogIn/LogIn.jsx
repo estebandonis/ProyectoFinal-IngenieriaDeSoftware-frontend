@@ -51,7 +51,7 @@ const LogIn = () => {
       <h2>Correo</h2>
       <input type="text" placeholder="Escriba su correo" value={values.email} onChange={handleChangeCorreo} />
       <h2>Contraseña</h2>
-      <input type="text" placeholder="Escriba su contraseña" value={values.password} onChange={handleChangeContraseña}/>
+      <input type="password" placeholder="Escriba su contraseña" value={values.password} onChange={handleChangeContraseña}/>
       <br />
       {
         data == true || data == null ?
