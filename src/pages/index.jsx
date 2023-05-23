@@ -35,6 +35,10 @@ const Page = () =>{
       {Component}
     </main>
   )
+
 }
+
+
+
 
 export default Page

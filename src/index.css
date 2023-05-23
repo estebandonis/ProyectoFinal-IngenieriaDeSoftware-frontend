@@ -67,3 +67,26 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+  /* Home.module.css */
+  /* Estilos para las flechas del carrusel */
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 50px; /* Tamaño de fuente deseado */
+    color: #ffffff; /* Color deseado */
+  }
+
+.slick-prev,
+.slick-next {
+  z-index: 1; /* Ajusta el índice de apilamiento para que estén delante */
+}
+
+/* Estilos adicionales para ajustar la posición de las flechas si es necesario */
+.slick-prev {
+  left: 10px; /* Ajusta la posición izquierda de la flecha previa */
+}
+
+.slick-next {
+  right: 35px; /* Ajusta la posición derecha de la flecha siguiente */
+}
