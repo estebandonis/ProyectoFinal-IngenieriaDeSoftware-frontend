@@ -11,13 +11,15 @@ import 'slick-carousel/slick/slick-theme.css'
 
 const Home = () => {
   const { loading, data, handleRequest } = useApi()
-  
+  const { user } = useStoreon('user')
   const { dispatch, hospital } = useStoreon('hospital')
 
   const reson = async() => {
     const response = await handleRequest('GET', '/hospitales')
     return response.data
   }
+  console.log("usuario: "+user.correo)
+  console.log("hospital: "+hospital.nombre)
 
   useEffect(() => {
     let ignore = false;
