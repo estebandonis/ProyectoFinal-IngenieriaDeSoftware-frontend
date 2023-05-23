@@ -37,9 +37,9 @@ const Navbar = () => {
         <div>
             <AppBar expand="lg" className="my-nav" sticky="top">
                 <Toolbar>
-                    <IconButton color='inherit' onClick={handleMenuClick}>
-                        <MenuIcon/>
-                    </IconButton>
+                    <Button variant="text" color="inherit" onClick={handleMenuClick}>
+                        Perfil
+                    </Button>
                     <Menu
                         anchorEl={anchorEl}
                         open={Boolean(anchorEl)}
