@@ -25,6 +25,10 @@ const Navbar = () => {
         navigate('/')
     };
 
+    const handleUserClick = () => {
+        navigate('/info_user')
+    };
+
     const handleMenuClose = () => {
         setAnchorEl(null);
     };
@@ -54,6 +58,10 @@ const Navbar = () => {
                     <Typography variant="h5" flexGrow={1}>
                         MedicEasy
                     </Typography>
+
+                    {
+                        user.isLoggedIn ? <Button onClick={handleUserClick} variant="text" color="inherit">{user.correo}</Button> : null
+                    }
                     <Button variant="text" color="inherit">
                         Exámenes
                     </Button>
