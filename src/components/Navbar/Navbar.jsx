@@ -37,9 +37,11 @@ const Navbar = () => {
         <div>
             <AppBar expand="lg" className="my-nav" sticky="top">
                 <Toolbar>
-                    <IconButton color='inherit' onClick={handleMenuClick}>
-                        <MenuIcon/>
-                    </IconButton>
+                    {
+                        user.isLoggedIn ? 
+                            <Button onClick={handleMenuClick} variant="text" color="inherit">{user.correo}</Button> : 
+                            <Button onClick={handleMenuClick} variant="text" color="inherit"> Perfil </Button>
+                    }
                     <Menu
                         anchorEl={anchorEl}
                         open={Boolean(anchorEl)}
@@ -52,16 +54,15 @@ const Navbar = () => {
                             user.isLoggedIn ? null : <MenuItem onClick={handleregisterClick}>Registrarse</MenuItem>
                         }
                         {
-                            user.isLoggedIn ? <MenuItem onClick={handleLogoutClick}>Cerrar sesión</MenuItem> : null
+                            user.isLoggedIn ? <MenuItem onClick={handleUserClick}>Ver perfil</MenuItem> : null
                         }
+                        {
+                            user.isLoggedIn ? <MenuItem onClick={handleLogoutClick}>Cerrar sesión</MenuItem> : null
+                        } 
                     </Menu>
                     <Typography variant="h5" flexGrow={1}>
                         MedicEasy
                     </Typography>
-
-                    {
-                        user.isLoggedIn ? <Button onClick={handleUserClick} variant="text" color="inherit">{user.correo}</Button> : null
-                    }
                     <Button variant="text" color="inherit">
                         Exámenes
                     </Button>

@@ -1,4 +1,5 @@
 import React from 'react'
+import Joi from 'joi'
 import { useState } from 'react'
 import { navigate } from '@store'
 import { useStoreon } from 'storeon/react'
@@ -6,6 +7,16 @@ import { useStoreon } from 'storeon/react'
 import { Notification } from '@components'
 import { useApi } from '@hooks'
 import { styles } from './LogIn.module.css'
+
+const schema = Joi.object({
+  username: Joi.string()
+      .alphanum()
+      .min(3)
+      .max(30)
+      .required(),
+  password: Joi.string()
+      .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
+})
 
 const LogIn = () => {
   const { loading, data, handleRequest } = useApi()

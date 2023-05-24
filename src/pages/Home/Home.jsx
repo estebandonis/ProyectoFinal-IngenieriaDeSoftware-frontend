@@ -56,7 +56,8 @@ const Home = () => {
       :<h2>Cargando</h2>
       }
 
-    </div>
+      
+   </div>
   );
 }
 
