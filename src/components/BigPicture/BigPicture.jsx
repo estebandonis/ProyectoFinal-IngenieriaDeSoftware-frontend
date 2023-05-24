@@ -1,15 +1,17 @@
 import React from "react";
 import MenuIcon from '@mui/icons-material/Menu';
-import { styles, name } from './BigPicture.module.css'
+import { card, intro, name } from './BigPicture.module.css'
 
 
-const BigPicture = ({ nombre, tipo, imagen,  rating, click}) => {
+const BigPicture = ({ nombre, zona, direccion, imagen, rating, click}) => {
     return (
-        <div className={styles} onClick={click}>
-            <div className={name}>{nombre}</div>
-            <div className="">{tipo}</div>
+        <div className={card} onClick={click}>
             <img src={imagen} alt="" />
-            <div className="rating">{rating}</div>
+            <div className={intro}>
+                <div className={name}>{nombre}</div>
+                <p>Direccion: {direccion}</p>
+                <p>Zona {zona}</p>
+            </div>
         </div>
     )
 }
