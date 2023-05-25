@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MenuIcon from '@mui/icons-material/Menu';
 import { navigate } from '@store'
+import { stylesButton } from './Navbar.module.css';
 import { useStoreon } from 'storeon/react'
 
 const Navbar = ({ showBackButton }) => {
@@ -38,6 +39,10 @@ const Navbar = ({ showBackButton }) => {
         navigate('/')
     };
 
+    const handleExamenesClick = () => {
+        navigate('/examenes')
+    };
+
     return (
         <div>
             <AppBar expand="lg" className="my-nav" sticky="top">
@@ -48,8 +53,8 @@ const Navbar = ({ showBackButton }) => {
                         </IconButton>
                     )}
                     {user.isLoggedIn ? 
-                        <Button onClick={handleMenuClick} variant="text" color="inherit">{user.correo}</Button> : 
-                        <Button onClick={handleMenuClick} variant="text" color="inherit"> Perfil </Button>
+                        <Button className={stylesButton} onClick={handleMenuClick} variant="text" color="inherit">{user.correo}</Button> : 
+                        <Button className={stylesButton} onClick={handleMenuClick} variant="text" color="inherit"> Perfil </Button>
                     }
                     <Menu
                         anchorEl={anchorEl}
@@ -64,7 +69,7 @@ const Navbar = ({ showBackButton }) => {
                     <Typography variant="h5" flexGrow={1}>
                         MedicEasy
                     </Typography>
-                    <Button variant="text" color="inherit">
+                    <Button className={stylesButton} variant="text" color="inherit" onClick={handleExamenesClick}>
                         Exámenes
                     </Button>
                 </Toolbar>

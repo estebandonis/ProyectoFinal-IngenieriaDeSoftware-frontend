@@ -3,6 +3,7 @@ import { createStoreon } from 'storeon'
 import { persistState } from '@storeon/localstorage'
 import user from './user'
 import hospital from './hospital'
+import examen from './examen'
 import router from './router'
 import { routerKey, routerNavigate } from '@storeon/router'
 
@@ -10,10 +11,11 @@ import { routerKey, routerNavigate } from '@storeon/router'
 const store = createStoreon([
   router,
   user,
+  examen,
   hospital,
   storeonDevtools,
 
-  persistState(['hospital', 'user'])
+  persistState(['hospital', 'user', 'examen'])
 ])
 
 const navigate = (target) => {
