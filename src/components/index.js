@@ -4,6 +4,7 @@ import Review from "./Review";
 import Servicio from "./Servicio";
 import BigPicture from "./BigPicture";
 import Notification from "./Notification";
+import Examen from "./Examen";
 
 export { 
     Navbar, 
@@ -11,4 +12,6 @@ export {
     Review, 
     Servicio, 
     BigPicture, 
-    Notification, }
+    Notification, 
+    Examen,
+}
