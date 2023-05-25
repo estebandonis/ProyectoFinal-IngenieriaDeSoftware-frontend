@@ -6,4 +6,5 @@ export default createRouter([
   ['/signin', () => ({ page: 'signin' })],
   ['/info_hospitales', () => ({ page: 'info_hospitales' })],
   ['/info_user', () => ({ page: 'info_user' })],
+  ['/examenes', () => ({ page: 'examenes' })],
 ])

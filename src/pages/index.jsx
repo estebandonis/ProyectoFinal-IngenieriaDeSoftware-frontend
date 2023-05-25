@@ -4,6 +4,7 @@ import { default as Signin } from './SignIn'
 import { default as Home } from './Home'
 import { default as Info_Hospitales } from './Info_Hospitales'
 import { default as Info_User } from './Info_User'
+import { default as Examenes } from './Examenes'
 import { routerKey } from '@storeon/router'
 
 const Page = () =>{
@@ -25,6 +26,9 @@ const Page = () =>{
       break
     case 'info_user':
       Component = <Info_User />
+      break
+    case 'examenes':
+      Component = <Examenes />
       break
     default:
       Component = <h1>404 Error</h1>
