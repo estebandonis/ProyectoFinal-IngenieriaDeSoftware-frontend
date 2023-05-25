@@ -9,7 +9,7 @@
   margin-bottom: -20px;
   margin-left: 20px;
   height: 60px;
-  width: 500px;
+  width: 400px;
   border-radius: 5px 5px 5px 5px;
   display: flex;
   flex-direction: row;
@@ -33,7 +33,7 @@
 
 .card {
   height: 300px;
-  width: 500px;
+  width: 400px;
   margin: 20px;
   box-shadow: 5px 5px 20px black;
   overflow: hidden;
@@ -41,13 +41,13 @@
 
 .card img {
   height: 300px;
-  width: 500px;
+  width: 400px;
   border-radius: 3px;
 }
 
 .intro {
   height: 70px;
-  width: 400px;
+  width: 300px;
   padding: 6px;
   box-sizing: border-box;
   position: absolute;
