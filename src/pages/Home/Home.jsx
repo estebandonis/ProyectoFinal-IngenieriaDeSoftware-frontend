@@ -48,7 +48,7 @@ const Home = () => {
         <Slider {...sliderSettings}>
         {data.map((card, index) => (
           
-          <BigPicture key={index} nombre={card.nombre} tipo={card.tipo} zona={card.zona} direccion={card.direccion} imagen={"https://images.unsplash.com/photo-1461092746677-7b4afb1178f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"} 
+          <BigPicture key={index} nombre={card.nombre} tipo={card.tipo} zona={card.zona} direccion={card.direccion} imagen={"https://chlapaz.files.wordpress.com/2021/01/chlp-zona14.jpg"} 
           click={() => handleClick(card.hospitalid, card.nombre, card.descripcion, card.direccion, card.estado, card.tipo, card.zona)}/>
 
         ))}
