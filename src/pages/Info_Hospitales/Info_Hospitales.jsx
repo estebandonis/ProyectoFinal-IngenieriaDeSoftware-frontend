@@ -3,7 +3,7 @@ import store, { navigate } from '@store'
 import { useApi } from '@hooks'
 import { useStoreon } from 'storeon/react';
 import { styles, info_section, description, informacion, lower_parts, reviews, reviewsScroll, servicios, serviciosScroll } from './Info_Hospitales.module.css';
-import { Divider, Review, Servicio } from '@components';
+import { Divider, Review, Servicio, Navbar } from '@components';
 
 const Info_Hospitales = () => {
   const { loading, data, handleRequest } = useApi()
@@ -38,6 +38,7 @@ const Info_Hospitales = () => {
 
   return (
     <div className={styles}>
+      <Navbar showBackButton={true} />
       <div className={info_section}>
         <h1>{hospital.nombre}</h1>
         <div className={informacion}>
