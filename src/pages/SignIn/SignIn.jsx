@@ -74,6 +74,9 @@ const SignIn = () => {
       }
       <br />
       <button onClick={handleClick}>Registrarse</button>
+      <br />
+      <a href="/login">Inicia Sesión</a>
+      <a href="/">Regresar a menu hospitales</a>
     </div>
   )
 }

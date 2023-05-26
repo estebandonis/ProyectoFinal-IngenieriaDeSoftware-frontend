@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import store, { navigate } from '@store'
 import { useStoreon } from 'storeon/react';
 import { styles, info_section, description, informacion, lower_parts, reviews, servicios } from './Info_User.module.css';
-import { Divider, Review, Servicio } from '@components';
+import { Navbar } from '@components';
 
 const Info_User = () => {
   
@@ -10,6 +10,7 @@ const Info_User = () => {
 
   return (
     <div className={styles}>
+      <Navbar showBackButton={true}/>
       <div className={info_section}>
         <h1>{user.correo}</h1>
         <div className={informacion}>
