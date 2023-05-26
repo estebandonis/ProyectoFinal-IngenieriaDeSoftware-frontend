@@ -6,8 +6,13 @@ import { Divider, Review, Servicio } from '@components';
 import { Button } from 'react-bootstrap';
 
 const Info_User = () => {
+  const [changePassword, setChangePassword] = useState(false)
   
   const { user } = useStoreon('user')
+
+  const handleChangePassword = () => {
+    setChangePassword(!changePassword)
+  }
 
   return (
     <div className={styles}>
@@ -15,7 +20,20 @@ const Info_User = () => {
         <h1>{user.correo}</h1>
         <div className={informacion}>
           <div className={description}>
-            <Button variant='text' color='inherit'>Cambiar contraseña</Button>
+            <Button variant='text' color='inherit' onClick={handleChangePassword}>Cambiar contraseña</Button>
+            <div>
+              {
+                changePassword && (
+                <form>
+                  <label>Contraseña original:</label><br></br>
+                  <input type='password'></input><br></br>
+                  <label>Nueva contraseña:</label><br></br>
+                  <input type='password'></input><br></br>
+                  <button type='submit'>Aceptar</button>
+                </form> )
+              }
+            </div>
+            
           </div>
 
           <img src="https://chlapaz.files.wordpress.com/2021/01/foto-occidente.jpg" alt="" />
