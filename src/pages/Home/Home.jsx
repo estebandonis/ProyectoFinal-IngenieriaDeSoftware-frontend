@@ -36,6 +36,7 @@ const Home = () => {
   const handleClick = async (id, nombre, descripcion, direccion, estado, tipo, zona) => {
     const nuevo = { hospitalid: id, nombre: nombre, descripcion: descripcion, direccion: direccion, estado: estado, tipo: tipo, zona: zona }
     dispatch('hospital/set', nuevo)
+    console.log("hospital: "+ hospital)
     navigate('/info_hospitales')
   }
 
@@ -49,7 +50,7 @@ const Home = () => {
         {data.map((card, index) => (
           
           <BigPicture key={index} nombre={card.nombre} tipo={card.tipo} zona={card.zona} direccion={card.direccion} imagen={"https://chlapaz.files.wordpress.com/2021/01/chlp-zona14.jpg"} 
-          click={() => handleClick(card.hospitalid, card.nombre, card.descripcion, card.direccion, card.estado, card.tipo, card.zona)}/>
+          click={() => handleClick(card.hospital_id, card.nombre, card.descripcion, card.direccion, card.estado, card.tipo, card.zona)}/>
 
         ))}
         </Slider>
