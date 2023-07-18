@@ -23,6 +23,20 @@ const Add_Hospital = () => {
   const form = useForm(schema, { email: '', password: ''})
   const {dispatch, user } = useStoreon('user')
 
+  const [numServicios, setNumServicios] = useState(1);
+  const [servicios, setServicios] = useState([<AgregarServicio key={0} />]);
+
+  const quitarServicio = (index) => {
+    const newNumServicios = numServicios - 1;
+    setNumServicios(newNumServicios);
+    setServicios(servicios.filter((_, i) => i !== index));
+  }
+
+  const agregarServicio = () => {
+    const newNumServicios = numServicios + 1;
+    setNumServicios(newNumServicios);
+    setServicios([...servicios, <AgregarServicio onclick={() => quitarServicio(newNumServicios)} key={newNumServicios - 1} />]);
+  }
 
   return (
     <div className={all}>
@@ -42,8 +56,13 @@ const Add_Hospital = () => {
 
       <div className={hospitalInfo}>
         <h1>Servicios:</h1>
-        <AgregarServicio />
-        <button>+</button>
+        {servicios.map((servicio, i) => (
+          <div key={i}>
+            {servicio}
+            <button onClick={() => quitarServicio(i)}>Quitar</button>
+          </div>
+        ))}
+        <button onClick={agregarServicio}>+</button>
       </div>
     </div>
   )
