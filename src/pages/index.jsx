@@ -1,6 +1,7 @@
 import { useStoreon } from 'storeon/react'
 import { default as Login } from './LogIn'
 import { default as Signin } from './SignIn'
+import { default as Add_Hospital } from './Add_Hospital'
 import { default as Home } from './Home'
 import { default as Info_Hospitales } from './Info_Hospitales'
 import { default as Info_User } from './Info_User'
@@ -21,6 +22,9 @@ const Page = () =>{
       break
     case 'signin':
       Component = <Signin />
+      break
+    case 'addhospital':
+      Component = <Add_Hospital />
       break
     case 'info_hospitales':
       Component = <Info_Hospitales />

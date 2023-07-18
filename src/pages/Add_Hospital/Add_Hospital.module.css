@@ -1,0 +1,40 @@
+.all {
+  display: flex;
+  flex-direction: row;  
+  justify-content: space-betweens;;
+  align-items: center;
+}
+
+.styles {
+  filter: drop-shadow(0 0 2px #000000aa);
+  background-color: rgb(13, 11, 145);
+  border-radius: 20px;
+  width: 400px;
+  height: auto;
+  padding-bottom: 20px;
+  background: '#CCC';
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;  
+  justify-content: space-betweens;;
+  align-items: center;
+}
+
+.hospitalInfo {
+  filter: drop-shadow(0 0 2px #000000aa);
+  background-color: rgb(13, 11, 145);
+  border-radius: 20px;
+  width: 400px;
+  height: auto;
+  padding-bottom: 20px;
+  background: '#CCC';
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;  
+  justify-content: space-betweens;;
+  align-items: center;
+}
+
+.hospitalInfo button {
+  
+}
