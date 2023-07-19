@@ -77,9 +77,7 @@ const Home = () => {
       <Navbar />
       <div className={searchContainer}>
         <input type="text" className={searchInput} placeholder="Buscar" value={searchTerm} onChange={handleSearchTermChange} />
-        <button className={searchButton} onClick={handleSearch}>
-          Buscar
-        </button>
+        
       </div>
 
       {loading ? (
