@@ -3,7 +3,8 @@
   max-height: 200px;
   height: 100%;
   border-radius: 30px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,8 +38,21 @@
   height: 100%;
   border-radius: 10%;
   background: gray;
+  margin-bottom: 20px;
 }
 
 .datos select {
-  width: 100px;
+  width: 80%;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.datos input {
+  width: 75%;
+  height: 20px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
 }

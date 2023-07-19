@@ -13,18 +13,20 @@
 }
 
 .styles {
-  background-color: rgb(13, 11, 145);
+  background-color: rgb(41, 109, 166);
   width: 100%;
   height: 100%;
   padding: 10px;
   padding-left: 40px;
   padding-right: 40px;
+  padding-bottom: 30px;
   background: '#CCC';
   color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;  
   justify-content: space-betweens;;
   align-items: start;
+  overflow: scroll;
 }
 
 .styles input {
@@ -32,13 +34,24 @@
   height: 30px;
   border: none;
   border-radius: 8px;
+  padding: 10px;
+}
+
+.styles textarea {
+  width: 100%;
+  height: 100%;
+}
+
+.styles button {
+  width: 100%;
 }
 
 .hospitalInfo {
-  background-color: rgb(13, 11, 145);
+  background-color: rgb(41, 109, 166);
   width: 100%;
   height: 100%;
   padding: 10px;
+  padding-bottom: 30px;
   background: '#CCC';
   color: rgb(255, 255, 255);
   display: flex;

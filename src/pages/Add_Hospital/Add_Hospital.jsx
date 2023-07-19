@@ -20,7 +20,7 @@ const schema = Joi.object({
 
 const Add_Hospital = () => {
   const { data, handleRequest } = useApi();
-  const form = useForm(schema, { email: '', password: ''})
+  const form = useForm(schema, { num: '', nombre: '', descripcion: '', direccion: ''})
   const {dispatch, user } = useStoreon('user')
 
   const [numServicios, setNumServicios] = useState(1);
@@ -40,20 +40,43 @@ const Add_Hospital = () => {
     }
   }
 
+  const handleClick = async() => {
+    AddHospital()
+  }
+
+  const AddHospital = async () => {
+    const dpi = form.values.num
+    const name = form.values.nombre
+    const description = form.values.descripcion
+    const direction = form.values.direccion
+
+    console.log("datos", dpi, name, description, direction)
+
+    console.log("id user: ", user)
+  
+    // Llama al endpoint de la API para guardar los datos del usuario
+    //const response = await handleRequest('POST', `/users/addUser/${correo}&${contra}`, user);
+  
+    // Si la respuesta indica que los datos se guardaron correctamente, navega al inicio
+    //console.log("Respuesta: "+response)
+  }
+
   return (
     <div className={all}>
       <Navbar showBackButton={true} />
       <div className={formulario}>
         <div className={styles}>
-          <h1>Registar hospital</h1>
+          <h1>Registar datos de Hospital</h1>
+          <h2>DPI del administrador</h2>
+          <input type="text" placeholder="Este va a estar ligado con su usuario" value={form.values.num} onChange={form.onChange('num')}/>
           <h2>Nombre del Hospital</h2>
-          <input type="text" placeholder="Escriba su correo" value={form.values.email} onChange={form.onChange('email')}/>
+          <input type="text" placeholder="Ejemplo: Hospital San Juan de Dios" value={form.values.nombre} onChange={form.onChange('nombre')}/>
           <h2>Descripción del hospital</h2>
-          <input type="text" placeholder="Escriba su correo" value={form.values.email} onChange={form.onChange('email')}/>
+          <textarea name="" id="" cols="30" rows="10"></textarea>
           <h2>Dirección del hospital</h2>
-          <input type="text" placeholder="Escriba su correo" value={form.values.email} onChange={form.onChange('email')}/>
+          <input type="text" placeholder="Mientras más clara sea, más fácil será para los usuarios encontrar el hospital" value={form.values.direccion} onChange={form.onChange('direccion')}/>
           <h2>Imágenes</h2>
-          <button>Subir imágenes</button>
+          <button onClick={handleClick}>Subir imágenes</button>
         </div>
 
         <div className={hospitalInfo}>
