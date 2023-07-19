@@ -1,3 +1,7 @@
+.wrapper {
+  width: 400px;
+}
+
 .wrapper:hover .caption {
   visibility: visible;
   transform: rotateX(0deg)
