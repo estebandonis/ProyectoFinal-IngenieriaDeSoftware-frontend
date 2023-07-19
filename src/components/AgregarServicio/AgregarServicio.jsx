@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useApi, useForm } from '@hooks'
 import { styles, info, boton, datos } from './AgregarServicio.module.css'
 
-const AgregarServicio = ({onclick}) => {
+const AgregarServicio = ({}) => {
     const { data, handleRequest } = useApi()
 
     const requestNames = async() => {
@@ -21,7 +21,6 @@ const AgregarServicio = ({onclick}) => {
     return (
         <div className={styles}>
           <div className={info}>
-            <button onClick={onclick} className={boton}>-</button>
             <div className={datos}>
                 <h2>Examen</h2>
                 

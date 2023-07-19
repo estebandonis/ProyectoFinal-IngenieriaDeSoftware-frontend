@@ -35,6 +35,9 @@
   align-items: center;
 }
 
-.hospitalInfo button {
-  
+.botones {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
