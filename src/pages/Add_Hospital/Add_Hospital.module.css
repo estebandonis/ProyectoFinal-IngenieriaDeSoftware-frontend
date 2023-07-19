@@ -1,32 +1,44 @@
 .all {
+  
+}
+
+.formulario {
+  height: 600px;
+  margin-top: 60px;
+  width: auto;
   display: flex;
   flex-direction: row;  
-  justify-content: space-betweens;;
+  justify-content: center;
   align-items: center;
 }
 
 .styles {
-  filter: drop-shadow(0 0 2px #000000aa);
   background-color: rgb(13, 11, 145);
-  border-radius: 20px;
-  width: 400px;
-  height: auto;
-  padding-bottom: 20px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
   background: '#CCC';
   color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;  
   justify-content: space-betweens;;
-  align-items: center;
+  align-items: start;
+}
+
+.styles input {
+  width: 100%;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
 }
 
 .hospitalInfo {
-  filter: drop-shadow(0 0 2px #000000aa);
   background-color: rgb(13, 11, 145);
-  border-radius: 20px;
-  width: 400px;
-  height: auto;
-  padding-bottom: 20px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
   background: '#CCC';
   color: rgb(255, 255, 255);
   display: flex;
@@ -37,7 +49,13 @@
 
 .botones {
   width: 80%;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.allServices {
+  height: 100%;
+  overflow: scroll;
 }

@@ -5,8 +5,8 @@ import { useStoreon } from 'storeon/react'
 import Joi from 'joi'
 
 import { useApi, useForm } from '@hooks'
-import { AgregarServicio } from '@components'
-import { styles, hospitalInfo, all, botones } from './Add_Hospital.module.css'
+import { Navbar, AgregarServicio } from '@components'
+import { styles, hospitalInfo, all, botones, allServices, formulario } from './Add_Hospital.module.css'
 
 const schema = Joi.object({
   email: Joi.string()
@@ -33,35 +33,40 @@ const Add_Hospital = () => {
   }
 
   const quitarServicio = (index) => {
-    const newNumServicios = numServicios - 1;
-    setNumServicios(newNumServicios);
-    setServicios(servicios.filter((_, i) => i !== index));
+    if (numServicios >= 2) {
+      const newNumServicios = numServicios - 1;
+      setNumServicios(newNumServicios);
+      setServicios(servicios.filter((_, i) => i !== index));
+    }
   }
 
   return (
     <div className={all}>
-      <div className={styles}>
-        <h1>Registar hospital</h1>
-        <h2>Nombre del Hospital</h2>
-        <input type="text" placeholder="Escriba su correo" value={form.values.email} onChange={form.onChange('email')}/>
-        <h2>Descripción del hospital</h2>
-        <input type="text" placeholder="Escriba su correo" value={form.values.email} onChange={form.onChange('email')}/>
-        <h2>Dirección del hospital</h2>
-        <input type="text" placeholder="Escriba su correo" value={form.values.email} onChange={form.onChange('email')}/>
-        <h2>Imágenes</h2>
-        <button>Subir imágenes</button>
-        <br />
-        <a href="/">Regresar a menu hospitales</a>
-      </div>
+      <Navbar showBackButton={true} />
+      <div className={formulario}>
+        <div className={styles}>
+          <h1>Registar hospital</h1>
+          <h2>Nombre del Hospital</h2>
+          <input type="text" placeholder="Escriba su correo" value={form.values.email} onChange={form.onChange('email')}/>
+          <h2>Descripción del hospital</h2>
+          <input type="text" placeholder="Escriba su correo" value={form.values.email} onChange={form.onChange('email')}/>
+          <h2>Dirección del hospital</h2>
+          <input type="text" placeholder="Escriba su correo" value={form.values.email} onChange={form.onChange('email')}/>
+          <h2>Imágenes</h2>
+          <button>Subir imágenes</button>
+        </div>
 
-      <div className={hospitalInfo}>
-        <h1>Servicios:</h1>
-        {[...Array(numServicios)].map((_, i) => (
-          <AgregarServicio key={i} />
-        ))}
-        <div className={botones}>
-          <button onClick={agregarServicio}>+</button>
-          <button onClick={quitarServicio}>-</button>
+        <div className={hospitalInfo}>
+          <h1>Servicios:</h1>
+          <div className={botones}>
+            <button onClick={agregarServicio}>+</button>
+            <button onClick={quitarServicio}>-</button>
+          </div>
+          <div className={allServices}>
+            {[...Array(numServicios)].map((_, i) => (
+              <AgregarServicio key={i} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
