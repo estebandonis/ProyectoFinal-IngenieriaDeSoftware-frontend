@@ -6,12 +6,36 @@ import { Navbar } from '@components';
 import { Button } from 'react-bootstrap';
 
 const Info_User = () => {
-  const [changePassword, setChangePassword] = useState(false)
-  
-  const { user } = useStoreon('user')
+  const schema = Joi.object({
+    password: Joi.string()
+        .min(4)
+        .max(10)
+        .required(),
+  })
 
-  const handleChangePassword = () => {
-    setChangePassword(!changePassword)
+  const [changePasswordMenu, setChangePasswordMenu] = useState(false)
+  
+
+  const { data, handleRequest } = useApi();
+  const form = useForm(schema, { old_password: '', new_password: ''})
+  const { dispatch, user } = useStoreon('user')
+
+  const handleChangePasswordMenu = () => {
+    setChangePasswordMenu(!changePasswordMenu)
+  }
+
+  const respond = async() => {
+    const response = await handleRequest('GET', `/users/validateUser/${values.email}&${values.password}`)
+    return response
+  }
+
+  const handleClick = async() => {
+    const usuario = {email: user.email, contra: form.values.password}
+    const response = await respond()
+    if (response == true){
+      // dispatch('user/login', usuario)
+      // navigate('/')
+    }
   }
 
   return (
@@ -21,16 +45,16 @@ const Info_User = () => {
         <h1>{user.correo}</h1>
         <div className={informacion}>
           <div className={description}>
-            <Button variant='text' color='inherit' onClick={handleChangePassword}>Cambiar contraseña</Button>
+            <Button variant='text' color='inherit' onClick={handleChangePasswordMenu}>Cambiar contraseña</Button>
             <div>
               {
-                changePassword && (
+                changePasswordMenu && (
                 <form>
                   <label>Contraseña original:</label><br></br>
-                  <input type='password'></input><br></br>
+                  <input type='password' value={form.values.old_password}></input><br></br>
                   <label>Nueva contraseña:</label><br></br>
                   <input type='password'></input><br></br>
-                  <button type='submit'>Aceptar</button>
+                  <button type='submit' onClick={handleClick}>Aceptar</button>
                 </form> )
               }
             </div>
