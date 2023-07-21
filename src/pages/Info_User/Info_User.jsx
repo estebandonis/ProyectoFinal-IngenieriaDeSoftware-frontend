@@ -4,6 +4,8 @@ import { useStoreon } from 'storeon/react';
 import { styles, info_section, description, informacion, lower_parts, reviews, servicios } from './Info_User.module.css';
 import { Navbar } from '@components';
 import { Button } from 'react-bootstrap';
+import { useApi, useForm } from '@hooks'
+import Joi from 'joi';
 
 const Info_User = () => {
   const schema = Joi.object({
@@ -14,27 +16,25 @@ const Info_User = () => {
   })
 
   const [changePasswordMenu, setChangePasswordMenu] = useState(false)
-  
 
   const { data, handleRequest } = useApi();
   const form = useForm(schema, { old_password: '', new_password: ''})
   const { dispatch, user } = useStoreon('user')
 
-  const handleChangePasswordMenu = () => {
+  const handlePasswordMenu = () => {
     setChangePasswordMenu(!changePasswordMenu)
   }
 
   const respond = async() => {
-    const response = await handleRequest('GET', `/users/validateUser/${values.email}&${values.password}`)
+    const response = await handleRequest('PUT', 
+      `/users/updateUserPassword/${user.email}&${form.values.old_password}&${form.values.new_password}`)
     return response
   }
 
   const handleClick = async() => {
-    const usuario = {email: user.email, contra: form.values.password}
     const response = await respond()
     if (response == true){
-      // dispatch('user/login', usuario)
-      // navigate('/')
+      setChangePasswordMenu(false)
     }
   }
 
@@ -45,15 +45,30 @@ const Info_User = () => {
         <h1>{user.correo}</h1>
         <div className={informacion}>
           <div className={description}>
-            <Button variant='text' color='inherit' onClick={handleChangePasswordMenu}>Cambiar contraseña</Button>
+            <Button variant='text' color='inherit' onClick={handlePasswordMenu}>Cambiar contraseña</Button>
             <div>
               {
                 changePasswordMenu && (
                 <form>
                   <label>Contraseña original:</label><br></br>
-                  <input type='password' value={form.values.old_password}></input><br></br>
+                  <input type='password' value={form.values.old_password} onChange={form.onChange('old_password')}></input><br></br>
                   <label>Nueva contraseña:</label><br></br>
-                  <input type='password'></input><br></br>
+                  <input type='password' value={form.values.new_password} onChange={form.onChange('new_password')}></input>
+                  <br></br>
+                  {
+                    data == true || data == null ?
+                      null :
+                      <Notification type="danger">
+                        {data}
+                      </Notification>
+                  }
+                  {
+                    form.error ?
+                      <Notification type="warning">
+                        El usuario o contraseña ingresado no cumplen con los requerimientos establecidos
+                      </Notification> : null
+                  }
+                  <br></br>
                   <button type='submit' onClick={handleClick}>Aceptar</button>
                 </form> )
               }
