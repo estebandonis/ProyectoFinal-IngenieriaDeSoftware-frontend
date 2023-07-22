@@ -19,23 +19,23 @@ const Info_User = () => {
 
   const { data, handleRequest } = useApi();
   const form = useForm(schema, { old_password: '', new_password: ''})
-  const { dispatch, user } = useStoreon('user')
+  const { user } = useStoreon('user');
 
   const handlePasswordMenu = () => {
     setChangePasswordMenu(!changePasswordMenu)
   }
 
   const respond = async() => {
-    const response = await handleRequest('PUT', 
-      `/users/updateUserPassword/${user.email}&${form.values.old_password}&${form.values.new_password}`)
+    const response = await handleRequest('PUT', `/users/updateUserPassword/${user.correo}&${form.values.old_password}&${form.values.new_password}`)
     return response
   }
 
   const handleClick = async() => {
     const response = await respond()
-    if (response == true){
-      setChangePasswordMenu(false)
-    }
+    form.values.old_password = ''
+    form.values.new_password = ''
+    setChangePasswordMenu(false)
+    console.log(response)
   }
 
   return (
@@ -55,21 +55,8 @@ const Info_User = () => {
                   <label>Nueva contraseña:</label><br></br>
                   <input type='password' value={form.values.new_password} onChange={form.onChange('new_password')}></input>
                   <br></br>
-                  {
-                    data == true || data == null ?
-                      null :
-                      <Notification type="danger">
-                        {data}
-                      </Notification>
-                  }
-                  {
-                    form.error ?
-                      <Notification type="warning">
-                        El usuario o contraseña ingresado no cumplen con los requerimientos establecidos
-                      </Notification> : null
-                  }
                   <br></br>
-                  <button type='submit' onClick={handleClick}>Aceptar</button>
+                  <Button variant='text' color='inherit' onClick={handleClick}>Aceptar</Button>
                 </form> )
               }
             </div>
