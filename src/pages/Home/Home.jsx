@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { navigate } from '@store';
 import { useStoreon } from 'storeon/react';
-import { styles, content, searchContainer, searchInput, searchButton } from './Home.module.css';
+import { content, searchContainer, searchInput, searchButton } from './Home.module.css';
 import { Navbar, BigPicture } from '@components';
 import { useApi } from '@hooks';
-import { Button } from 'react-bootstrap';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -77,9 +76,7 @@ const Home = () => {
       <Navbar />
       <div className={searchContainer}>
         <input type="text" className={searchInput} placeholder="Buscar" value={searchTerm} onChange={handleSearchTermChange} />
-        <button className={searchButton} onClick={handleSearch}>
-          Buscar
-        </button>
+        
       </div>
 
       {loading ? (
