@@ -13,5 +13,10 @@ export default defineConfig({
       { find: '@hooks', replacement: path.resolve(__dirname, './src/hooks') },
       { find: '@components', replacement: path.resolve(__dirname, './src/components') },
     ]
-  }
+  },
+  test: {
+    setupFiles: './src/setupTests.js',
+    globals: true,
+    environment: 'jsdom',
+  },
 })

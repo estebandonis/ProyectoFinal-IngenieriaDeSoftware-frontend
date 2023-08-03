@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
+
 import { styles, upper, stars } from './Review.module.css'
 
-
-const Review = ({ nombre, comentario, num }) => {
+const Review = ({ nombre, comentario }) => {
     const linkImg = "https://st3.depositphotos.com/7438112/18448/v/450/depositphotos_184486262-stock-illustration-yellow-star-icon-on-white.jpg"
 
     return (
