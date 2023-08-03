@@ -4,7 +4,10 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react({ fastRefresh: false })],
+  worker: {
+    plugins: [react()],
+  },
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, './src') },
@@ -18,5 +21,8 @@ export default defineConfig({
     setupFiles: './src/setupTests.js',
     globals: true,
     environment: 'jsdom',
+  },
+  deps: {
+    inline: ['@testing-library/vitest'] 
   },
 })
