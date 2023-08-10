@@ -28,7 +28,7 @@ const SignIn = () => {
     const contra = form.values.password
 
     // Crea un objeto con los datos del usuario
-    const usuario = {email: correo, contra: contra}
+    const usuario = {email: correo, contra: contra, tipo: 'reviewer'}
   
     // Llama al endpoint de la API para guardar los datos del usuario
     const response = await handleRequest('POST', `/users/addUser/${correo}&${contra}`, user);
@@ -44,8 +44,6 @@ const SignIn = () => {
 
   const handleClick = async() => {
     
-    console.log("Email: "+form.values.email)
-    console.log("Password: "+form.values.password)
     if (form.validate()) {
       verificado(form.values.email, form.values.password)
     }
