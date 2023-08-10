@@ -8,16 +8,6 @@ import { Notification } from '@components'
 import { useApi } from '@hooks'
 import { styles } from './LogIn.module.css'
 
-const schema = Joi.object({
-  username: Joi.string()
-      .alphanum()
-      .min(3)
-      .max(30)
-      .required(),
-  password: Joi.string()
-      .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
-})
-
 const LogIn = () => {
   const { loading, data, handleRequest } = useApi()
   const {dispatch, user } = useStoreon('user')
@@ -30,6 +20,7 @@ const LogIn = () => {
 
   const respond = async() => {
     const response = await handleRequest('GET', `/users/validateUser/${values.email}&${values.password}`)
+    console.log(data)
     return response
   }
 
@@ -51,6 +42,12 @@ const LogIn = () => {
     const usuario = {email: values.email, contra: values.password}
     const response = await respond()
     if (response == true){
+      const userType = await handleRequest('GET', `ifAdmin/${usuario.email}`)
+      if (userType) {
+        dispatch('user/login', usuario)
+        navigate('/admin')
+        return
+      }
       dispatch('user/login', usuario)
       navigate('/')
     }

@@ -3,6 +3,7 @@ import { default as Login } from './LogIn'
 import { default as Signin } from './SignIn'
 import { default as Add_Hospital } from './Add_Hospital'
 import { default as Home } from './Home'
+import { default as Admin} from './Home_Admin'
 import { default as Info_Hospitales } from './Info_Hospitales'
 import { default as Info_User } from './Info_User'
 import { default as Examenes } from './Examenes'
@@ -16,6 +17,9 @@ const Page = () =>{
   switch (route.match.page) {
     case 'home':
       Component = <Home />
+      break
+    case 'admin':
+      Component = <Admin />
       break
     case 'login':
       Component = <Login />
