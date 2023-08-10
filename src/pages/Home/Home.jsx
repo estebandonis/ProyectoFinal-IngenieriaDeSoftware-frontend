@@ -17,8 +17,6 @@ const Home = () => {
     const response = await handleRequest('GET', '/hospitales');
     return response.data;
   };
-  console.log('usuario: ' + user.correo);
-  console.log('hospital: ' + hospital.nombre);
 
   useEffect(() => {
     let ignore = false;

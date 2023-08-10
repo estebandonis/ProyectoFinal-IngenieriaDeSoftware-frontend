@@ -19,12 +19,12 @@ const schema = Joi.object({
 })
 
 const LogIn = () => {
-  const { loading, data, handleRequest } = useApi()
+  const { data, handleRequest } = useApi()
   const {dispatch, user } = useStoreon('user')
   const [values, setValues] = useState(
     {
       email: '',
-      password: ''
+      password: '',
     }
   )
 
@@ -48,9 +48,10 @@ const LogIn = () => {
   }
 
   const handleClick = async() => {
-    const usuario = {email: values.email, contra: values.password}
     const response = await respond()
     if (response == true){
+      const response2 = await handleRequest('GET', `/users/getDPI/${values.email}`)
+      const usuario = {email: values.email, contra: values.password, dpi: response2}
       dispatch('user/login', usuario)
       navigate('/')
     }

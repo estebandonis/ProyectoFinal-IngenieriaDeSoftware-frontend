@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { navigate } from '@store'
 import { useStoreon } from 'storeon/react'
 import Joi from 'joi'
@@ -58,7 +58,7 @@ const Add_Hospital = () => {
       setServicios(servicios.filter((_, i) => i !== index));
       deletePrice(numServicios - 1);
     }
-  }  
+  }
 
   const AddHospital = async () => {
     const dpi = form.values.num
@@ -69,9 +69,6 @@ const Add_Hospital = () => {
   
     // Llama al endpoint de la API para guardar los datos del usuario
     const response = await handleRequest('POST', `/hospitales/addHospital/${name}&${direction}&${description}&${zone}&${user.correo}`);
-  
-    // Si la respuesta indica que los datos se guardaron correctamente, navega al inicio
-    console.log("Respuesta: " + response)
 
     const response1 = await handleRequest('PUT', `/users/addDPI/${dpi}&${user.correo}`)
 
@@ -82,7 +79,7 @@ const Add_Hospital = () => {
       const response2 = await handleRequest('POST', `/servicios/addServicio/${examen}&${precio}&${name}`)
     }
 
-    if (response == true){
+    if (response == true && response1 == true){
       alert("Hospital agregado exitosamente")
 
       navigate('/')
@@ -97,8 +94,13 @@ const Add_Hospital = () => {
       <div className={formulario}>
         <div className={styles}>
           <h1>Registar datos de Hospital</h1>
-          <h2>DPI del administrador</h2>
-          <input type="text" placeholder="Este va a estar ligado con su usuario" value={form.values.num} onChange={form.onChange('num')}/>
+          { user.dpi == '0' ?
+            <div>
+              <h2>DPI del administrador</h2>
+              <input type="text" placeholder="Este va a estar ligado con su usuario" value={form.values.num} onChange={form.onChange('num')}/>
+            </div>
+            : null
+          }
           <h2>Nombre del Hospital</h2>
           <input type="text" placeholder="Ejemplo: Hospital San Juan de Dios" value={form.values.nombre} onChange={form.onChange('nombre')}/>
           <h2>Descripción del hospital</h2>
