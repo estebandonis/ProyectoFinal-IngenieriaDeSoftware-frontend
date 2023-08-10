@@ -6,7 +6,7 @@ import Joi from 'joi'
 
 import { useApi, useForm } from '@hooks'
 import { Navbar, AgregarServicio } from '@components'
-import { styles, hospitalInfo, all, botones, allServices, formulario } from './Add_Hospital.module.css'
+import { styles, hospitalInfo, all, botones, allServices, formulario, descripciontextarea, textareacontainer } from './Add_Hospital.module.css'
 
 const schema = Joi.object({
   email: Joi.string()
@@ -102,7 +102,9 @@ const Add_Hospital = () => {
           <h2>Nombre del Hospital</h2>
           <input type="text" placeholder="Ejemplo: Hospital San Juan de Dios" value={form.values.nombre} onChange={form.onChange('nombre')}/>
           <h2>Descripción del hospital</h2>
-          <textarea name="" id="" cols="30" rows="10" value={form.values.descripcion} onChange={form.onChange('descripcion')}/>
+          <div className={textareacontainer}>
+            <textarea className={descripciontextarea} name="" id="" cols="30" rows="10" value={form.values.descripcion} onChange={form.onChange('descripcion')}/>
+          </div>
           <h2>Dirección del hospital</h2>
           <input type="text" placeholder="Mientras más clara sea, más fácil será para los usuarios encontrar el hospital" value={form.values.direccion} onChange={form.onChange('direccion')}/>
           <h2>Zona</h2>

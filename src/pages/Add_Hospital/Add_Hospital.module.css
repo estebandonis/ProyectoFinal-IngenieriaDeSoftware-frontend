@@ -29,6 +29,10 @@
   overflow: scroll;
 }
 
+.styles::-webkit-scrollbar{
+  display: none;
+}
+
 .styles input {
   width: 100%;
   height: 30px;
@@ -71,4 +75,18 @@
 .allServices {
   height: 100%;
   overflow: scroll;
+}
+
+.allServices::-webkit-scrollbar{
+  display: none;
+}
+
+.textareacontainer{
+  width: 100%;
+  height: 80px;
+}
+
+.descripciontextarea {
+  width: 100%;
+  height: 50px;
 }
