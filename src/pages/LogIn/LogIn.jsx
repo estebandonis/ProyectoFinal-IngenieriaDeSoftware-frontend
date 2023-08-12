@@ -43,7 +43,6 @@ const LogIn = () => {
       const response2 = await handleRequest('GET', `/users/getDPI/${values.email}`)
       const usuario = {email: values.email, contra: values.password, dpi: response2}
       const userType = await handleRequest('GET', `/users/ifAdmin/${values.email}`)
-      console.log("UserType: ", userType)
       if (userType == true) {
         dispatch('user/login', usuario)
         navigate('/admin')

@@ -69,8 +69,12 @@ const Add_Hospital = () => {
   
     // Llama al endpoint de la API para guardar los datos del usuario
     const response = await handleRequest('POST', `/hospitales/addHospital/${name}&${direction}&${description}&${zone}&${user.correo}`);
+    
+    let response1 = true
 
-    const response1 = await handleRequest('PUT', `/users/addDPI/${dpi}&${user.correo}`)
+    if (user.dpi == '0') {
+      response1 = await handleRequest('PUT', `/users/addDPI/${dpi}&${user.correo}`)
+    }
 
     for (let i = 0; i < numServicios; i++) {
       const examen = examenes[i]
