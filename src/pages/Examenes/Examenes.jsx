@@ -9,8 +9,7 @@ import { styles, examenes_section } from './Examenes.module.css';
 
 
 const Examenes = () => {
-  const { loading, data, handleRequest } = useApi();
-  const { user } = useStoreon('user');
+  const { data, handleRequest } = useApi();
   const { dispatch, examen } = useStoreon('examen'); // Update to use 'examen' store
 
   const reson = async () => {
@@ -51,13 +50,14 @@ const Examenes = () => {
 
   const handleClick = async (id, nombre, descripcion) => {
     const nuevo = {
-      examenid: id,
+      examen_id: id,
       nombre: nombre,
       descripcion: descripcion,
     };
     dispatch('examen/set', nuevo); // Update to use 'examen' store
-    console.log('examen: ', examen);
-    navigate('/info_examenes');
+    console.log('data: ', data);
+    console.log('examen: ', nuevo);
+    navigate('/info_examen');
   };
 
   return (
@@ -71,7 +71,7 @@ const Examenes = () => {
           data!=null?
           <div className={examenes_section}>
             {filteredData.map((card, index) => (
-              <Examen onclick={() => handleClick(card.examenid, card.nombre, card.descripcion)} nombre={card.nombre} url={'https://medlineplus.gov/images/Xray_share.jpg'} />
+              <Examen onclick={() => handleClick(card.examen_id, card.nombre, card.descripcion)} nombre={card.nombre} url={'https://medlineplus.gov/images/Xray_share.jpg'} />
             ))}
           </div>
           :<h2>Cargando...</h2>
