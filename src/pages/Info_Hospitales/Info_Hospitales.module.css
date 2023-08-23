@@ -43,7 +43,7 @@
 
 .lower_parts {
   width: 100%;
-  height: 600px;
+  height: 700px;
   background-color: gray;
   border-radius: 50px 50px 0px 0px;
   border-width: 5px;
@@ -58,7 +58,15 @@
 .reviews {
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.reviews button {
+  margin-bottom: 20px;
+}
+
+.reviews h1 {
+  margin-bottom: 5px;
 }
 
 .reviewsScroll {
@@ -70,6 +78,41 @@
 
 .reviewsScroll::-webkit-scrollbar {
   display: none;
+}
+
+.reviewsScroll button {
+  width: 100%;
+  height: 10px;
+  margin-bottom: 10px;
+}
+
+.addReview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.addReview textarea {
+  margin: 20px;
+  padding: 10px;
+  width: 100%;
+  height: 100px;
+}
+
+.addReview input {
+  margin: 20px;
+  padding: 10px;
+  width: 20%;
+  height: 20px;
+}
+
+.comentario h3 {
+  margin-bottom: -5px;
+}
+
+.rating h3 {
+  margin-bottom: -5px;
 }
 
 .servicios {
