@@ -62,7 +62,7 @@ const Examenes = () => {
 
   return (
     <div className={content}>
-      <Navbar />
+      <Navbar showBackButton={true}/>
       <div className={searchContainer}>
         <input type="text" className={searchInput} placeholder="Buscar" value={searchTerm} onChange={handleSearchTermChange} />
         

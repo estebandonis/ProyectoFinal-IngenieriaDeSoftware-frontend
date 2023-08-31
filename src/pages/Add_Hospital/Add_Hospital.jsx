@@ -5,6 +5,7 @@ import { useStoreon } from 'storeon/react'
 import Joi from 'joi'
 
 import { useApi, useForm } from '@hooks'
+
 import { Navbar, AgregarServicio } from '@components'
 import { styles, hospitalInfo, all, botones, allServices, formulario, descripciontextarea, textareacontainer } from './Add_Hospital.module.css'
 
@@ -21,7 +22,7 @@ const schema = Joi.object({
 const Add_Hospital = () => {
   const { handleRequest } = useApi();
   const form = useForm(schema, { num: '', nombre: '', descripcion: '', direccion: '', zona: ''})
-  const { user } = useStoreon('user')
+  const {user, dispatch } = useStoreon('user')
 
   const [examenes, setExamenes] = useState({})
   const [precios, setPrecios] = useState({})
@@ -85,6 +86,8 @@ const Add_Hospital = () => {
 
     if (response == true && response1 == true){
       alert("Hospital agregado exitosamente")
+      // const usuario = {email: user.correo, contra: user.contra, dpi: dpi}
+      // dispatch('user/login', usuario)
 
       navigate('/')
     } else {
