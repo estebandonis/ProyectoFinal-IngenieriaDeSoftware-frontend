@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import { navigate } from '@store'
 import { useStoreon } from 'storeon/react'
 import Joi from 'joi'
@@ -21,22 +20,20 @@ const schema = Joi.object({
 const SignIn = () => {
   const { data, handleRequest } = useApi();
   const form = useForm(schema, { email: '', password: ''})
-  const {dispatch, user } = useStoreon('user')
+  const {dispatch} = useStoreon('user')
 
   const verificado = async (email, password) => {
     const correo = form.values.email
     const contra = form.values.password
 
     // Crea un objeto con los datos del usuario
-    const usuario = {email: correo, contra: contra, tipo: 'reviewer', dpi: 0}
+    const usuario = {email: correo, contra: contra, tipo: 'reviewer'}
 
     // Llama al endpoint de la API para guardar los datos del usuario
-    const response = await handleRequest('POST', `/users/addUser/${correo}&${contra}`, user);
+    const response = await handleRequest('POST', `/users/addUser/${correo}&${contra}`);
 
     // Si la respuesta indica que los datos se guardaron correctamente, navega al inicio
-    console.log("Respuesta: "+response)
-
-    if (response == true){
+    if (response === true){
       dispatch('user/login', usuario)
       navigate('/')
     }

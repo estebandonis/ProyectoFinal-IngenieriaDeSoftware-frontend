@@ -65,7 +65,6 @@ const Home = () => {
       zona: zona,
     };
     dispatch('hospital/set', nuevo);
-    console.log('hospital: ' + hospital);
     navigate('/info_hospitales');
   };
 
