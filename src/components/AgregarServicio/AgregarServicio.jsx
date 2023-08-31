@@ -11,9 +11,6 @@ const AgregarServicio = ({ examenesData, examenOnChange, priceOnChange}) => {
       priceOnChange(valor.target.value)
     }
 
-    console.log('examenes', examenesData)
-    console.log(examenesData.length === 0)
-
     return (
         <div className={styles}>
           <div className={info}>
