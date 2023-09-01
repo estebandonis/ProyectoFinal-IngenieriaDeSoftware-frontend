@@ -1,2 +1,2 @@
-import Add_Hospital from './Add_Hospital'
-export default Add_Hospital
+import Update_Hospital from './Update_Hospital'
+export default Update_Hospital

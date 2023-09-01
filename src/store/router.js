@@ -6,6 +6,7 @@ export default createRouter([
   ['/login', () => ({ page: 'login' })],
   ['/signin', () => ({ page: 'signin' })],
   ['/addhospital', () => ({ page: 'addhospital' })],
+  ['/updatehospital', () => ({ page: 'updatehospital' })],
   ['/info_hospitales', () => ({ page: 'info_hospitales' })],
   ['/info_user', () => ({ page: 'info_user' })],
   ['/examenes', () => ({ page: 'examenes' })],
