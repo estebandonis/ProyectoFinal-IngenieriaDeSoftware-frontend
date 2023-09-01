@@ -39,14 +39,12 @@ const LogIn = () => {
 
   const handleClick = async() => {
     const response = await respond()
-    if (response == true){
-      const response2 = await handleRequest('GET', `/users/getDPI/${values.email}`)
-      const usuario = {email: values.email, contra: values.password, dpi: response2}
-      const userType = await handleRequest('GET', `/users/ifAdmin/${values.email}`)
-      if (userType == true) {
+    if (response === true){
+      const response2 = await handleRequest('GET', `/users/getTipo/${values.email}`)
+      const usuario = {email: values.email, contra: values.password, tipo: response2[0].tipo}
+      if (usuario.tipo === 'admin') {
         dispatch('user/login', usuario)
         navigate('/admin')
-        return
       } else {
         dispatch('user/login', usuario)
         navigate('/')
@@ -63,7 +61,7 @@ const LogIn = () => {
       <input type="password" placeholder="Escriba su contraseña" value={values.password} onChange={handleChangeContraseña}/>
       <br />
       {
-        data == true || data == null || data == '0'?
+        data === true || data == null?
           null :
           <Notification type="danger">
             {data}

@@ -55,14 +55,12 @@ const Examenes = () => {
       descripcion: descripcion,
     };
     dispatch('examen/set', nuevo); // Update to use 'examen' store
-    console.log('data: ', data);
-    console.log('examen: ', nuevo);
     navigate('/info_examen');
   };
 
   return (
     <div className={content}>
-      <Navbar />
+      <Navbar showBackButton={true}/>
       <div className={searchContainer}>
         <input type="text" className={searchInput} placeholder="Buscar" value={searchTerm} onChange={handleSearchTermChange} />
         
@@ -71,7 +69,7 @@ const Examenes = () => {
           data!=null?
           <div className={examenes_section}>
             {filteredData.map((card, index) => (
-              <Examen onclick={() => handleClick(card.examen_id, card.nombre, card.descripcion)} nombre={card.nombre} url={'https://medlineplus.gov/images/Xray_share.jpg'} />
+              <Examen key={index} onclick={() => handleClick(card.examen_id, card.nombre, card.descripcion)} nombre={card.nombre} url={'https://medlineplus.gov/images/Xray_share.jpg'} />
             ))}
           </div>
           :<h2>Cargando...</h2>

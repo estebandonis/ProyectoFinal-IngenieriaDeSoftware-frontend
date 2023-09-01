@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import { navigate } from '@store'
 import { useStoreon } from 'storeon/react'
 import Joi from 'joi'
@@ -21,7 +20,7 @@ const schema = Joi.object({
 const SignIn = () => {
   const { data, handleRequest } = useApi();
   const form = useForm(schema, { email: '', password: ''})
-  const {dispatch, user } = useStoreon('user')
+  const {dispatch} = useStoreon('user')
 
   const verificado = async (email, password) => {
     const correo = form.values.email
@@ -29,14 +28,12 @@ const SignIn = () => {
 
     // Crea un objeto con los datos del usuario
     const usuario = {email: correo, contra: contra, tipo: 'reviewer'}
-  
-    // Llama al endpoint de la API para guardar los datos del usuario
-    const response = await handleRequest('POST', `/users/addUser/${correo}&${contra}`, user);
-  
-    // Si la respuesta indica que los datos se guardaron correctamente, navega al inicio
-    console.log("Respuesta: "+response)
 
-    if (response == true){
+    // Llama al endpoint de la API para guardar los datos del usuario
+    const response = await handleRequest('POST', `/users/addUser/${correo}&${contra}`);
+
+    // Si la respuesta indica que los datos se guardaron correctamente, navega al inicio
+    if (response === true){
       dispatch('user/login', usuario)
       navigate('/')
     }
@@ -53,9 +50,9 @@ const SignIn = () => {
     <div className={styles}>
       <h1>Sign Up</h1>
       <h2>Correo</h2>
-      <input type="text" placeholder="Escriba su correo" value={form.values.email} onChange={form.onChange('email')}/>
+      <input type="text" placeholder="Ejemplo: usuario@correo.com" value={form.values.email} onChange={form.onChange('email')}/>
       <h2>Contraseña</h2>
-      <input type="password" placeholder="Escriba su contraseña" value={form.values.password} onChange={form.onChange('password')}/>
+      <input type="password" placeholder="Debe estar entre 4 - 10 caracteres" value={form.values.password} onChange={form.onChange('password')}/>
       <br />
       {
         data == true || data == null ?

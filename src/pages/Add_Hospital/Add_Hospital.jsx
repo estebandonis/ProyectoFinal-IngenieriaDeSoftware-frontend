@@ -1,10 +1,10 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { navigate } from '@store'
 import { useStoreon } from 'storeon/react'
 import Joi from 'joi'
 
 import { useApi, useForm } from '@hooks'
+
 import { Navbar, AgregarServicio } from '@components'
 import { styles, hospitalInfo, all, botones, allServices, formulario, descripciontextarea, textareacontainer } from './Add_Hospital.module.css'
 
@@ -19,14 +19,24 @@ const schema = Joi.object({
 })
 
 const Add_Hospital = () => {
-  const { handleRequest } = useApi();
+  const {data, handleRequest } = useApi();
   const form = useForm(schema, { num: '', nombre: '', descripcion: '', direccion: '', zona: ''})
-  const { user } = useStoreon('user')
+  const {user, dispatch } = useStoreon('user')
 
+  const [dataExamenes, setDataExamenes] = useState([])
   const [examenes, setExamenes] = useState({})
   const [precios, setPrecios] = useState({})
 
   const [numServicios, setNumServicios] = useState(1);
+
+  const requestNames = async() => {
+    const response = await handleRequest('GET', '/examenes/Names')
+    setDataExamenes(response)
+  }
+
+  useEffect(() => {
+    requestNames()
+  }, []);
 
   const examenesOnChange = (key, exam) => {
     setExamenes(prev => ({...prev, [key]: exam}))
@@ -39,7 +49,6 @@ const Add_Hospital = () => {
   const deletePrice =(prec) => {
     const updatedPrices = {...precios}; // copy existing state
     delete updatedPrices[prec]; // delete property
-    console.log("index", prec)
     setPrecios(updatedPrices); // set new state
   }
 
@@ -72,7 +81,7 @@ const Add_Hospital = () => {
     
     let response1 = true
 
-    if (user.dpi == '0') {
+    if (user.tipo === 'reviewer') {
       response1 = await handleRequest('PUT', `/users/addDPI/${dpi}&${user.correo}`)
     }
 
@@ -83,8 +92,10 @@ const Add_Hospital = () => {
       const response2 = await handleRequest('POST', `/servicios/addServicio/${examen}&${precio}&${name}`)
     }
 
-    if (response == true && response1 == true){
+    if (response === true && response1 === true){
       alert("Hospital agregado exitosamente")
+      const usuario = {email: user.correo, contra: user.contra, tipo: 'manager'}
+      dispatch('user/login', usuario)
 
       navigate('/')
     } else {
@@ -98,7 +109,7 @@ const Add_Hospital = () => {
       <div className={formulario}>
         <div className={styles}>
           <h1>Registar datos de Hospital</h1>
-          { user.dpi == '0' ?
+          { user.tipo === 'reviewer' ?
             <div>
               <h2>DPI del administrador</h2>
               <input type="text" placeholder="Este va a estar ligado con su usuario" value={form.values.num} onChange={form.onChange('num')}/>
@@ -127,7 +138,7 @@ const Add_Hospital = () => {
           </div>
           <div className={allServices}>
             {[...Array(numServicios)].map((_, i) => (
-              <AgregarServicio key={i} examenOnChange={(val) => examenesOnChange(i, val)} priceOnChange={(val) => pricesOnChange(i, val)}/>
+              <AgregarServicio key={i} examenesData={dataExamenes} examenOnChange={(val) => examenesOnChange(i, val)} priceOnChange={(val) => pricesOnChange(i, val)}/>
             ))}
           </div>
         </div>

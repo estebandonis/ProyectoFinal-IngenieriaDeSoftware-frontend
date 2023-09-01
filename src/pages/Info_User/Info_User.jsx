@@ -35,7 +35,6 @@ const Info_User = () => {
     form.values.old_password = ''
     form.values.new_password = ''
     setChangePasswordMenu(false)
-    console.log(response)
   }
 
   return (

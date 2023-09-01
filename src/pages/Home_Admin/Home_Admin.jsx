@@ -12,21 +12,18 @@ const Home_Admin = () => {
     const fetchUserData = async () => {
         const response = await fetch(`http://localhost:3000/api/v1/users`)
             .then(res => res.json());
-        console.log("Usuarios: ", response);
         setUsers(response);
     };
 
     const fetchHospitalsData = async () => {
         const response = await fetch(`http://localhost:3000/api/v1/hospitales`)
             .then(res => res.json());
-        console.log("Hospitales: ", response);
         setHospitals(response);
     };
 
     const fetchHospitalsEsperaData = async () => {
         const response = await fetch(`http://localhost:3000/api/v1/hospitales/estados`)
             .then(res => res.json());
-        console.log("Hospitales en espera: ", response);
         setHospitalss(response);
     };
 
