@@ -4,14 +4,14 @@ import Axios from 'axios'
 import { useApi } from '@hooks'
 import { useStoreon } from 'storeon/react';
 import { styles, info_section, description, informacion, lower_parts, reviews, reviewsScroll, servicios, serviciosScroll, addReview, comentario, rating } from './Info_Hospitales.module.css';
-import { Divider, Review, Servicio, Navbar } from '@components';
+import {Divider, Review, Servicio, Navbar, Star} from '@components';
 
 const Info_Hospitales = () => {
   const { data, handleRequest } = useApi()
   const { hospital } = useStoreon('hospital');
   const { user } = useStoreon('user')
   const [dataReviews, setDataReviews] = useState(null)
-  const [averageRating, setAverageRating] = useState(null)
+  const [averageRating, setAverageRating] = useState(0)
   const [newReview, setNewReview] = useState({
     comentario: '',
     rating: null
@@ -93,13 +93,23 @@ const Info_Hospitales = () => {
           </div>
 
           <img src="https://chlapaz.files.wordpress.com/2021/01/foto-occidente.jpg" alt="" />
-        </div>
+        </div>Î
       </div>
 
       <div className={lower_parts}>
         <div className={reviews}>
           <h1>Reseñas</h1>
           <h2>Puntuación Media: {averageRating}/5</h2>
+
+          <span>
+            {Array(parseInt(averageRating))
+                .fill()
+                .map((_, index) => (
+                    <Star
+                        key={index}
+                        filled={true} />
+                ))}
+          </span>
 
           <div className={addReview}>
             <div className={comentario}>
@@ -118,7 +128,7 @@ const Info_Hospitales = () => {
             dataReviews!=null?
             <div className={serviciosScroll}>
               {dataReviews.map((card, index) => (
-                <Review nombre={card.correo} comentario={card.comentario}/>
+                <Review key={index} nombre={card.correo} comentario={card.comentario} rating={parseInt(card.rating)}/>
               ))}
             </div>
             :<h2>Cargando...</h2>

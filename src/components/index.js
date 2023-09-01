@@ -6,14 +6,16 @@ import AgregarServicio from "./AgregarServicio";
 import BigPicture from "./BigPicture";
 import Notification from "./Notification";
 import Examen from "./Examen";
+import Star from "./Star";
 
 export { 
     Navbar, 
     Divider, 
-    Review, 
+    Review,
     Servicio,
     AgregarServicio, 
     BigPicture, 
     Notification, 
     Examen,
+    Star
 }
