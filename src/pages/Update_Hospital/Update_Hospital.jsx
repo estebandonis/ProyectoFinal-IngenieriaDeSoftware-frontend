@@ -10,7 +10,8 @@ const Update_Hospital = () => {
         nombre: "",
         direccion: "",
         descripcion: "",
-        zona: ""
+        zona: "",
+        estado: ""
     })
 
     const { handleRequest } = useApi()
@@ -26,14 +27,13 @@ const Update_Hospital = () => {
     const handleOptionChange = (event) => {
         const val = event.target.value
         setSelectedOption(val)
-        console.log(`${val}, ${selectedOption}`)
-        console.log(hospitals[selectedOption])
         setFormData({
             id: hospitals[val].hospital_id,
             nombre: hospitals[val].nombre,
             direccion: hospitals[val].direccion,
             descripcion: hospitals[val].descripcion,
-            zona: hospitals[val].zona
+            zona: hospitals[val].zona,
+            estado: hospitals[val].estado
         })
 
     } 
@@ -43,6 +43,10 @@ const Update_Hospital = () => {
         const response = await handleRequest(
             'PUT', 
             `/hospitales/updateHospitalInfo/${formData.id}&${formData.nombre}&${formData.direccion}&${formData.descripcion}&${formData.zona}`)
+        if (response && formData.estado === 'aprobado') {
+            // Actualizar de Aprobado a Espera de ser el caso
+            handleRequest('PUT', `/hospitales/updateEstado/${formData.id}/espera`)
+        }
     }
 
     useEffect(() => {
