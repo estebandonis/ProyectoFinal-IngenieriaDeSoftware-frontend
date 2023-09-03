@@ -6,7 +6,7 @@ const Update_Hospital = () => {
     const [hospitals, setHospitals] = useState([])
     const [selectedOption, setSelectedOption] = useState(0)
     const [formData, setFormData] = useState({
-        id: "",
+        id: 0,
         nombre: "",
         direccion: "",
         descripcion: "",
@@ -42,8 +42,7 @@ const Update_Hospital = () => {
         event.preventDefault();
         const response = await handleRequest(
             'PUT', 
-            `hospitales/updateHospitalInfo/
-            ${formData.id}&${formData.nombre}&${formData.direccion}&${formData.descripcion}&${formData.zona}`)
+            `hospitales/updateHospitalInfo/${formData.id}&${formData.nombre}&${formData.direccion}&${formData.descripcion}&${formData.zona}`)
     }
 
     useEffect(() => {
