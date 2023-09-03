@@ -4,9 +4,9 @@ import { useApi } from "@hooks"
 
 const Update_Hospital = () => {
     const [hospitals, setHospitals] = useState([])
-    const [selectedOption, setSelectedOption] = useState(0)
+    const [selectedOption, setSelectedOption] = useState(-1)
     const [formData, setFormData] = useState({
-        id: 0,
+        id: "",
         nombre: "",
         direccion: "",
         descripcion: "",
@@ -52,6 +52,7 @@ const Update_Hospital = () => {
     return (
         <div>
             <select value={selectedOption} onChange={handleOptionChange}>
+                <option value="-1">[Selecciona una opcion]</option>
                 {hospitals.map((hospital, index) => (
                     <option value={index}>
                         {hospital.nombre}
