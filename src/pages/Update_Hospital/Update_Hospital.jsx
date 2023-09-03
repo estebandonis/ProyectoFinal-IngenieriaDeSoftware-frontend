@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
-import {useApi} from "@hooks"
+import { useStoreon } from 'storeon/react'
+import { useApi } from "@hooks"
 
 const Update_Hospital = () => {
     const [hospitals, setHospitals] = useState([])
@@ -12,10 +13,11 @@ const Update_Hospital = () => {
         zona: ""
     })
 
-    const {handleRequest} = useApi()
+    const { handleRequest } = useApi()
+    const { user } = useStoreon('user')
     
     const fetchHospitalsData = async () => {
-        const response = await fetch(`http://localhost:3000/api/v1/hospitales`)
+        const response = await fetch(`http://localhost:3000/api/v1/hospitales/hospitalsByManager/${user.id}`)
             .then(res => res.json());
         console.log("Hospitales: ", response);
         setHospitals(response);
@@ -23,14 +25,15 @@ const Update_Hospital = () => {
 
     const handleOptionChange = (event) => {
         const val = event.target.value
-        console.log(val)
         setSelectedOption(val)
+        console.log(`${val}, ${selectedOption}`)
+        console.log(hospitals[selectedOption])
         setFormData({
-            id: hospitals[selectedOption].hospital_id,
-            nombre: hospitals[selectedOption].nombre,
-            direccion: hospitals[selectedOption].direccion,
-            descripcion: hospitals[selectedOption].descripcion,
-            zona: hospitals[selectedOption].zona
+            id: hospitals[val].hospital_id,
+            nombre: hospitals[val].nombre,
+            direccion: hospitals[val].direccion,
+            descripcion: hospitals[val].descripcion,
+            zona: hospitals[val].zona
         })
 
     } 

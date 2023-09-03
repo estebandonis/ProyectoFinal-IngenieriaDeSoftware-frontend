@@ -41,7 +41,8 @@ const LogIn = () => {
     const response = await respond()
     if (response === true){
       const response2 = await handleRequest('GET', `/users/getTipo/${values.email}`)
-      const usuario = {email: values.email, contra: values.password, tipo: response2[0].tipo}
+      console.log(response2)
+      const usuario = {id: response2[0].user_id, email: values.email, contra: values.password, tipo: response2[0].tipo}
       if (usuario.tipo === 'admin') {
         dispatch('user/login', usuario)
         navigate('/admin')
