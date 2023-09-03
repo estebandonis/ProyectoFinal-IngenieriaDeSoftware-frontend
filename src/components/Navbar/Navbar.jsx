@@ -31,6 +31,10 @@ const Navbar = ({ showBackButton }) => {
         navigate('/addhospital')
     };
 
+    const hadleUpdateHospitalClick = () => {
+        navigate('/updatehospital')
+    };
+
     const handleUserClick = () => {
         navigate('/info_user')
     };
@@ -70,6 +74,7 @@ const Navbar = ({ showBackButton }) => {
                         {user.isLoggedIn ? <MenuItem onClick={handleUserClick}>Ver perfil</MenuItem> : null}
                         {user.isLoggedIn ? <MenuItem onClick={handleLogoutClick}>Cerrar sesión</MenuItem> : null} 
                         {user.isLoggedIn ? <MenuItem onClick={handleAddHospitalClick}>Agregar hospital</MenuItem> : null} 
+                        {user.isLoggedIn && user.tipo === 'manager' ? <MenuItem onClick={hadleUpdateHospitalClick}>Actualizar hospital</MenuItem> : null}
                     </Menu>
                     <Typography variant="h5" flexGrow={1}>
                         MedicEasy
