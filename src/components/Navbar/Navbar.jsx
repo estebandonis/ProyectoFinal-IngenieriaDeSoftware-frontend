@@ -40,7 +40,7 @@ const Navbar = ({ showBackButton }) => {
     };
 
     const handleMenuClose = () => {
-        setAnchorEl(null);
+        setAnchorEl(null)
     };
 
     const handleBackButtonClick = () => {

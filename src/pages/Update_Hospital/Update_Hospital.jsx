@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { useStoreon } from 'storeon/react'
 import { useApi } from "@hooks"
+import { Navbar } from "@components";
+import {navigate} from "@store";
 
 const Update_Hospital = () => {
     const [hospitals, setHospitals] = useState([])
@@ -43,9 +45,9 @@ const Update_Hospital = () => {
         const response = await handleRequest(
             'PUT', 
             `/hospitales/updateHospitalInfo/${formData.id}&${formData.nombre}&${formData.direccion}&${formData.descripcion}&${formData.zona}`)
-        if (response && formData.estado === 'aprobado') {
-            // Actualizar de Aprobado a Espera de ser el caso
-            handleRequest('PUT', `/hospitales/updateEstado/${formData.id}/espera`)
+        if (response) {
+            alert("Hospital actualizado exitosamente")
+            navigate("/")
         }
     }
 
@@ -55,6 +57,7 @@ const Update_Hospital = () => {
 
     return (
         <div>
+            <Navbar showBackButton={true} />
             <select value={selectedOption} onChange={handleOptionChange}>
                 <option value="-1">[Selecciona una opcion]</option>
                 {hospitals.map((hospital, index) => (
