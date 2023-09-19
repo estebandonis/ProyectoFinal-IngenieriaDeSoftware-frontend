@@ -71,8 +71,8 @@ const LogIn = () => {
       <br />
       <button onClick={handleClick}>Ingresar</button>
       <br />
-      <a href="/signin">Registrate</a>
-      <a href="/">Regresar a menu hospitales</a>
+      <button className="register-button" onClick={() => window.location.href = "/signin"}>Registrate</button>
+      <button className="menu-button" onClick={() => window.location.href = "/"}>Regresar a menu hospitales</button>
     </div>
   )
 }
