@@ -1,14 +1,71 @@
 .styles {
   filter: drop-shadow(0 0 2px #000000aa);
-  background-color: rgb(13, 11, 145);
+  background-color: rgb(38, 37, 107);
   border-radius: 20px;
-  width: 400px;
+  width: 1000px;
+  
   height: auto;
   padding-bottom: 20px;
   background: '#CCC';
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   display: flex;
-  flex-direction: column;  
-  justify-content: space-betweens;;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
+
+/* Style for text input boxes */
+input[type="text"],
+input[type="password"] {
+  border-radius: 10px; /* Adjust the border-radius to your desired level */
+  padding: 8px; /* Adjust the padding to make the input boxes smaller */
+  margin: 5px; /* Add margin for spacing between inputs */
+  border: 1px solid #ccc; /* Add a border for a clear visual distinction */
+  width: 20%; /* Adjust the width to make the input boxes slightly smaller */
+}
+
+.button {
+  background-color: #007bff; /* Change the background color to your desired color */
+  color: white; /* Text color for the buttons */
+  padding: 10px 20px; /* Adjust padding to your liking */
+  border-radius: 5px; /* Add rounded corners */
+  text-decoration: none; /* Remove underlines from links */
+  margin: 10px; /* Add margin for spacing between buttons */
+  display: inline-block; /* Display buttons inline */
+  cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+.button:hover {
+  background-color: #0056b3; /* Change the background color on hover if desired */
+}
+
+
+
+.register-button {
+  background-color: #0c0c0c; /* Change to the desired background color */
+  padding: 8px 16px; /* You can adjust padding and other styles as needed */
+  border-radius: 10px;
+  border: none; /* Remove the border if needed */
+  color: #363535; /* Change text color to make it visible on the background */
+  cursor: pointer; /* Add a pointer cursor to indicate it's clickable */
+  text-decoration: none; /* Remove underlines from the text */
+}
+
+
+/* Add this CSS rule to change the background color of the button */
+.menu-button {
+  background-color: #00FF00; /* Change to the desired background color */
+  padding: 8px 16px; /* You can adjust padding and other styles as needed */
+  border-radius: 10px;
+  border: none; /* Remove the border if needed */
+  color: #FFF; /* Change text color to make it visible on the background */
+  cursor: pointer; /* Add a pointer cursor to indicate it's clickable */
+  text-decoration: none; /* Remove underlines from the text */
+}
+
+/* Add this CSS rule to move the button slightly lower */
+.move-down {
+  margin-top: 100px; /* Adjust the value to control how much lower the button moves */
+}
+
+
