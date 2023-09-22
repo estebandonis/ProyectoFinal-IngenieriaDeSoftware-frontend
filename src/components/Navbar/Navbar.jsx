@@ -42,10 +42,11 @@ const Navbar = ({ showBackButton }) => {
     const handleMenuClose = () => {
         setAnchorEl(null)
     };
-
+    
     const handleBackButtonClick = () => {
-        navigate('/')
+        window.history.back();
     };
+    
 
     const handleExamenesClick = () => {
         navigate('/examenes')
