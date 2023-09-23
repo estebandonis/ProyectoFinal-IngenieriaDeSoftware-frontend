@@ -48,7 +48,7 @@ const SignIn = () => {
 
   return (
     <div className={styles}>
-      <h1>Sign Up</h1>
+      <h1>Crear una Cuenta</h1>
       <h2>Correo</h2>
       <input type="text" placeholder="Ejemplo: usuario@correo.com" value={form.values.email} onChange={form.onChange('email')}/>
       <h2>Contraseña</h2>

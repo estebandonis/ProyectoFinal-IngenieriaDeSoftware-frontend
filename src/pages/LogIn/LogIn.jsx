@@ -55,7 +55,7 @@ const LogIn = () => {
 
   return (
     <div className={styles}>
-      <h1>Log In</h1>
+      <h1>Iniciar Sesión</h1>
       <h2>Correo</h2>
       <input type="text" placeholder="Escriba su correo" value={values.email} onChange={handleChangeCorreo} />
       <h2>Contraseña</h2>

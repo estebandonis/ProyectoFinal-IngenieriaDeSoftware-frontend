@@ -19,16 +19,12 @@ const Info_Hospitales = () => {
 
   const resonServicios = async() => {
     const response = await handleRequest('GET', `/servicios/getServiciosByHospital/${hospital.hospitalid}`)
-    console.log("SErvicios:", response)
-    console.log(response !== false)
     return response
   }
 
   const resonReviews = async() => {
     const response = await fetch(`http://localhost:3000/api/v1/reviews/getReviewsByHospital/${hospital.hospitalid}`)
     .then(res => res.json())
-    // console.log("Reviews: ", response)
-    // console.log(response !== false)
     return response
   }
 

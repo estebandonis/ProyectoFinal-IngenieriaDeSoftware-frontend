@@ -1,182 +1,220 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '@components';
 import { useApi } from '@hooks';
+import * as estilos from './Home_Admin.module.css';
 
 const Home_Admin = () => {
     const [users, setUsers] = useState([]);
     const [hospitals, setHospitals] = useState([]);
-    const [hospitalss, setHospitalss] = useState([]);
+    const [window, setWindow] = useState('Cambiar a Usuarios');
 
     const { loading, data, handleRequest } = useApi();
 
     const fetchUserData = async () => {
-        const response = await fetch(`http://localhost:3000/api/v1/users`)
-            .then(res => res.json());
-        setUsers(response);
-    };
+        return await fetch(`http://localhost:3000/api/v1/users`)
+            .then(res => res.json())
+    }
+
+    const setUsersData = async () => {
+        setUsers(await fetchUserData())
+    }
 
     const fetchHospitalsData = async () => {
-        const response = await fetch(`http://localhost:3000/api/v1/hospitales`)
-            .then(res => res.json());
-        setHospitals(response);
-    };
+        return await fetch(`http://localhost:3000/api/v1/hospitales/estados`)
+            .then(res => res.json())
+    }
 
-    const fetchHospitalsEsperaData = async () => {
-        const response = await fetch(`http://localhost:3000/api/v1/hospitales/estados`)
-            .then(res => res.json());
-        setHospitalss(response);
-    };
+    const setHospitalsData = async () => {
+        setHospitals(await fetchHospitalsData())
+    }
 
     const updateHospitalEstado = async (hospitalId, newEstado) => {
-        const response = await fetch(`http://localhost:3000/api/v1/hospitales/updateEstado/${hospitalId}/${newEstado}`, {
+        await fetch(`http://localhost:3000/api/v1/hospitales/updateEstado/${hospitalId}&${newEstado}`, {
             method: 'PUT',
-        });
+        })
 
-        const data = await response.json();
-        return data;
-    };
+        setHospitalsData()
+    }
 
+    const updateUserEstado = async (userID, newEstado) => {
+        await fetch(`http://localhost:3000/api/v1/users/changeEstado/${userID}&${newEstado}`, {
+            method: 'PUT',
+        })
+
+        setUsersData()
+    }
+
+    const onclick = async () => {
+        if (window === 'Cambiar a Usuarios') {
+            setWindow('Cambiar a Hospitales')
+        } else {
+            setWindow('Cambiar a Usuarios')
+        }
+    }
 
     useEffect(() => {
-        fetchUserData();
-        fetchHospitalsData();
-        fetchHospitalsEsperaData();
-    }, []);
+        setUsersData()
+        setHospitalsData()
+    }, [])
 
     return (
         <div>
             <Navbar />
-            <div>
-                <h4>Usuarios</h4>
-                {/* ... (código para mostrar la tabla de usuarios) */}
-                <h4>Hospitales</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Dirección</th>
-                            <th>Zona</th>
-                            <th>Descripción</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {hospitals.map((hospital) => (
-                            <tr key={hospital.hospital_id}>
-                                <td>{hospital.hospital_id}</td>
-                                <td>{hospital.nombre}</td>
-                                <td>{hospital.direccion}</td>
-                                <td>{hospital.zona}</td>
-                                <td>{hospital.descripcion}</td>
-                                <td>
-                                    {hospital.estado}{' '}
-                                   
-                                </td>
+            <div className={estilos.main}>
+                <div>
+                    <button onClick={onclick}>{window}</button>
+                </div>
+                {window === 'Cambiar a Usuarios'?
+                    <div className={estilos.hospitals}>
+                        <h4>Hospitales</h4>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Dirección</th>
+                                <th>Zona</th>
+                                <th>Descripción</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <h4>Hospitales En espera</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Dirección</th>
-                            <th>Zona</th>
-                            <th>Descripción</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {hospitalss.map((hospital) => (
-                            <tr key={hospital.hospital_id}>
-                                <td>{hospital.hospital_id}</td>
-                                <td>{hospital.nombre}</td>
-                                <td>{hospital.direccion}</td>
-                                <td>{hospital.zona}</td>
-                                <td>{hospital.descripcion}</td>
-                                <td>{hospital.estado}</td>
-                                <td>
-                                    {hospital.estado === 'aprobado' && (
-                                        <div>
-                                            <button
-                                                className="estado-button"
-                                                style={{ backgroundColor: 'red' }}
-                                                onClick={async () => {
-                                                    await updateHospitalEstado(hospital.hospital_id, 'denegado');
-                                                    fetchHospitalsEsperaData();
-                                                }}
-                                            >
-                                                Denegar
-                                            </button>
-                                            <button
-                                                className="estado-button"
-                                                style={{ backgroundColor: 'grey' }}
-                                                onClick={async () => {
-                                                    await updateHospitalEstado(hospital.hospital_id, 'espera');
-                                                    fetchHospitalsEsperaData();
-                                                }}
-                                            >
-                                                En espera
-                                            </button>
-                                        </div>
-                                    )}
-                                    {hospital.estado === 'espera' && (
-                                        <div>
-                                            <button
-                                                className="estado-button"
-                                                style={{ backgroundColor: 'green' }}
-                                                onClick={async () => {
-                                                    await updateHospitalEstado(hospital.hospital_id, 'aprobado');
-                                                    fetchHospitalsEsperaData();
-                                                }}
-                                            >
-                                                Aprobar
-                                            </button>
-                                            <button
-                                                className="estado-button"
-                                                style={{ backgroundColor: 'grey' }}
-                                                onClick={async () => {
-                                                    await updateHospitalEstado(hospital.hospital_id, 'denegado');
-                                                    fetchHospitalsEsperaData();
-                                                }}
-                                            >
-                                                Denegar
-                                            </button>
-                                        </div>
-                                    )}
-                                    {hospital.estado === 'denegado' && (
-                                        <div>
-                                            <button
-                                                className="estado-button"
-                                                style={{ backgroundColor: 'green' }}
-                                                onClick={async () => {
-                                                    await updateHospitalEstado(hospital.hospital_id, 'aprobado');
-                                                    fetchHospitalsEsperaData();
-                                                }}
-                                            >
-                                                Aprobar
-                                            </button>
-                                            <button
-                                                className="estado-button"
-                                                style={{ backgroundColor: 'grey' }}
-                                                onClick={async () => {
-                                                    await updateHospitalEstado(hospital.hospital_id, 'espera');
-                                                    fetchHospitalsEsperaData();
-                                                }}
-                                            >
-                                                En espera
-                                            </button>
-                                        </div>
-                                    )}
-                                </td>
+                            </thead>
+                            <tbody>
+                            {hospitals.map((hospital) => (
+                                <tr key={hospital.hospital_id}>
+                                    <td>{hospital.hospital_id}</td>
+                                    <td>{hospital.nombre}</td>
+                                    <td>{hospital.direccion}</td>
+                                    <td>{hospital.zona}</td>
+                                    <td>{hospital.descripcion}</td>
+                                    <td>{hospital.estado}</td>
+                                    <td>
+                                        {hospital.estado === 'aprobado' && (
+                                            <div>
+                                                <button
+                                                    className="estado-button"
+                                                    style={{ backgroundColor: 'red' }}
+                                                    onClick={async () => {
+                                                        await updateHospitalEstado(hospital.hospital_id, 'denegado');
+                                                    }}
+                                                >
+                                                    Denegar
+                                                </button>
+                                                <button
+                                                    className="estado-button"
+                                                    style={{ backgroundColor: 'grey' }}
+                                                    onClick={async () => {
+                                                        await updateHospitalEstado(hospital.hospital_id, 'espera');
+                                                    }}
+                                                >
+                                                    En espera
+                                                </button>
+                                            </div>
+                                        )}
+                                        {hospital.estado === 'espera' && (
+                                            <div>
+                                                <button
+                                                    className="estado-button"
+                                                    style={{ backgroundColor: 'green' }}
+                                                    onClick={async () => {
+                                                        await updateHospitalEstado(hospital.hospital_id, 'aprobado');
+                                                    }}
+                                                >
+                                                    Aprobar
+                                                </button>
+                                                <button
+                                                    className="estado-button"
+                                                    style={{ backgroundColor: 'grey' }}
+                                                    onClick={async () => {
+                                                        await updateHospitalEstado(hospital.hospital_id, 'denegado');
+                                                    }}
+                                                >
+                                                    Denegar
+                                                </button>
+                                            </div>
+                                        )}
+                                        {hospital.estado === 'denegado' && (
+                                            <div>
+                                                <button
+                                                    className="estado-button"
+                                                    style={{ backgroundColor: 'green' }}
+                                                    onClick={async () => {
+                                                        await updateHospitalEstado(hospital.hospital_id, 'aprobado');
+                                                    }}
+                                                >
+                                                    Aprobar
+                                                </button>
+                                                <button
+                                                    className="estado-button"
+                                                    style={{ backgroundColor: 'grey' }}
+                                                    onClick={async () => {
+                                                        await updateHospitalEstado(hospital.hospital_id, 'espera');
+                                                    }}
+                                                >
+                                                    En espera
+                                                </button>
+                                            </div>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    : <div className={estilos.users}>
+                        <h4>Usuarios</h4>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Correo</th>
+                                <th>Tipo</th>
+                                <th>DPI</th>
+                                <th>Estado</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                            </thead>
+                            <tbody>
+                            {users.map((user) => (
+                                <tr key={user.user_id}>
+                                    <td>{user.user_id}</td>
+                                    <td>{user.correo}</td>
+                                    <td>{user.tipo}</td>
+                                    <td>{user.dpi}</td>
+                                    <td>{user.estado}</td>
+                                    <td>
+                                        {user.estado === 'activo' && (
+                                            <div>
+                                                <button
+                                                    className="estado-button"
+                                                    style={{ backgroundColor: 'red' }}
+                                                    onClick={async () => {
+                                                        await updateUserEstado(user.user_id, 'inactivo')
+                                                    }}
+                                                >
+                                                    desactivar
+                                                </button>
+                                            </div>
+                                        )}
+                                        {user.estado === 'inactivo' && (
+                                            <div>
+                                                <button
+                                                    className="estado-button"
+                                                    style={{ backgroundColor: 'green' }}
+                                                    onClick={async () => {
+                                                        await updateUserEstado(user.user_id, 'activo');
+                                                    }}
+                                                >
+                                                    activar
+                                                </button>
+                                            </div>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    </div>
+                }
             </div>
         </div>
     );
