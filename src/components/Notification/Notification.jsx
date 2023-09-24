@@ -8,6 +8,10 @@ const Notification = ({
 }) => {
   const [show, setShow] = useState(true)
 
+  console.log("children: ", children)
+  console.log("type: ", type)
+  console.log("dismissable: ", dismissable)
+
   if (!show) {
     return null
   }
