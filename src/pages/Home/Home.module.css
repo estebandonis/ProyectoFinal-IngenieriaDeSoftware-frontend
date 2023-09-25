@@ -60,3 +60,44 @@
 .searchButton:hover {
   background-color: #3e8e41;
 }
+
+.zoneFilterContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.zoneFilterInput {
+  border: 1px solid black;
+  font-size: 16px;
+  padding: 10px;
+  margin-right: 10px;
+  width: 200px;
+  cursor: pointer; /* Cambiar el cursor al hacer clic en el campo de texto */
+}
+
+.zoneDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 150px; /* Altura máxima del menú desplegable */
+  overflow-y: scroll; /* Hacer que el menú tenga scroll si es necesario */
+  border: 1px solid black;
+  border-top: none;
+  background-color: white;
+  z-index: 1;
+}
+
+.zoneDropdownContent {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 500px;
+}
+
+.zoneButton {
+  width: 100%; /* Hacer que los botones ocupen todo el ancho disponible */
+  text-align: left; /* Alinear el texto a la izquierda */
+  padding: 10px; /* Agregar un poco de espacio interno para mayor claridad */
+}

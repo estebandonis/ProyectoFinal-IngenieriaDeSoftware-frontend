@@ -1,12 +1,49 @@
 import React, { useEffect, useState } from 'react';
 import { navigate } from '@store';
 import { useStoreon } from 'storeon/react';
-import { content, searchContainer, searchInput } from './Home.module.css';
+import { content, searchContainer, searchInput, zoneFilterContainer, zoneButton, zoneFilterInput, zoneDropdown, zoneDropdownContent } from './Home.module.css';
 import { Navbar, BigPicture } from '@components';
 import { useApi } from '@hooks';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
+const ZoneFilter = ({ selectedZone, zonasUnicas, onSelectZone, showDropdown, toggleDropdown }) => {
+  return (
+    <div className={zoneFilterContainer}>
+      <input
+        type="text"
+        className={zoneFilterInput}
+        placeholder="Filtrar por zona"
+        value={selectedZone}
+        onClick={toggleDropdown}
+        readOnly
+      />
+      {showDropdown && (
+        <div className={zoneDropdown}>
+          <ul className={zoneDropdownContent}>
+            {zonasUnicas.map((zona, index) => (
+              <li key={index}>
+                <button
+                  className={`dropdown-item ${zoneButton}`} // Aplicar una clase de estilo específica
+                  onClick={() => onSelectZone(zona)}
+                >
+                  Zona {zona}
+                </button>
+              </li>
+            ))}
+            <li>
+              <button className={`dropdown-item ${zoneButton}`} onClick={() => onSelectZone('')}>
+                Quitar filtro
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
+
 
 const Home = () => {
   const { loading, data, handleRequest } = useApi();
@@ -26,27 +63,50 @@ const Home = () => {
     };
   }, []);
 
-  // Agregar estado para almacenar el término de búsqueda
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedZone, setSelectedZone] = useState('');
   const [filteredData, setFilteredData] = useState([]);
+  const [showZoneDropdown, setShowZoneDropdown] = useState(false);
 
-  // Función para actualizar el término de búsqueda
-  const handleSearchTermChange = event => {
+  const handleSearchTermChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  // Función para buscar hospitales que coincidan con el término de búsqueda
+  const handleZoneChange = (zone) => {
+    setSelectedZone(zone);
+    setShowZoneDropdown(false);
+  };
+
   const handleSearch = () => {
-    const filteredData = data.filter(hospital => hospital.nombre.toLowerCase().includes(searchTerm.toLowerCase()));
+    let filteredData = data;
+
+    if (selectedZone) {
+      filteredData = filteredData.filter((hospital) => hospital.zona === selectedZone);
+    }
+
+    if (searchTerm) {
+      filteredData = filteredData.filter((hospital) =>
+        hospital.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
     setFilteredData(filteredData);
   };
 
   useEffect(() => {
     if (data) {
-      const filteredData = data.filter(hospital => hospital.nombre.toLowerCase().includes(searchTerm.toLowerCase()));
-      setFilteredData(filteredData);
+      handleSearch();
     }
-  }, [data, searchTerm]);
+  }, [data, searchTerm, selectedZone]);
+
+  const obtenerZonasUnicas = (data) => {
+    if (!data) return [];
+
+    const zonasUnicas = [...new Set(data.map((hospital) => hospital.zona))];
+    return zonasUnicas;
+  };
+
+  const zonasUnicas = obtenerZonasUnicas(data);
 
   const sliderSettings = {
     slidesToShow: filteredData.length < 3 ? filteredData.length : 3,
@@ -72,8 +132,20 @@ const Home = () => {
     <div className={content}>
       <Navbar />
       <div className={searchContainer}>
-        <input type="text" className={searchInput} placeholder="Buscar" value={searchTerm} onChange={handleSearchTermChange} />
-        
+        <input
+          type="text"
+          className={searchInput}
+          placeholder="Buscar"
+          value={searchTerm}
+          onChange={handleSearchTermChange}
+        />
+        <ZoneFilter
+          selectedZone={selectedZone}
+          zonasUnicas={zonasUnicas}
+          onSelectZone={handleZoneChange}
+          showDropdown={showZoneDropdown}
+          toggleDropdown={() => setShowZoneDropdown(!showZoneDropdown)}
+        />
       </div>
 
       {loading ? (
