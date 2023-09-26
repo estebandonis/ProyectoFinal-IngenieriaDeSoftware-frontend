@@ -68,7 +68,7 @@ const SignIn = () => {
           </Notification> : null
       }
       <br />
-      <button onClick={handleClick}>Registrarse</button>
+      <button className='register-button' onClick={handleClick}>Registrarse</button>
       <br />
       <a href="/login">Inicia Sesión</a>
       <a href="/">Regresar a menu hospitales</a>
