@@ -20,7 +20,7 @@ const Update_Hospital = () => {
     const { user } = useStoreon('user')
     
     const fetchHospitalsData = async () => {
-        const response = await fetch(`http://localhost:3000/api/v1/hospitales/hospitalsByManager/${user.id}`)
+        const response = await fetch(`https://ingsoft2.onrender.com/api/v1/hospitales/hospitalsByManager/${user.id}`)
             .then(res => res.json());
         console.log("Hospitales: ", response);
         setHospitals(response);
