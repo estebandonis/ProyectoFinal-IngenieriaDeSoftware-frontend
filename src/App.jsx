@@ -3,7 +3,7 @@ import { StoreContext } from 'storeon/react'
 import store from '@store'
 import './App.css'
 
-import Page from  '@pages'
+import Page from '@pages'
 
 function App() {
   return (

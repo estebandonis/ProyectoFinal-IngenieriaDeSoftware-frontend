@@ -25,8 +25,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+      env:
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
     - run: npm install
     - run: npm test
-    - run: npm run build
-    - run: npm run deploy
-    - run: npm run prod
+    - run: |
+        npm run build
+        npm run deploy
+        npm run prod
