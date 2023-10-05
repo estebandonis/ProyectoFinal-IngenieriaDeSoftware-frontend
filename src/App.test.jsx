@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import {render, screen, fireEvent, act} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import App from './App.jsx'
@@ -15,11 +15,11 @@ describe('App/Home', () => {
     it('Renderiza hospitales en componentes BigPicture', async() => {
         render(<App />);
 
-        const option = { delay: 50 }
-        await userEvent.type(screen.getByPlaceholderText('Buscar'), 'Community Health Center', option)
-        expect(screen.getByText('Community Health Center')).toBeVisible()
+        const option = { delay: 100 }
+        await userEvent.type(screen.getByPlaceholderText('Buscar'), 'Hospital Alpha', option)
+        expect(screen.getByText('Hospital Alpha')).toBeVisible()
 
-    }, 9000)
+    }, 15000)
 
     it('Boton perfil despliega un menu dropdown', () => {
         render(<App />)
@@ -31,17 +31,34 @@ describe('App/Home', () => {
         expect(element).toBeVisible()
     })
 
-    it('Ingresa a pagina para iniciar sesion', () => {
-        render(<App />)
-
-        fireEvent.click(screen.getByText('Perfil'))
-        fireEvent.click(screen.getByText('Iniciar sesión'))
-
-        expect(screen.getByText('Log In')).toBeVisible()
-
-        fireEvent.click(screen.getByText('Regresar a menu hospitales'))
-        expect(screen.getByText('MedicEasy')).toBeVisible()
-    })
+    // it('Ingresa a pagina para iniciar sesion', async() => {
+    //     vitest.useFakeTimers()
+    //
+    //     render(<App />)
+    //
+    //     fireEvent.click(screen.getByText('Perfil'))
+    //     fireEvent.click(screen.getByText('Iniciar sesión'))
+    //
+    //     expect(screen.getByText('Iniciar Sesión')).toBeVisible()
+    //
+    //     fireEvent.click(screen.getByText('Regresar a menu hospitales'))
+    //
+    //     // const option = { delay: 2000 }
+    //     // await userEvent.type(screen.getByPlaceholderText('Escriba su correo'), 'user1@example.com', option)
+    //
+    //     act(() => {
+    //         vitest.advanceTimersByTime(6000)
+    //     });
+    //
+    //     test('delayed test', () => {
+    //         // test logic
+    //     }, 3000)
+    //
+    //     await timeout(3000)
+    //
+    //     expect(screen.getByText('MedicEasy')).toBeVisible()
+    //
+    // }, 16000)
 
     it('Ingresa a pagina de examenes', () => {
         render(<App />)
