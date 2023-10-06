@@ -61,9 +61,12 @@ jobs:
       - name: install dependencies
         run: npm install
       - name: run dev
-        run: | 
-          npm run dev
-          q
+        run: npm run dev &
+      - name: wait for dev
+        run: sleep 5
+      - name: Stop run dev
+        run: pkill -f "npm run dev" || true
+        continue-on-error: true
 
   deploy:
     name: 'Deploy'
