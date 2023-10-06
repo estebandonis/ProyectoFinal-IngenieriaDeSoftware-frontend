@@ -81,6 +81,5 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_TO_PROD: true
-          deploy_alias: ${{ github.event.head_commit.id }}
           NETLIFY_DEPLOY_MESSAGE: ${{ github.event.head_commit.message }}
           build_directory: 'dist'
