@@ -8,10 +8,10 @@ const Home_Admin = () => {
     const [hospitals, setHospitals] = useState([]);
     const [window, setWindow] = useState('Cambiar a Usuarios');
 
-    const { loading, data, handleRequest } = useApi();
+    const { loading, data, handleRequest, apiUrl } = useApi();
 
     const fetchUserData = async () => {
-        return await fetch(`https://ingsoft2.onrender.com/api/v1/users`)
+        return await fetch(`${apiUrl}/users`)
             .then(res => res.json())
     }
 
@@ -20,7 +20,7 @@ const Home_Admin = () => {
     }
 
     const fetchHospitalsData = async () => {
-        return await fetch(`https://ingsoft2.onrender.com/api/v1/hospitales/estados`)
+        return await fetch(`${apiUrl}/hospitales/estados`)
             .then(res => res.json())
     }
 
@@ -29,7 +29,7 @@ const Home_Admin = () => {
     }
 
     const updateHospitalEstado = async (hospitalId, newEstado) => {
-        await fetch(`https://ingsoft2.onrender.com/api/v1/hospitales/updateEstado/${hospitalId}&${newEstado}`, {
+        await fetch(`${apiUrl}/hospitales/updateEstado/${hospitalId}&${newEstado}`, {
             method: 'PUT',
         })
 
@@ -37,7 +37,7 @@ const Home_Admin = () => {
     }
 
     const updateUserEstado = async (userID, newEstado) => {
-        await fetch(`https://ingsoft2.onrender.com/api/v1/users/changeEstado/${userID}&${newEstado}`, {
+        await fetch(`${apiUrl}/users/changeEstado/${userID}&${newEstado}`, {
             method: 'PUT',
         })
 

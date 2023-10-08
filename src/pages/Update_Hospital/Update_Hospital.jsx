@@ -16,11 +16,11 @@ const Update_Hospital = () => {
         estado: ""
     })
 
-    const { handleRequest } = useApi()
+    const { handleRequest, apiUrl } = useApi()
     const { user } = useStoreon('user')
     
     const fetchHospitalsData = async () => {
-        const response = await fetch(`https://ingsoft2.onrender.com/api/v1/hospitales/hospitalsByManager/${user.id}`)
+        const response = await fetch(`${apiUrl}/hospitales/hospitalsByManager/${user.id}`)
             .then(res => res.json());
         console.log("Hospitales: ", response);
         setHospitals(response);

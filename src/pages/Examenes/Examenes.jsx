@@ -6,8 +6,6 @@ import { Navbar, Examen } from '@components'; // Import the Examen component
 import { useApi } from '@hooks';
 import { styles, examenes_section } from './Examenes.module.css';
 
-
-
 const Examenes = () => {
   const { data, handleRequest } = useApi();
   const { dispatch, examen } = useStoreon('examen'); // Update to use 'examen' store

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const apiUrl = 'https://ingsoft2.onrender.com/api/v1'
 
@@ -48,7 +48,8 @@ const useApi = () => {
   return {
     loading,
     handleRequest,
-    data
+    data,
+    apiUrl
   }
 }
 

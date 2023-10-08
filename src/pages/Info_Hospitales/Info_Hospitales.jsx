@@ -7,7 +7,7 @@ import { styles, info_section, description, informacion, lower_parts, reviews, r
 import {Divider, Review, Servicio, Navbar, Star} from '@components';
 
 const Info_Hospitales = () => {
-  const { data, handleRequest } = useApi()
+  const { data, handleRequest, apiUrl } = useApi()
   const { hospital } = useStoreon('hospital');
   const { user } = useStoreon('user')
   const [dataReviews, setDataReviews] = useState(false)
@@ -23,7 +23,7 @@ const Info_Hospitales = () => {
   }
 
   const resonReviews = async() => {
-    const response = await fetch(`https://ingsoft2.onrender.com/api/v1/reviews/getReviewsByHospital/${hospital.hospitalid}`)
+    const response = await fetch(`${apiUrl}/reviews/getReviewsByHospital/${hospital.hospitalid}`)
     .then(res => res.json())
     return response
   }
@@ -52,7 +52,7 @@ const Info_Hospitales = () => {
       alert('Por favor ingrese una calificación de 0 - 5')
       return
     } else {
-      const response = await Axios.post(`https://ingsoft2.onrender.com/api/v1/reviews/addReview/${newReview.rating}&${newReview.comentario}&${user.correo}&${hospital.hospitalid}`)
+      const response = await Axios.post(`${apiUrl}/reviews/addReview/${newReview.rating}&${newReview.comentario}&${user.correo}&${hospital.hospitalid}`)
       setNewReview({comentario: '', rating: null})
       setReviews()
     }
