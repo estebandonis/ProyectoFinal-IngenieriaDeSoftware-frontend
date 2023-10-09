@@ -1,5 +1,4 @@
 import { styles, info, boton, datos } from './AgregarServicio.module.css'
-import {useEffect} from "react";
 
 const AgregarServicio = ({ examenesData, examenOnChange, priceOnChange}) => {
 

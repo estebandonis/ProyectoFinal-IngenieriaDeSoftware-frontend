@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const apiUrl = 'https://ingsoft2.onrender.com/api/v1'
+const apiUrl = 'https://prueba-ing.onrender.com/api/v1'
 
 const useApi = () => {
   const [ data, setData ] = useState(null)

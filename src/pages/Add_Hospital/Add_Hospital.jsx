@@ -94,7 +94,7 @@ const Add_Hospital = () => {
 
     if (response === true && response1 === true){
       alert("Hospital agregado exitosamente")
-      const usuario = {email: user.correo, contra: user.contra, tipo: 'manager'}
+      const usuario = {email: user.correo, tipo: 'manager'}
       dispatch('user/login', usuario)
 
       navigate('/')

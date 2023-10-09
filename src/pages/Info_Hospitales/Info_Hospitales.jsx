@@ -103,7 +103,10 @@ const Info_Hospitales = () => {
           <h1>Reseñas</h1>
           <h2>Puntuación Media: {averageRating}/5</h2>
 
-          <span>
+          {
+            averageRating < 0 || averageRating === 'NaN'?
+            <h2>No hay reseñas</h2>
+            :<span>  
             {Array(parseInt(averageRating))
                 .fill()
                 .map((_, index) => (
@@ -111,7 +114,8 @@ const Info_Hospitales = () => {
                         key={index}
                         filled={true} />
                 ))}
-          </span>
+            </span>
+          }
 
           {
             user.isLoggedIn?
@@ -136,7 +140,7 @@ const Info_Hospitales = () => {
             dataReviews !== false && dataReviews !== null?
             <div className={serviciosScroll}>
               {dataReviews.map((card, index) => (
-                <Review key={index} nombre={card.correo} comentario={card.comentario} rating={parseInt(card.rating)}/>
+                <Review key={index} nombre={card.users.correo} comentario={card.comentario} rating={parseInt(card.rating)}/>
               ))}
             </div>
             :<h2>Se el primero en comentar</h2>
@@ -151,7 +155,7 @@ const Info_Hospitales = () => {
             data !== false && data !== null?
             <div className={serviciosScroll}>
               {data.map((card, index) => (
-                <Servicio index={index} examen={card.nombre} precio={card.precio}/>
+                <Servicio index={index} examen={card.examenes.nombre} precio={card.precio}/>
               ))}
             </div>
             :<h2>Cargando...</h2>

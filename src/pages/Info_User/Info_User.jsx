@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import store, { navigate } from '@store'
 import { useStoreon } from 'storeon/react';
 import { styles, info_section, description, informacion, lower_parts, reviews, servicios } from './Info_User.module.css';
 import { Navbar } from '@components';
 import { Button } from 'react-bootstrap';
 import { useApi, useForm } from '@hooks'
 import Joi from 'joi';
+import { useEffect } from 'react';
 
 const Info_User = () => {
   const schema = Joi.object({
@@ -36,6 +36,12 @@ const Info_User = () => {
     form.values.new_password = ''
     setChangePasswordMenu(false)
   }
+
+  useEffect(() => {
+    if (data != null) {
+      alert(data)
+    }
+  }, [data])
 
   return (
     <div className={styles}>

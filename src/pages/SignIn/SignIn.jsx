@@ -27,7 +27,7 @@ const SignIn = () => {
     const contra = form.values.password
 
     // Crea un objeto con los datos del usuario
-    const usuario = {email: correo, contra: contra, tipo: 'reviewer'}
+    const usuario = {email: correo, tipo: 'reviewer'}
 
     // Llama al endpoint de la API para guardar los datos del usuario
     const response = await handleRequest('POST', `/users/addUser/${correo}&${contra}`);

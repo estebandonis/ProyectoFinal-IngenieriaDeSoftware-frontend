@@ -18,9 +18,11 @@ const Update_Hospital = () => {
 
     const { handleRequest, apiUrl } = useApi()
     const { user } = useStoreon('user')
+
+    console.log("User: ", user)
     
     const fetchHospitalsData = async () => {
-        const response = await fetch(`${apiUrl}/hospitales/hospitalsByManager/${user.id}`)
+        const response = await fetch(`${apiUrl}/hospitales/hospitalsByManager/${user.correo}`)
             .then(res => res.json());
         console.log("Hospitales: ", response);
         setHospitals(response);

@@ -3,13 +3,14 @@ import Joi from 'joi'
 import { useState } from 'react'
 import { navigate } from '@store'
 import { useStoreon } from 'storeon/react'
+import Axios from 'axios'
 
 import { Notification } from '@components'
 import { useApi } from '@hooks'
 import { styles } from './LogIn.module.css'
 
 const LogIn = () => {
-  const { data, handleRequest } = useApi()
+  const { data, handleRequest, apiUrl } = useApi()
   const {dispatch } = useStoreon('user')
   const [values, setValues] = useState(
     {
@@ -21,7 +22,7 @@ const LogIn = () => {
   const [message, setMessage] = useState('')
 
   const respond = async() => {
-    const response = await handleRequest('GET', `/users/validateUser/${values.email}&${values.password}`)
+    const response = await handleRequest('POST', `/users/validateUsuario/${values.email}&${values.password}`)
     return response
   }
 
@@ -40,36 +41,49 @@ const LogIn = () => {
   }
 
   const handleClick = async() => {
-      setMessage('')
+    setMessage('')
     const response = await respond()
-    if (response === true){
-      const response2 = await handleRequest('GET', `/users/getTipo/${values.email}`)
-      console.log(response2)
-      const usuario = {id: response2[0].user_id, email: values.email, contra: values.password, tipo: response2[0].tipo}
-      if (usuario.tipo === 'admin' && response2[0].estado === 'activo'){
-        dispatch('user/login', usuario)
-        navigate('/admin')
-      } else if ( (usuario.tipo === 'reviewer' || usuario.tipo === 'manager') && response2[0].estado === 'activo') {
-        dispatch('user/login', usuario)
-        navigate('/')
-      } else {
-          console.log('Su usuario ha sido desactivado')
-          setMessage('Su usuario ha sido desactivado')
-          console.log(data)
+    
+    try {
+      const usuario = {id: response.id, email: values.email, tipo: response.tipo}
+
+      try {
+        const validateToken = await Axios.get(`${apiUrl}/users/validateToken`, {
+          headers: {
+            'Content-Type': 'application/¡son',
+            Authorization: 'Bearer ' + response.token,
+          },
+        })
+
+        if (validateToken.data === 'El token es válido'){
+          if (usuario.tipo === 'admin' && response.estado === 'activo'){
+            dispatch('user/login', usuario)
+            navigate('/admin')
+          } else if ( (usuario.tipo === 'reviewer' || usuario.tipo === 'manager') && response.estado === 'activo') {
+            dispatch('user/login', usuario)
+            navigate('/')
+          } else {
+              setMessage('Su usuario ha sido desactivado')
+          }
+        }
+      } catch (error) {
+        
       }
+    } catch (error) {
+      
     }
   }
 
-    useEffect(() => {
-        let dat = ''
-        if (data === null){
-            const dat = 'null'
-        } else {
-            const dat = data[0]
-            console.log("data: ", dat)
-        }
-        console.log(typeof(dat))
-    }, [data]);
+  useEffect(() => {
+      let dat = ''
+      if (data === null){
+          const dat = 'null'
+      } else {
+          const dat = data[0]
+          console.log("data: ", dat)
+      }
+      console.log(typeof(dat))
+  }, [data]);
 
   return (
     <div className={styles}>
