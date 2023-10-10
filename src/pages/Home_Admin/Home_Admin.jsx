@@ -7,6 +7,8 @@ const Home_Admin = () => {
     const [users, setUsers] = useState([]);
     const [hospitals, setHospitals] = useState([]);
     const [window, setWindow] = useState('Cambiar a Usuarios');
+    const [selectedEstado, setSelectedEstado] = useState('todos');
+
 
     const { loading, data, handleRequest, apiUrl } = useApi();
 
@@ -30,11 +32,12 @@ const Home_Admin = () => {
 
     const updateHospitalEstado = async (hospitalId, newEstado) => {
         await fetch(`${apiUrl}/hospitales/updateEstado/${hospitalId}&${newEstado}`, {
-            method: 'PUT',
-        })
-
-        setHospitalsData()
-    }
+          method: 'PUT',
+        });
+      
+        setHospitalsData();
+      };
+      
 
     const updateUserEstado = async (userID, newEstado) => {
         await fetch(`${apiUrl}/users/changeEstado/${userID}&${newEstado}`, {
@@ -52,6 +55,15 @@ const Home_Admin = () => {
         }
     }
 
+    const handleEstadoChange = (estado) => {
+        setSelectedEstado(estado);
+      };
+      
+    const filteredHospitals = selectedEstado === 'todos'
+        ? hospitals
+        : hospitals.filter((hospital) => hospital.estado === selectedEstado);
+
+
     useEffect(() => {
         setUsersData()
         setHospitalsData()
@@ -64,6 +76,13 @@ const Home_Admin = () => {
                 <div>
                     <button onClick={onclick}>{window}</button>
                 </div>
+                <select onChange={(e) => handleEstadoChange(e.target.value)} value={selectedEstado}>
+                    <option value="todos">Todos</option>
+                    <option value="aprobado">Aprobados</option>
+                    <option value="espera">En Espera</option>
+                    <option value="denegado">Denegados</option>
+                </select>
+
                 {window === 'Cambiar a Usuarios'?
                     <div className={estilos.hospitals}>
                         <h4>Hospitales</h4>
@@ -80,7 +99,7 @@ const Home_Admin = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            {hospitals.map((hospital) => (
+                            {filteredHospitals.map((hospital) => (
                                 <tr key={hospital.hospital_id}>
                                     <td>{hospital.hospital_id}</td>
                                     <td>{hospital.nombre}</td>

@@ -11,6 +11,24 @@
     align-items: center;
 }
 
+.hospitals table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+  }
+  
+  .hospitals th,
+  .hospitals td {
+    padding: 10px; /* Ajusta el espaciado  */
+    text-align: left;
+  }
+
+  .hospitals table tr {
+    margin-bottom: 5px; /* Ajusta el margen inferior */
+  }
+  
+  
+
 .users {
     display: flex;
     flex-direction: column;
