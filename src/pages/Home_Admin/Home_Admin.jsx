@@ -8,6 +8,8 @@ const Home_Admin = () => {
     const [hospitals, setHospitals] = useState([]);
     const [window, setWindow] = useState('Cambiar a Usuarios');
     const [selectedEstado, setSelectedEstado] = useState('todos');
+    const [selectedUserEstado, setSelectedUserEstado] = useState('todos');
+
 
 
     const { loading, data, handleRequest, apiUrl } = useApi();
@@ -55,6 +57,15 @@ const Home_Admin = () => {
         }
     }
 
+    const handleUserEstadoChange = (estado) => {
+        setSelectedUserEstado(estado);
+      };
+    
+    const filteredUsers = selectedUserEstado === 'todos'
+        ? users
+        : users.filter((user) => user.estado === selectedUserEstado);
+
+
     const handleEstadoChange = (estado) => {
         setSelectedEstado(estado);
       };
@@ -76,15 +87,14 @@ const Home_Admin = () => {
                 <div>
                     <button onClick={onclick}>{window}</button>
                 </div>
-                <select onChange={(e) => handleEstadoChange(e.target.value)} value={selectedEstado}>
+                {window === 'Cambiar a Usuarios'?
+                    <div className={estilos.hospitals}>
+                        <select onChange={(e) => handleEstadoChange(e.target.value)} value={selectedEstado}>
                     <option value="todos">Todos</option>
                     <option value="aprobado">Aprobados</option>
                     <option value="espera">En Espera</option>
                     <option value="denegado">Denegados</option>
                 </select>
-
-                {window === 'Cambiar a Usuarios'?
-                    <div className={estilos.hospitals}>
                         <h4>Hospitales</h4>
                         <table>
                             <thead>
@@ -181,6 +191,11 @@ const Home_Admin = () => {
                         </table>
                     </div>
                     : <div className={estilos.users}>
+                        <select onChange={(e) => handleUserEstadoChange(e.target.value)} value={selectedUserEstado}>
+                            <option value="todos">Todos</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
                         <h4>Usuarios</h4>
                         <table>
                             <thead>
@@ -193,7 +208,7 @@ const Home_Admin = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            {users.map((user) => (
+                            {filteredUsers.map((user) => (
                                 <tr key={user.user_id}>
                                     <td>{user.user_id}</td>
                                     <td>{user.correo}</td>
