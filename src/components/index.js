@@ -7,6 +7,7 @@ import BigPicture from "./BigPicture";
 import Notification from "./Notification";
 import Examen from "./Examen";
 import Star from "./Star";
+import Hospital from "./Hospital";
 
 export { 
     Navbar, 
@@ -17,5 +18,6 @@ export {
     BigPicture, 
     Notification, 
     Examen,
-    Star
+    Star,
+    Hospital
 }

@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import { useStoreon } from 'storeon/react'
 import { useApi } from "@hooks"
-import { Navbar } from "@components";
+import { Navbar, Hospital } from "@components";
 import {navigate} from "@store";
+import * as estilos from "./Update_Hospital.module.css";
 
 const Update_Hospital = () => {
     const [hospitals, setHospitals] = useState([])
@@ -58,27 +59,47 @@ const Update_Hospital = () => {
     }, []);
 
     return (
-        <div>
+        <div className={estilos.styles}>
             <Navbar showBackButton={true} />
-            <select value={selectedOption} onChange={handleOptionChange}>
-                <option value="-1">[Selecciona una opcion]</option>
-                {hospitals.map((hospital, index) => (
-                    <option value={index}>
-                        {hospital.nombre}
-                    </option>
-                ))}
-            </select>
-            <form onSubmit={handleFormSubmit}>
-                <label htmlFor="">Nombre</label><br />
-                <input type="text" value={formData.nombre} onChange={event => setFormData({...formData, nombre: event.target.value })}/><br />
-                <label htmlFor="">Direccion</label><br />
-                <input type="text" value={formData.direccion} onChange={event => setFormData({...formData, direccion: event.target.value })}/><br />
-                <label htmlFor="">Descripcion</label><br />
-                <input type="text" value={formData.descripcion} onChange={event => setFormData({...formData, descripcion: event.target.value })}/><br />
-                <label htmlFor="">Zona</label><br />
-                <input type="text" value={formData.zona} onChange={event => setFormData({...formData, zona: event.target.value })}/><br />
-                <button type="submit">Actualizar</button>
-            </form>
+            <div className={estilos.informacion}>
+                <div className={estilos.formulario_section}>
+                    <div className={estilos.formulario}>
+                        <select value={selectedOption} onChange={handleOptionChange}>
+                            <option value="-1">[Selecciona una opcion]</option>
+                            {hospitals.map((hospital, index) => (
+                                <option value={index}>
+                                    {hospital.nombre}
+                                </option>
+                            ))}
+                        </select>
+                        <form onSubmit={handleFormSubmit}>
+                            <label htmlFor="">Nombre</label><br />
+                            <input type="text" value={formData.nombre} onChange={event => setFormData({...formData, nombre: event.target.value })}/><br />
+                            <label htmlFor="">Direccion</label><br />
+                            <input type="text" value={formData.direccion} onChange={event => setFormData({...formData, direccion: event.target.value })}/><br />
+                            <label htmlFor="">Descripcion</label><br />
+                            <textarea type="text" value={formData.descripcion} onChange={event => setFormData({...formData, descripcion: event.target.value })}/><br />
+                            <label htmlFor="">Zona</label><br />
+                            <input type="text" value={formData.zona} onChange={event => setFormData({...formData, zona: event.target.value })}/><br />
+                            <button type="submit">Actualizar</button>
+                        </form>
+                    </div>
+                </div>
+                <div className={estilos.hospitales_section}>
+                    <div className={estilos.hospitales}>
+                        {hospitals.map((card, index) => (
+                            <Hospital
+                                key={index}
+                                nombre={card.nombre}
+                                descrip={card.descripcion}
+                                direc={card.direccion}
+                                zona={card.zona}
+                                img={'https://chlapaz.files.wordpress.com/2021/01/chlp-zona14.jpg'}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

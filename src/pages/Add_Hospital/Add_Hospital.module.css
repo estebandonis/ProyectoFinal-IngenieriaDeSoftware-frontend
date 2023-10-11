@@ -73,7 +73,7 @@
   color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;  
-  justify-content: space-betweens;;
+  justify-content: space-between;
   align-items: center;
 }
 
