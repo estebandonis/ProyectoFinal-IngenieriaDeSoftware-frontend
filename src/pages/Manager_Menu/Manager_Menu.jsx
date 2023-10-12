@@ -21,7 +21,7 @@ const Manager_Menu = () => {
     };
 
     const fetchReviewsData = async (hospital_id) => {
-        const response = await fetch(`${apiUrl}/reviews/getReviewByHospital/${hospital_id}`)
+        const response = await fetch(`${apiUrl}/reviews/getReviewsByHospital/${hospital_id}`)
             .then(res => res.json());
         setReviews(reviews => [...reviews, ...response]);
     }
@@ -47,8 +47,8 @@ const Manager_Menu = () => {
             <Navbar showBackButton={true} />
             <h2>Comentarios registrados</h2>
             {
-                hospitals.map((hospital) => (
-                    <div>
+                hospitals.map((hospital, index) => (
+                    <div key={index}>
                         <h3>{hospital.nombre}</h3>
                         <Slider {...sliderSettings}>
                             {reviews.map((review, index) => (
@@ -56,7 +56,7 @@ const Manager_Menu = () => {
                                     key = {index}
                                     nombre = {review.users.correo}
                                     comentario = {review.comentario}
-                                    rating = {review.rating}
+                                    rating = {parseInt(review.rating)}
                                 />
                             ))}
                         </Slider>
