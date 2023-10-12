@@ -25,10 +25,8 @@ describe('App/Home', () => {
         render(<App />)
 
         fireEvent.click(screen.getByText('Perfil'))
-        const elemento = screen.getByText('Iniciar sesión')
+        const elemento = screen.getByText('Ingresar')
         expect(elemento).toBeVisible()
-        const element = screen.getByText('Registrarse')
-        expect(element).toBeVisible()
     })
 
     // it('Ingresa a pagina para iniciar sesion', async() => {
@@ -84,7 +82,7 @@ describe('App/Log_In', () => {
         render(<App />)
 
         fireEvent.click(screen.getByText('Perfil'))
-        fireEvent.click(screen.getByText('Iniciar sesión'))
+        fireEvent.click(screen.getByText('Ingresar'))
 
         const options = { delay: 20 }
         await userEvent.type(screen.getByPlaceholderText('Escriba su correo'), 'user2@example.com', options)
