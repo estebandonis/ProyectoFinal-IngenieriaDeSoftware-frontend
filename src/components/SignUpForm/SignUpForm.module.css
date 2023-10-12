@@ -1,0 +1,29 @@
+.styles {
+  color: black;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+}
+
+.styles h1 {
+  margin-bottom: 20px;
+}
+
+.styles input {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+  color: black;
+  border-radius: 10px;
+}
+
+.styles button {
+  margin-top: 20px;
+}

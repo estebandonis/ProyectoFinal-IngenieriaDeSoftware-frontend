@@ -8,6 +8,8 @@ import Notification from "./Notification";
 import Examen from "./Examen";
 import Star from "./Star";
 import Hospital from "./Hospital";
+import SignInForm from "./SignInForm";
+import SignUpForm from "./SignUpForm";
 
 export { 
     Navbar, 
@@ -19,5 +21,7 @@ export {
     Notification, 
     Examen,
     Star,
-    Hospital
+    Hospital,
+    SignInForm,
+    SignUpForm
 }

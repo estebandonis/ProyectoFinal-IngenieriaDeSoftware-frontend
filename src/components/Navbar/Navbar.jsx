@@ -18,10 +18,6 @@ const Navbar = ({ showBackButton }) => {
         navigate('/login')
     };
 
-    const handleregisterClick = () => {
-        navigate('/signin')
-    };
-
     const handleLogoutClick = () => {
         dispatch('user/logout')
         navigate('/')
@@ -74,8 +70,7 @@ const Navbar = ({ showBackButton }) => {
                         open={Boolean(anchorEl)}
                         onClose={handleMenuClose}
                     >
-                        {user.isLoggedIn ? null : <MenuItem onClick={handleLoginClick}>Iniciar sesión</MenuItem>}
-                        {user.isLoggedIn ? null : <MenuItem onClick={handleregisterClick}>Registrarse</MenuItem>}
+                        {user.isLoggedIn ? null : <MenuItem onClick={handleLoginClick}>Ingresar</MenuItem>}
                         {user.isLoggedIn ? <MenuItem onClick={handleUserClick}>Ver perfil</MenuItem> : null}
                         {user.isLoggedIn ? <MenuItem onClick={handleLogoutClick}>Cerrar sesión</MenuItem> : null} 
                         {user.isLoggedIn ? <MenuItem onClick={handleAddHospitalClick}>Agregar hospital</MenuItem> : null} 

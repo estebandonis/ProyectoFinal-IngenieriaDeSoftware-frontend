@@ -8,15 +8,15 @@
 }
 
 .notification.danger {
-  border: 1px solid rgba(201, 17, 71, 1);
-  background-color: rgba(201, 17, 71, 0.2);
-  color: rgba(201, 17, 71, 1);
+  border: 1px solid rgba(97, 133, 168, 1);
+  background-color: rgba(5, 62, 115, 1);
+  color: whitesmoke;
 }
 
 .notification.warning {
-  border: 1px solid rgba(255, 179, 19, 1);
-  background-color: rgba(255, 179, 19, 0.2);
-  color: rgba(255, 179, 19, 1);
+  border: 1px solid rgba(5, 62, 115, 1);
+  background-color: rgba(97, 133, 168, 1);
+  color: white;
 }
 
 .notification > span {
