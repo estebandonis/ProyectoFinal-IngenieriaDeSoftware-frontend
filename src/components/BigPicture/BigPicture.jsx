@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import { card, intro, name, caption, wrapper } from './BigPicture.module.css'
 
 
 const BigPicture = ({ nombre, zona, direccion, imagen, rating, click}) => {
+    
+    useEffect(() => {
+        if (imagen === '') {
+            imagen = 'https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg'
+        }
+    }, []);
 
     return (
         <div className={wrapper}>

@@ -114,7 +114,7 @@ const Home = () => {
     infinite: false,
   };
 
-  const handleClick = async (id, nombre, descripcion, direccion, estado, tipo, zona) => {
+  const handleClick = async (id, nombre, descripcion, direccion, estado, tipo, zona, image_url) => {
     const nuevo = {
       hospitalid: id,
       nombre: nombre,
@@ -123,6 +123,7 @@ const Home = () => {
       estado: estado,
       tipo: tipo,
       zona: zona,
+      image_url: image_url,
     };
     dispatch('hospital/set', nuevo);
     navigate('/info_hospitales');
@@ -159,7 +160,7 @@ const Home = () => {
               tipo={card.tipo}
               zona={card.zona}
               direccion={card.direccion}
-              imagen={'https://chlapaz.files.wordpress.com/2021/01/chlp-zona14.jpg'}
+              imagen={card.image_url}
               click={() =>
                 handleClick(
                   card.hospital_id,
@@ -168,7 +169,8 @@ const Home = () => {
                   card.direccion,
                   card.estado,
                   card.tipo,
-                  card.zona
+                  card.zona,
+                  card.image_url
                 )
               }
             />

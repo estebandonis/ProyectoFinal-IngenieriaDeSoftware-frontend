@@ -19,7 +19,7 @@ const schema = Joi.object({
 })
 
 const Add_Hospital = () => {
-  const {data, handleRequest } = useApi();
+  const {data, handleRequest, apiUrl } = useApi();
   const form = useForm(schema, { num: '', nombre: '', descripcion: '', direccion: '', zona: ''})
   const {user, dispatch } = useStoreon('user')
 
@@ -28,6 +28,7 @@ const Add_Hospital = () => {
   const [precios, setPrecios] = useState({})
 
   const [numServicios, setNumServicios] = useState(1);
+  const [imagePreview, setImagePreview] = useState("");
 
   const requestNames = async() => {
     const response = await handleRequest('GET', '/examenes/Names')
@@ -69,6 +70,19 @@ const Add_Hospital = () => {
     }
   }
 
+  const handleInputImage = (e) => {
+    const file = e.target.files[0];
+    previewImage(file);
+  }
+
+  const previewImage = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImagePreview(reader.result);
+    }
+  }
+
   const AddHospital = async () => {
     const dpi = form.values.num
     const name = form.values.nombre
@@ -77,7 +91,7 @@ const Add_Hospital = () => {
     const zone = form.values.zona
   
     // Llama al endpoint de la API para guardar los datos del usuario
-    const response = await handleRequest('POST', `/hospitales/addHospital/${name}&${direction}&${description}&${zone}&${user.correo}`);
+    const response = await handleRequest('POST', `/hospitales/addHospital/${name}&${direction}&${description}&${zone}&${user.correo}`, { data: imagePreview });
     
     let response1 = true
 
@@ -126,6 +140,12 @@ const Add_Hospital = () => {
           <input type="text" placeholder="Mientras más clara sea, más fácil será para los usuarios encontrar el hospital" value={form.values.direccion} onChange={form.onChange('direccion')}/>
           <h2>Zona</h2>
           <input type="text" placeholder="Escriba la zona donde se encuentra el hospital, como: 1, 2" value={form.values.zona} onChange={form.onChange('zona')}/>
+          <br />
+          <input type="file" onChange={handleInputImage}/>
+          <br />
+          {imagePreview && (
+            <img src={imagePreview} alt="imagen" style={{height: '200px'}}/>
+          )}
           <br />
           <button onClick={AddHospital}>Agregar hospital</button>
         </div>
