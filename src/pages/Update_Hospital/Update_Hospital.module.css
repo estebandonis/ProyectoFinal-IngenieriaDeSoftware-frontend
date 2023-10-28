@@ -1,7 +1,9 @@
 .styles {
   height: 100vh;
   width: 100vw;
-  background-color: black;
+  background-image: url("https://wallpaperaccess.com/full/1153721.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: end;
 }
@@ -12,12 +14,22 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 829px;
+}
+
+form .details{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+
+.inputbox{
+  width: calc(100% / 2 - 20px);
 }
 
 .formulario_section {
-  height: 80%;
-  width: 50%;
+  height: 0px;
+  width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,10 +40,11 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: space-evenly;
-  padding: 30px;
+  padding: 20px;
   border: 5px solid;
   border-radius: 30px;
-  width: 75%;
+  width: 80%;
+  background: white;
 }
 
 .formulario form {
@@ -61,12 +74,17 @@
   align-items: center;
 }
 
+.title{
+  font-size: 45px;
+  font-weight: 900;
+}
 .hospitales {
-  width: 80%;
+  width: 100%;
   height: 100%;
   overflow: scroll;
   display: flex;
   flex-direction: column;
+
   justify-content: space-between;
   align-items: center;
 }
