@@ -6,7 +6,7 @@ import Joi from 'joi'
 import { useApi, useForm } from '@hooks'
 
 import { Navbar, AgregarServicio } from '@components'
-import { styles, hospitalInfo, all, botones, allServices, formulario, descripciontextarea, textareacontainer } from './Add_Hospital.module.css'
+import estilos from './Add_Hospital.module.css'
 
 const schema = Joi.object({
   email: Joi.string()
@@ -118,11 +118,13 @@ const Add_Hospital = () => {
   }
 
   return (
-    <div className={all}>
+    <div className={estilos.all}>
       <Navbar showBackButton={true} />
-      <div className={formulario}>
-        <div className={styles}>
-          <h1>Registar datos de Hospital</h1>
+      <div className={estilos.formulario}>
+        <div className={estilos.styles}>
+          <div className={estilos.titulo}>
+            <h1>Registar datos de Hospital</h1>
+          </div>
           { user.tipo === 'reviewer' ?
             <div>
               <h2>DPI del administrador</h2>
@@ -133,8 +135,8 @@ const Add_Hospital = () => {
           <h2>Nombre del Hospital</h2>
           <input type="text" placeholder="Ejemplo: Hospital San Juan de Dios" value={form.values.nombre} onChange={form.onChange('nombre')}/>
           <h2>Descripción del hospital</h2>
-          <div className={textareacontainer}>
-            <textarea className={descripciontextarea} name="" id="" cols="30" rows="10" value={form.values.descripcion} onChange={form.onChange('descripcion')}/>
+          <div className={estilos.textareacontainer}>
+            <textarea className={estilos.descripciontextarea} placeholder='Ejemplo: Somos un hospital que se esfuerza por entregar el mejor servicio' name="" id="" cols="30" rows="10" value={form.values.descripcion} onChange={form.onChange('descripcion')}/>
           </div>
           <h2>Dirección del hospital</h2>
           <input type="text" placeholder="Mientras más clara sea, más fácil será para los usuarios encontrar el hospital" value={form.values.direccion} onChange={form.onChange('direccion')}/>
@@ -142,21 +144,20 @@ const Add_Hospital = () => {
           <input type="text" placeholder="Escriba la zona donde se encuentra el hospital, como: 1, 2" value={form.values.zona} onChange={form.onChange('zona')}/>
           <br />
           <input type="file" onChange={handleInputImage}/>
-          <br />
           {imagePreview && (
             <img src={imagePreview} alt="imagen" style={{height: '200px'}}/>
           )}
           <br />
-          <button onClick={AddHospital}>Agregar hospital</button>
+          <button className={estilos.agregar} onClick={AddHospital}>Agregar hospital</button>
         </div>
 
-        <div className={hospitalInfo}>
+        <div className={estilos.hospitalInfo}>
           <h1>Servicios:</h1>
-          <div className={botones}>
+          <div className={estilos.botones}>
             <button onClick={agregarServicio}>+</button>
             <button onClick={quitarServicio}>-</button>
           </div>
-          <div className={allServices}>
+          <div className={estilos.allServices}>
             {[...Array(numServicios)].map((_, i) => (
               <AgregarServicio key={i} examenesData={dataExamenes} examenOnChange={(val) => examenesOnChange(i, val)} priceOnChange={(val) => pricesOnChange(i, val)}/>
             ))}
