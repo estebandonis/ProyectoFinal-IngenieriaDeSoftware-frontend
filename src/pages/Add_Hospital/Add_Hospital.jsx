@@ -72,6 +72,8 @@ const Add_Hospital = () => {
 
   const handleInputImage = (e) => {
     const file = e.target.files[0];
+    console.log('input')
+    console.log(file);
     previewImage(file);
   }
 
@@ -143,7 +145,21 @@ const Add_Hospital = () => {
           <h2>Zona</h2>
           <input type="text" placeholder="Escriba la zona donde se encuentra el hospital, como: 1, 2" value={form.values.zona} onChange={form.onChange('zona')}/>
           <br />
-          <input type="file" onChange={handleInputImage}/>
+          <label for="images" className={estilos.dropContainer} id="dropcontainer"
+            onDragOver={(event) => {
+              event.preventDefault();
+            }}
+            onDrop={(event) => {
+              event.preventDefault();
+              let file = event.dataTransfer.files[0];
+              console.log(file);
+              previewImage(file);
+            }}
+          >
+            <span className={estilos.dropTitle}>Drop files here</span>
+            or
+            <input type="file" onChange={handleInputImage}/>
+          </label>
           {imagePreview && (
             <img src={imagePreview} alt="imagen" style={{height: '200px'}}/>
           )}
