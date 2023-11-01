@@ -143,7 +143,7 @@ const Add_Hospital = () => {
           <h2>Dirección del hospital</h2>
           <input type="text" placeholder="Mientras más clara sea, más fácil será para los usuarios encontrar el hospital" value={form.values.direccion} onChange={form.onChange('direccion')}/>
           <h2>Zona</h2>
-          <input type="text" placeholder="Escriba la zona donde se encuentra el hospital, como: 1, 2" value={form.values.zona} onChange={form.onChange('zona')}/>
+          <input type="number" placeholder="Escriba la zona donde se encuentra el hospital, como: 1, 2" value={form.values.zona} onChange={form.onChange('zona')}/>
           <br />
           <label for="images" className={estilos.dropContainer} id="dropcontainer"
             onDragOver={(event) => {

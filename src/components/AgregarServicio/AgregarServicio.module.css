@@ -3,8 +3,8 @@
   max-height: 200px;
   height: 100%;
   border-radius: 30px;
-  margin-top: 40px;
-  margin-bottom: 70px;
+  margin-top: 50px;
+  margin-bottom: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +25,7 @@
 .boton {
   width: 5px;
   height: 40px;
-  background-color: black;
+  background-color: inherit;
   display: flex;
   text-align: center;
   justify-content: center;
@@ -37,22 +37,68 @@
   width: 70%;
   height: 100%;
   border-radius: 10%;
-  background: gray;
-  margin-bottom: 20px;
+  background: inherit;
+  border: 2px solid white;
+  color: white;
 }
 
 .datos select {
+  color: #ffffff;
+  border: 1px solid white;
+  border-radius: 5px;
   width: 80%;
-  height: 40px;
-  border: none;
-  border-radius: 8px;
-  padding: 10px;
+  height: 30px;
+  padding-left: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.4s;
 }
 
-.datos input {
+.datos select:hover {
+  background: url(http://sharpik.com/wip/cuteselect/arrow.png) 295px 12px no-repeat rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding-left: 50px;
+  font-size: 75%;
+}
+
+.datos select:active {
+  border: none;
+  outline: none;
+}
+
+.datos select:focus {
+  outline: none;
+  border: 1px solid white;
+}
+
+.datos input[type="number"]{
+  background-color: inherit;
+  color: rgb(255, 255, 255);
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 8px;
   width: 75%;
   height: 20px;
+  transition: all .35s;
+}
+
+.datos input[type="number"]:focus {
+  background-color: white;
+  outline: none;
   border: none;
-  border-radius: 8px;
-  padding: 10px;
+  color: #000000;
+}
+
+.datos input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+.datos input::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+.datos input:-ms-input-placeholder { /* IE 10+ */
+  color: white;
+}
+.datos input:-moz-placeholder { /* Firefox 18- */
+  color: white;
 }
