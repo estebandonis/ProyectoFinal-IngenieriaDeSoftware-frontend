@@ -87,7 +87,7 @@
   border: none;
   padding: 12px 15px;
   margin: 8px 0;
-  width: 95%;
+  width: 94%;
   transition: all .35s;
 }
 
@@ -96,6 +96,14 @@
   outline: none;
   color: #000000;
   margin-top: -5px;
+  width: 97%;
+}
+
+.styles input[type="text"]:hover{
+  width: 95%;
+}
+
+.styles input[type="text"]:focus:hover{
   width: 97%;
 }
 
@@ -112,7 +120,7 @@
   border: none;
   padding: 12px 15px;
   margin: 8px 0;
-  width: 95%;
+  width: 94%;
   transition: all .35s;
 }
 
@@ -121,6 +129,14 @@
   outline: none;
   color: #000000;
   margin-top: -5px;
+  width: 97%;
+}
+
+.styles input[type="number"]:hover {
+  width: 95%;
+}
+
+.styles input[type="number"]:focus:hover {
   width: 97%;
 }
 
@@ -185,8 +201,7 @@
 
 .textareacontainer{
   width: 100%;
-  height: 80px;
-  margin-bottom: 10px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -194,8 +209,8 @@
 }
 
 .descripciontextarea {
-  width: 95%;
-  height: 100%;
+  width: 94%;
+  height: 160%;
   background-color: #000000;
   color: #ffffff;
   border: none;
@@ -214,6 +229,14 @@
   border: none;
   padding: 12px 15px;
   margin-top: -5px;
+  width: 97%;
+}
+
+.descripciontextarea:hover{
+  width: 95%;
+}
+
+.descripciontextarea:focus:hover{
   width: 97%;
 }
 
