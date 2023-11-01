@@ -11,8 +11,8 @@
 }
 
 .formulario {
-  height: 70%;
-  margin-top: 60px;
+  height: 80%;
+  margin-top: 20px;
   width: 80%;
   display: flex;
   flex-direction: row;  
@@ -94,6 +94,32 @@
 .styles input[type="text"]:focus {
   background-color: #ffffff;
   outline: none;
+  color: #000000;
+  margin-top: -5px;
+  width: 97%;
+}
+
+.styles div input[type="number"] {
+  width: 100%;
+  height: 20px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.styles input[type="number"]{
+  background-color: #000000;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 95%;
+  transition: all .35s;
+}
+
+.styles input[type="number"]:focus {
+  background-color: #ffffff;
+  outline: none;
+  color: #000000;
   margin-top: -5px;
   width: 97%;
 }
