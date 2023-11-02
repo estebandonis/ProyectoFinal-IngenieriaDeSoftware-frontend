@@ -8,15 +8,29 @@
   background-image: url("https://wallpaperaccess.com/full/1153721.jpg");
   background-size: cover;
   background-position: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("https://wallpaperaccess.com/full/1153721.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .formulario {
   height: 80%;
   margin-top: 20px;
   width: 80%;
+  height: 80%;
+  margin-top: 20px;
+  width: 80%;
   display: flex;
   flex-direction: row;  
   justify-content: center;
+  align-items: start;
+  border-radius: 20px;
   align-items: start;
   border-radius: 20px;
 }
@@ -30,11 +44,33 @@
   padding-bottom: 30px;
   background: '#CCC';
   color: #ffffff;
+  color: #ffffff;
   display: flex;
   flex-direction: column;  
   justify-content: space-betweens;;
   align-items: center;
+  align-items: center;
   overflow: scroll;
+  border-radius: 20px 0px 0px 20px;
+  background: rgb(5, 62, 115);
+  background: -webkit-linear-gradient(to right, rgb(5, 62, 115), rgb(41, 83, 128));
+  background: linear-gradient(to right, rgb(5, 62, 115), rgb(41, 83, 128));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+}
+
+.styles h2 {
+  width: 100%;
+  text-align: start;
+}
+
+.titulo {
+  width: 100%;
+}
+
+.titulo h1 {
+  text-align: center;
   border-radius: 20px 0px 0px 20px;
   background: rgb(5, 62, 115);
   background: -webkit-linear-gradient(to right, rgb(5, 62, 115), rgb(41, 83, 128));
