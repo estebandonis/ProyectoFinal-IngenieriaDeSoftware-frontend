@@ -56,6 +56,10 @@ const Home = () => {
   };
 
   useEffect(() => {
+    if (user.tipo === 'admin') {
+      navigate('/admin');
+    }
+
     let ignore = false;
     if (!ignore) reson();
     return () => {
