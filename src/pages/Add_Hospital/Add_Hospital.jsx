@@ -53,6 +53,12 @@ const Add_Hospital = () => {
     setPrecios(updatedPrices); // set new state
   }
 
+  const deleteExamen =(exam) => {
+    const updatedExamen = {...examenes}; // copy existing state
+    delete updatedExamen[exam]; // delete property
+    setPrecios(updatedExamen); // set new state
+  }
+
   const [servicios, setServicios] = useState([<AgregarServicio key={0} examenOnChange={(val) => examenesOnChange(0, val)} priceOnChange={(val) => pricesOnChange(0, val)}/>]);
 
   const agregarServicio = () => {
@@ -67,6 +73,7 @@ const Add_Hospital = () => {
       setNumServicios(newNumServicios);
       setServicios(servicios.filter((_, i) => i !== index));
       deletePrice(numServicios - 1);
+      deleteExamen(numServicios - 1);
     }
   }
 
@@ -156,8 +163,8 @@ const Add_Hospital = () => {
               previewImage(file);
             }}
           >
-            <span className={estilos.dropTitle}>Drop files here</span>
-            or
+            <span className={estilos.dropTitle}>Suelte aquí la imagen</span>
+            ó
             <input type="file" onChange={handleInputImage}/>
           </label>
           {imagePreview && (

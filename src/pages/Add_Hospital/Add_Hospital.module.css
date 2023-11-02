@@ -89,6 +89,7 @@
   margin: 8px 0;
   width: 94%;
   transition: all .35s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .styles input[type="text"]:focus {
@@ -97,10 +98,12 @@
   color: #000000;
   margin-top: -5px;
   width: 97%;
+  box-shadow:0 10px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .styles input[type="text"]:hover{
   width: 95%;
+  box-shadow:0 10px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .styles input[type="text"]:focus:hover{
@@ -122,6 +125,7 @@
   margin: 8px 0;
   width: 94%;
   transition: all .35s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .styles input[type="number"]:focus {
@@ -130,10 +134,12 @@
   color: #000000;
   margin-top: -5px;
   width: 97%;
+  box-shadow:0 10px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .styles input[type="number"]:hover {
   width: 95%;
+  box-shadow:0 10px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .styles input[type="number"]:focus:hover {
@@ -221,6 +227,7 @@
   margin-bottom: 20px;
   border-radius: 10px;
   transition: all .35s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .descripciontextarea:focus {
@@ -230,10 +237,12 @@
   padding: 12px 15px;
   margin-top: -5px;
   width: 97%;
+  box-shadow:0 10px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .descripciontextarea:hover{
   width: 95%;
+  box-shadow:0 10px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .descripciontextarea:focus:hover{
