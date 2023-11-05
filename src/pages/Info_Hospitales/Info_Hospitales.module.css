@@ -47,101 +47,124 @@
   margin: 0 auto;
   word-wrap: break-word;
 }
+.reviews span {
+  color: gold;
+  font-size: 25px;
+}
 
 .lower_parts {
   width: 80%; 
-  height: 700px;
+  height: auto; 
   color: #FFFFFF;
   background-color: rgb(0, 41, 122);
   border-radius: 50px 50px 0 0;
-  border-width: 5px;
-  border-style: solid;
-  border-color: black;
+  border: 5px solid black;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin: 0 auto; 
-  margin-top: -50px; 
+  padding-bottom: 50px; 
 }
 
-
-.reviews {
+.reviews, .servicios {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  width: 45%; 
 }
 
-.reviews button {
+.reviews h1, .servicios h1 {
   margin-bottom: 20px;
+  font-size: 2em; 
 }
 
-.reviews h1 {
-  margin-bottom: 5px;
-}
-
-.reviewsScroll {
-  height: 50%;
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-}
-
-.reviewsScroll::-webkit-scrollbar {
-  display: none;
-}
-
-.reviewsScroll button {
-  width: 100%;
+.reviews button, .servicios button {
   height: 50px; 
   margin-bottom: 10px;
   cursor: pointer; 
+  background-color: #f8f8f8; 
+  color: #000000; 
+  border: 1px solid #dcdcdc; 
+  border-radius: 10px; 
+  font-size: 1em; 
+  transition: background-color 0.3s; 
 }
 
-.addReview {
+.reviews button:hover, .servicios button:hover {
+  background-color: #e0e0e0; 
+}
+
+.addReview, .rating {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column; 
   align-items: center;
+  margin-top: 20px; 
+}
+
+.addReview textarea, .addReview input, .rating input {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  font-size: 1em;
 }
 
 .addReview textarea {
-  margin: 5px;
-  margin-right: 40px;
-  padding: 10px;
-  width: calc(100% - 50px);
+  width: 90%; 
   height: 100px;
+  resize: vertical; 
 }
 
-.addReview input {
-  margin: 5px;
-  margin-left: 40px;
-  padding: 10px;
-  width: 20%;
+.addReview input[type="email"], .rating input {
+  width: 40%; 
   height: 50px; 
 }
 
-.comentario h3 {
-  margin-bottom: 5px;
+.addReview input[type="submit"] {
+  background-color: #4CAF50; 
+  color: white;
+  border: none; 
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s; 
 }
 
-.rating h3 {
-  margin-bottom: 5px;
-  margin-left: 40px;
+.addReview input[type="submit"]:hover {
+  background-color: #45a049; 
 }
 
-.servicios {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 50px;
+.comentario, .rating {
+  margin-bottom: 20px;
 }
 
-.serviciosScroll {
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
+.comentario h3, .rating h3 {
+  margin-bottom: 10px;
 }
 
-.serviciosScroll::-webkit-scrollbar {
-  display: none;
+.serviciosScroll, .reviewsScroll {
+  height: auto; 
+  max-height: 400px; 
+  overflow: auto; 
 }
+
+
+.serviciosScroll::-webkit-scrollbar,
+.reviewsScroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.serviciosScroll::-webkit-scrollbar-track,
+.reviewsScroll::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.serviciosScroll::-webkit-scrollbar-thumb,
+.reviewsScroll::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.serviciosScroll::-webkit-scrollbar-thumb:hover,
+.reviewsScroll::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
