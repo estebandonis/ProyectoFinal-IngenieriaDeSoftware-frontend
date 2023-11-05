@@ -113,7 +113,7 @@ const Update_Hospital = () => {
                                     descrip={card.descripcion}
                                     direc={card.direccion}
                                     zona={card.zona}
-                                    img={'https://chlapaz.files.wordpress.com/2021/01/chlp-zona14.jpg'}
+                                    img={card.image_url}
                                 />
                             ))}
                         </div>

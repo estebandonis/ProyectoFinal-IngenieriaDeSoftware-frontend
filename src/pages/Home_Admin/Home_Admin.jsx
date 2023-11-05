@@ -84,17 +84,17 @@ const Home_Admin = () => {
         <div>
             <Navbar />
             <div className={estilos.main}>
-                <div>
+                <div className={estilos.report}>
                     <button onClick={onclick}>{window}</button>
                 </div>
                 {window === 'Cambiar a Usuarios'?
                     <div className={estilos.hospitals}>
                         <select onChange={(e) => handleEstadoChange(e.target.value)} value={selectedEstado}>
-                    <option value="todos">Todos</option>
-                    <option value="aprobado">Aprobados</option>
-                    <option value="espera">En Espera</option>
-                    <option value="denegado">Denegados</option>
-                </select>
+                            <option value="todos">Todos</option>
+                            <option value="aprobado">Aprobados</option>
+                            <option value="espera">En Espera</option>
+                            <option value="denegado">Denegados</option>
+                        </select>
                         <h4>Hospitales</h4>
                         <table>
                             <thead>
@@ -205,6 +205,7 @@ const Home_Admin = () => {
                                 <th>Tipo</th>
                                 <th>DPI</th>
                                 <th>Estado</th>
+                                <th>Acciones</th>
                             </tr>
                             </thead>
                             <tbody>
