@@ -69,6 +69,7 @@ const Update_Hospital = () => {
                     <div className={estilos.formulario_section}>
                         <div className={estilos.formulario}>
                             <div className={estilos.title}> Actualizar Informacion de Hospitales</div>
+                            <div className={estilos.selectedopcion}>
                             <select value={selectedOption} onChange={handleOptionChange}>
                                 <option value="-1">Seleciona un Hospital</option>
                                 {hospitals.map((hospital, index) => (
@@ -77,6 +78,7 @@ const Update_Hospital = () => {
                                     </option>
                                 ))}
                             </select>
+                            </div>
                             <form onSubmit={handleFormSubmit}>
                                 <div className={estilos.details}>
                                     <div className={estilos.inputbox}>
@@ -96,7 +98,9 @@ const Update_Hospital = () => {
                                     <input type="text" value={formData.zona} onChange={event => setFormData({...formData, zona: event.target.value })}/><br />
                                     </div>
                                 </div>
+                                <div className={estilos.butt}>
                                 <button type="submit">Actualizar</button>
+                                </div>
                             </form>
                         </div>
                     </div>

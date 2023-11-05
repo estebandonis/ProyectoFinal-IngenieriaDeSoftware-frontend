@@ -1,17 +1,37 @@
 .styles {
+  width: 100%;
+  height: 100%; 
+  margin: 0px 180px;
+}
+
+.container{
+  height: 100vh;
   width: 100vw;
-  height: auto;
+  background-image: url("https://wallpaperaccess.com/full/1153721.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: end;
 }
 
 .info_section {
-  width: auto;
-  margin-top: 63px;
+  width: 1000px;
+  margin-top: 100px;
   height: 500px;
-  background-color: gray;
-  border-radius: 50px 50px 0px 0px;
-  border-width: 5px;
+  justify-content: center;
+  align-items: space-evenly;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSYqOjm0XwXE3TfPjla0y8nku1Z5Xw3BOngn9NbHqG52pe1IVZcqrPWCgJEQeWB-Ytj1Q&usqp=CAU");
+  background-size: 900px;
+  border-radius: 30px;
   border-style: solid;
-  border-color: black;
+  border-color: white;
+}
+
+.info_section h1{
+  font-size: 45px;
+  font-weight: bold;
+  color: white;
+  margin: 50px;
 }
 
 .informacion {
@@ -21,8 +41,8 @@
 }
 
 .informacion img {
-  width: 350px;
-  height: 250px;
+  width: 330px;
+  height: 230px;
 }
 
 .description {
@@ -31,13 +51,23 @@
   text-align: start;
 }
 
+.description h2{
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+
+}
+
 .description p {
-  background-color: gray;
+  background-color: white;
+  width: 400px;
+  height: 170px;
   max-width: 500px;
   border: solid;
   border-radius: 10px;
   padding: 10px;
   margin:0 auto;
+  border-color: gray;
   word-wrap: break-word;
 }
 
