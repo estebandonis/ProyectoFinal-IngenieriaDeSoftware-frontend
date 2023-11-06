@@ -44,23 +44,11 @@ const Info_User = () => {
   return (
     <div className={styles}>
       <Navbar showBackButton={true}/>
-
-      <DropdownButton id="dropdown-item-button" title="Perfil">
-        <Dropdown.Item as="button" onClick={handlePasswordMenu}>Cambiar contraseña</Dropdown.Item>
-        <Dropdown.Item as="button" onClick={toggleEditMenu}>Editar perfil</Dropdown.Item>
-      </DropdownButton>
-
       <div className={info_section}>
         <h1>{user.correo}</h1>
         <div className={informacion}>
           <div className={description}>
-            { showEditMenu && (
-              <>
-                <h2>Editar Perfil</h2>
-                <p>Funcionalidad aún no implementada</p>
-              </>
-            )}
-
+            <Button onClick={handlePasswordMenu}>Cambiar contraseña</Button>
             {
               changePasswordMenu && (
               <form>
