@@ -6,7 +6,7 @@ import Joi from 'joi'
 import { useApi, useForm } from '@hooks'
 
 import { Navbar, AgregarServicio } from '@components'
-import { styles, hospitalInfo, all, botones, allServices, formulario, descripciontextarea, textareacontainer } from './Add_Hospital.module.css'
+import estilos from './Add_Hospital.module.css'
 
 const schema = Joi.object({
   email: Joi.string()
@@ -19,7 +19,7 @@ const schema = Joi.object({
 })
 
 const Add_Hospital = () => {
-  const {data, handleRequest } = useApi();
+  const {data, handleRequest, apiUrl } = useApi();
   const form = useForm(schema, { num: '', nombre: '', descripcion: '', direccion: '', zona: ''})
   const {user, dispatch } = useStoreon('user')
 
@@ -28,6 +28,7 @@ const Add_Hospital = () => {
   const [precios, setPrecios] = useState({})
 
   const [numServicios, setNumServicios] = useState(1);
+  const [imagePreview, setImagePreview] = useState("");
 
   const requestNames = async() => {
     const response = await handleRequest('GET', '/examenes/Names')
@@ -52,6 +53,12 @@ const Add_Hospital = () => {
     setPrecios(updatedPrices); // set new state
   }
 
+  const deleteExamen =(exam) => {
+    const updatedExamen = {...examenes}; // copy existing state
+    delete updatedExamen[exam]; // delete property
+    setPrecios(updatedExamen); // set new state
+  }
+
   const [servicios, setServicios] = useState([<AgregarServicio key={0} examenOnChange={(val) => examenesOnChange(0, val)} priceOnChange={(val) => pricesOnChange(0, val)}/>]);
 
   const agregarServicio = () => {
@@ -66,6 +73,22 @@ const Add_Hospital = () => {
       setNumServicios(newNumServicios);
       setServicios(servicios.filter((_, i) => i !== index));
       deletePrice(numServicios - 1);
+      deleteExamen(numServicios - 1);
+    }
+  }
+
+  const handleInputImage = (e) => {
+    const file = e.target.files[0];
+    console.log('input')
+    console.log(file);
+    previewImage(file);
+  }
+
+  const previewImage = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImagePreview(reader.result);
     }
   }
 
@@ -77,7 +100,7 @@ const Add_Hospital = () => {
     const zone = form.values.zona
   
     // Llama al endpoint de la API para guardar los datos del usuario
-    const response = await handleRequest('POST', `/hospitales/addHospital/${name}&${direction}&${description}&${zone}&${user.correo}`);
+    const response = await handleRequest('POST', `/hospitales/addHospital/${name}&${direction}&${description}&${zone}&${user.correo}`, { data: imagePreview });
     
     let response1 = true
 
@@ -104,11 +127,13 @@ const Add_Hospital = () => {
   }
 
   return (
-    <div className={all}>
+    <div className={estilos.all}>
       <Navbar showBackButton={true} />
-      <div className={formulario}>
-        <div className={styles}>
-          <h1>Registar datos de Hospital</h1>
+      <div className={estilos.formulario}>
+        <div className={estilos.styles}>
+          <div className={estilos.titulo}>
+            <h1>Registar datos de Hospital</h1>
+          </div>
           { user.tipo === 'reviewer' ?
             <div>
               <h2>DPI del administrador</h2>
@@ -119,24 +144,43 @@ const Add_Hospital = () => {
           <h2>Nombre del Hospital</h2>
           <input type="text" placeholder="Ejemplo: Hospital San Juan de Dios" value={form.values.nombre} onChange={form.onChange('nombre')}/>
           <h2>Descripción del hospital</h2>
-          <div className={textareacontainer}>
-            <textarea className={descripciontextarea} name="" id="" cols="30" rows="10" value={form.values.descripcion} onChange={form.onChange('descripcion')}/>
+          <div className={estilos.textareacontainer}>
+            <textarea className={estilos.descripciontextarea} placeholder='Ejemplo: Somos un hospital que se esfuerza por entregar el mejor servicio' name="" id="" cols="30" rows="10" value={form.values.descripcion} onChange={form.onChange('descripcion')}/>
           </div>
           <h2>Dirección del hospital</h2>
           <input type="text" placeholder="Mientras más clara sea, más fácil será para los usuarios encontrar el hospital" value={form.values.direccion} onChange={form.onChange('direccion')}/>
           <h2>Zona</h2>
-          <input type="text" placeholder="Escriba la zona donde se encuentra el hospital, como: 1, 2" value={form.values.zona} onChange={form.onChange('zona')}/>
+          <input type="number" placeholder="Escriba la zona donde se encuentra el hospital, como: 1, 2" value={form.values.zona} onChange={form.onChange('zona')}/>
           <br />
-          <button onClick={AddHospital}>Agregar hospital</button>
+          <label for="images" className={estilos.dropContainer} id="dropcontainer"
+            onDragOver={(event) => {
+              event.preventDefault();
+            }}
+            onDrop={(event) => {
+              event.preventDefault();
+              let file = event.dataTransfer.files[0];
+              console.log(file);
+              previewImage(file);
+            }}
+          >
+            <span className={estilos.dropTitle}>Suelte aquí la imagen</span>
+            ó
+            <input type="file" onChange={handleInputImage}/>
+          </label>
+          {imagePreview && (
+            <img src={imagePreview} alt="imagen" style={{height: '200px'}}/>
+          )}
+          <br />
+          <button className={estilos.agregar} onClick={AddHospital}>Agregar hospital</button>
         </div>
 
-        <div className={hospitalInfo}>
+        <div className={estilos.hospitalInfo}>
           <h1>Servicios:</h1>
-          <div className={botones}>
+          <div className={estilos.botones}>
             <button onClick={agregarServicio}>+</button>
             <button onClick={quitarServicio}>-</button>
           </div>
-          <div className={allServices}>
+          <div className={estilos.allServices}>
             {[...Array(numServicios)].map((_, i) => (
               <AgregarServicio key={i} examenesData={dataExamenes} examenOnChange={(val) => examenesOnChange(i, val)} priceOnChange={(val) => pricesOnChange(i, val)}/>
             ))}

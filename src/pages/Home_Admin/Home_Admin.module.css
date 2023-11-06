@@ -4,6 +4,15 @@
     height: auto;
 }
 
+.report {
+  padding: 10px;
+}
+
+.report button {
+  width: 100%;
+  background-color: rgb(25, 118, 210);
+}
+
 .hospitals {
     display: flex;
     flex-direction: column;
@@ -12,26 +21,38 @@
 }
 
 .hospitals table {
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 14px;
-  }
-  
-  .hospitals th,
-  .hospitals td {
-    padding: 10px; /* Ajusta el espaciado  */
-    text-align: left;
-  }
+  border: 1px solid;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
 
-  .hospitals table tr {
-    margin-bottom: 5px; /* Ajusta el margen inferior */
-  }
+.hospitals th, .hospitals td {
+  border: 1px solid;
+  padding: 10px; /* Ajusta el espaciado  */
+  text-align: left;
+}
+
+.hospitals table tr {
+  margin-bottom: 5px; /* Ajusta el margen inferior */
+}
   
-  
+.estado-button {
+  width: 100%;
+  border: none;
+  display: inline;
+  margin: 0 auto;
+}  
 
 .users {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.users table, th, td {
+  border-collapse: collapse;
+  border: 1px solid;
+  padding: 10px;
 }

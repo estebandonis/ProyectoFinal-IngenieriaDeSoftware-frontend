@@ -94,7 +94,7 @@ const Info_Hospitales = () => {
             <p>{hospital.descripcion}</p>
           </div>
 
-          <img src="https://chlapaz.files.wordpress.com/2021/01/foto-occidente.jpg" alt="" />
+          <img src={hospital.image_url} alt="" />
         </div>
       </div>
 
