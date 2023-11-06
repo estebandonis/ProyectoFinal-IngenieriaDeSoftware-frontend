@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MenuIcon from '@mui/icons-material/Menu';
 import { navigate } from '@store'
-import { stylesButton } from './Navbar.module.css';
+import estilos from './Navbar.module.css';
 import { useStoreon } from 'storeon/react'
 
 const Navbar = ({ showBackButton }) => {
@@ -54,7 +54,7 @@ const Navbar = ({ showBackButton }) => {
 
     return (
         <div>
-            <AppBar expand="lg" className="my-nav" sticky="top">
+            <AppBar expand="lg" className={estilos.styles} sticky="top">
                 <Toolbar>
                     {showBackButton && (
                         <IconButton onClick={handleBackButtonClick} color="inherit">
@@ -62,8 +62,8 @@ const Navbar = ({ showBackButton }) => {
                         </IconButton>
                     )}
                     {user.isLoggedIn ? 
-                        <Button className={stylesButton} onClick={handleMenuClick} variant="text" color="inherit">{user.correo}</Button> : 
-                        <Button className={stylesButton} onClick={handleMenuClick} variant="text" color="inherit"> Perfil </Button>
+                        <Button className={estilos.stylesButton} onClick={handleMenuClick} variant="text" color="inherit">{user.correo}</Button> : 
+                        <Button className={estilos.stylesButton} onClick={handleMenuClick} variant="text" color="inherit"> Perfil </Button>
                     }
                     <Menu
                         anchorEl={anchorEl}
@@ -80,7 +80,7 @@ const Navbar = ({ showBackButton }) => {
                     <Typography variant="h5" flexGrow={1}>
                         MedicEasy
                     </Typography>
-                    <Button className={stylesButton} variant="text" color="inherit" onClick={handleExamenesClick}>
+                    <Button className={estilos.stylesButton} variant="text" color="inherit" onClick={handleExamenesClick}>
                         Exámenes
                     </Button>
                 </Toolbar>
