@@ -29,7 +29,7 @@ margin: 20px 0 12px 0;
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
 }
-
+/*Cambiar lo grafico de los inputs del formulario*/
 .inputbox input{
   width: 90%;
   height: 50%;
