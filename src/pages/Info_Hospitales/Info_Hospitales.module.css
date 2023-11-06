@@ -1,6 +1,13 @@
 .styles {
   width: 100vw;
   height: auto;
+
+ 
+}
+body{
+  background-image: url("https://wallpaperaccess.com/full/1153721.jpg");  /*Depende la conexion  a internet */
+  background-size: cover;
+  background-position: center;
 }
 
 
