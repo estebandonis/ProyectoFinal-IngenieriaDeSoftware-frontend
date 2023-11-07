@@ -113,7 +113,7 @@ margin: 20px 0 12px 0;
   justify-content: center;
   align-items: center;
 }
-
+/*Detalles del formulario*/
 .formulario {
   display: flex;
   flex-direction: column;
