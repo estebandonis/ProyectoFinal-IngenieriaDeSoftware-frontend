@@ -141,6 +141,7 @@ margin: 20px 0 12px 0;
   height: 100%;
 }
 
+/*Formulario input*/
 .formulario form input {
   width: 100%;
 }
@@ -185,6 +186,7 @@ margin: 20px 0 12px 0;
   outline: none;
 }
 
+/*menu desplegable*/
 .selectedopcion select{
   display: inline-block;
 	width: 100%;
@@ -219,6 +221,7 @@ margin: 20px 0 12px 0;
   display: none;
 }
 
+/*Opciones del menu*/
 .selectedopcion option{
   position: relative;
   border-radius: 2px;
