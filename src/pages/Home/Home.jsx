@@ -8,6 +8,20 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+const SearchBar = ({ searchTerm, handleSearchTermChange }) => {
+  return (
+    <div className={searchContainer}>
+      <input
+        type="text"
+        className={searchInput}
+        placeholder="Buscar"
+        value={searchTerm}
+        onChange={handleSearchTermChange}
+      />
+    </div>
+  );
+};
+
 const ZoneFilter = ({ selectedZone, zonasUnicas, onSelectZone, showDropdown, toggleDropdown }) => {
   return (
     <div className={zoneFilterContainer}>
@@ -25,7 +39,7 @@ const ZoneFilter = ({ selectedZone, zonasUnicas, onSelectZone, showDropdown, tog
             {zonasUnicas.map((zona, index) => (
               <li key={index}>
                 <button
-                  className={`dropdown-item ${zoneButton}`} // Aplicar una clase de estilo específica
+                  className={`dropdown-item ${zoneButton}`}
                   onClick={() => onSelectZone(zona)}
                 >
                   Zona {zona}
@@ -43,7 +57,6 @@ const ZoneFilter = ({ selectedZone, zonasUnicas, onSelectZone, showDropdown, tog
     </div>
   );
 };
-
 
 const Home = () => {
   const { loading, data, handleRequest } = useApi();
@@ -72,16 +85,7 @@ const Home = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [showZoneDropdown, setShowZoneDropdown] = useState(false);
 
-  const handleSearchTermChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleZoneChange = (zone) => {
-    setSelectedZone(zone);
-    setShowZoneDropdown(false);
-  };
-
-  const handleSearch = () => {
+  const filterData = (data, searchTerm, selectedZone) => {
     let filteredData = data;
 
     if (selectedZone) {
@@ -94,6 +98,20 @@ const Home = () => {
       );
     }
 
+    return filteredData;
+  };
+
+  const handleSearchTermChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleZoneChange = (zone) => {
+    setSelectedZone(zone);
+    setShowZoneDropdown(false);
+  };
+
+  const handleSearch = () => {
+    const filteredData = filterData(data, searchTerm, selectedZone);
     setFilteredData(filteredData);
   };
 
@@ -118,16 +136,16 @@ const Home = () => {
     infinite: false,
   };
 
-  const handleClick = async (id, nombre, descripcion, direccion, estado, tipo, zona, image_url) => {
+  const handleClick = (card) => {
     const nuevo = {
-      hospitalid: id,
-      nombre: nombre,
-      descripcion: descripcion,
-      direccion: direccion,
-      estado: estado,
-      tipo: tipo,
-      zona: zona,
-      image_url: image_url,
+      hospitalid: card.hospital_id,
+      nombre: card.nombre,
+      descripcion: card.descripcion,
+      direccion: card.direccion,
+      estado: card.estado,
+      tipo: card.tipo,
+      zona: card.zona,
+      image_url: card.image_url,
     };
     dispatch('hospital/set', nuevo);
     navigate('/info_hospitales');
@@ -136,23 +154,14 @@ const Home = () => {
   return (
     <div className={content}>
       <Navbar />
-      <div className={searchContainer}>
-        <input
-          type="text"
-          className={searchInput}
-          placeholder="Buscar"
-          value={searchTerm}
-          onChange={handleSearchTermChange}
-        />
-        <ZoneFilter
-          selectedZone={selectedZone}
-          zonasUnicas={zonasUnicas}
-          onSelectZone={handleZoneChange}
-          showDropdown={showZoneDropdown}
-          toggleDropdown={() => setShowZoneDropdown(!showZoneDropdown)}
-        />
-      </div>
-
+      <SearchBar searchTerm={searchTerm} handleSearchTermChange={handleSearchTermChange} />
+      <ZoneFilter
+        selectedZone={selectedZone}
+        zonasUnicas={zonasUnicas}
+        onSelectZone={handleZoneChange}
+        showDropdown={showZoneDropdown}
+        toggleDropdown={() => setShowZoneDropdown(!showZoneDropdown)}
+      />
       {loading ? (
         <h2>Cargando</h2>
       ) : (
@@ -165,18 +174,7 @@ const Home = () => {
               zona={card.zona}
               direccion={card.direccion}
               imagen={card.image_url}
-              click={() =>
-                handleClick(
-                  card.hospital_id,
-                  card.nombre,
-                  card.descripcion,
-                  card.direccion,
-                  card.estado,
-                  card.tipo,
-                  card.zona,
-                  card.image_url
-                )
-              }
+              click={() => handleClick(card)}
             />
           ))}
         </Slider>
