@@ -17,7 +17,7 @@ const SignInForm = () => {
       password: '',
     }
   )
-
+  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState('')
 
   const respond = async() => {
@@ -96,12 +96,13 @@ const SignInForm = () => {
           onChange={handleChangeCorreo}
         />
         <input
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           name="password"
           placeholder="Escriba su contraseña"
           value={values.password}
           onChange={handleChangeContraseña}
         />
+        <div onClick={() => setShowPassword(!showPassword)}>{showPassword ? '(0‿0)' : '(-‿-)'}</div>
         <br />
         {
           data === true || data === null || typeof(data[0]) != "string"?
