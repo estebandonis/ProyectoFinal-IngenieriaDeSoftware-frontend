@@ -1,9 +1,10 @@
 .styles {
-  width: 100vw;
+  width: 100%;
   height: auto;
-
- 
 }
+ 
+
+
 body{
   background-image: url("https://wallpaperaccess.com/full/1153721.jpg");  /*Depende la conexion  a internet */
   background-size: cover;
@@ -26,7 +27,8 @@ body{
 
 .informacion {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-around;
   padding: 0 10px; 
 }
@@ -54,6 +56,35 @@ body{
   margin: 0 auto;
   word-wrap: break-word;
 }
+/* Media query para pantallas con un ancho de 600px o más */
+@media only screen and (min-width: 600px) {
+  .informacion {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .description {
+    text-align: start;
+  }
+
+  .description p {
+    max-width: 500px;
+  }
+}
+
+/* Media query para pantallas con un ancho de 768px o más */
+@media only screen and (min-width: 768px) {
+  .lower_parts {
+    flex-direction: row;
+  }
+
+  .reviews,
+  .servicios {
+    width: 45%;
+  }
+}
+
+
 .reviews span {
   color: gold;
   font-size: 25px;
