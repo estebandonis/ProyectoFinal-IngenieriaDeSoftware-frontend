@@ -72,8 +72,8 @@ describe('App/Home', () => {
         fireEvent.click(screen.getByText('Exámenes'))
 
         const option = { delay: 500 }
-        await userEvent.type(screen.getByPlaceholderText('Buscar'), 'Examen A', option)
-        expect(screen.getByText('Examen A')).toBeVisible()
+        await userEvent.type(screen.getByPlaceholderText('Buscar'), 'Radiografía', option)
+        expect(screen.getByText('Radiografía')).toBeVisible()
     }, 9000)
 })
 
