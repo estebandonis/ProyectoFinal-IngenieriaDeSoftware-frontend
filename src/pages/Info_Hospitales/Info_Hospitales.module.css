@@ -1,5 +1,5 @@
 .styles {
-  width: 100%;
+  width: 100vw;
   height: auto;
 }
  
@@ -28,16 +28,17 @@ body{
 .informacion {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-around;
   padding: 0 10px; 
 }
 
 .informacion img {
-  width: 350px;
-  height: 250px;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
   object-fit: cover;
-  border: 5px solid #FFFFFF; 
+  border: 5px solid #FFFFFF;
+  margin-bottom: 20px;
 }
 
 
