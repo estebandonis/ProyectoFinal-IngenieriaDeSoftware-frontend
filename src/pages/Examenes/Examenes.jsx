@@ -46,11 +46,12 @@ const Examenes = () => {
   }, [data, searchTerm]);
 
 
-  const handleClick = async (id, nombre, descripcion) => {
+  const handleClick = async (id, nombre, descripcion, imagenes) => {
     const nuevo = {
       examen_id: id,
       nombre: nombre,
       descripcion: descripcion,
+      imagenes: imagenes
     };
     dispatch('examen/set', nuevo); // Update to use 'examen' store
     navigate('/info_examen');
@@ -67,7 +68,7 @@ const Examenes = () => {
           data!=null?
           <div className={examenes_section}>
             {filteredData.map((card, index) => (
-              <Examen key={index} onclick={() => handleClick(card.examen_id, card.nombre, card.descripcion)} nombre={card.nombre} url={'https://medlineplus.gov/images/Xray_share.jpg'} />
+              <Examen key={index} onclick={() => handleClick(card.examen_id, card.nombre, card.descripcion, card.imagenes)} nombre={card.nombre} url={card.imagenes} />
             ))}
           </div>
           :<h2>Cargando...</h2>
