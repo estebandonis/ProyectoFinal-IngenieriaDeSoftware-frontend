@@ -7,6 +7,10 @@ import { Divider, Review, Servicio, Navbar } from '@components';
 const Info_Examen = () => {
   const { examen } = useStoreon('examen');
 
+  useEffect(() => {
+    console.log(examen);
+  }, []);
+
   return (
   <div className={estilos.container}>
     <div className={estilos.styles}>
@@ -19,7 +23,7 @@ const Info_Examen = () => {
             <p>{examen.descripcion}</p>
           </div>
 
-          <img src="https://medlineplus.gov/images/Xray_share.jpg" alt="" />
+          <img src={examen.imagenes} alt="" />
         </div>
       </div>
     </div>
