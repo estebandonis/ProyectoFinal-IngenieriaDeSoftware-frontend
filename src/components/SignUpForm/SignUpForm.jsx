@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { navigate } from '@store'
 import { useStoreon } from 'storeon/react'
 import Joi from 'joi'
@@ -22,7 +22,8 @@ const SignUpForm = () => {
   const { data, handleRequest } = useApi()
   const form = useForm(schema, { email: '', password: ''})
   const {dispatch} = useStoreon('user')
-  const [error, setError] = React.useState(null)
+  const [error, setError] = useState(null)
+  const [showPassword, setShowPassword] = useState(false)
 
   const verificado = async (email, password) => {
     const correo = form.values.email
@@ -81,12 +82,13 @@ const SignUpForm = () => {
           placeholder="Ejemplo: usuario@correo.com"
         />
         <input
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           name="password"
           value={form.values.password}
           onChange={form.onChange('password')}
           placeholder="Debe estar entre 4 - 10 caracteres"
         />
+        <div onClick={() => setShowPassword(!showPassword)}>{showPassword ? '(0‿0)' : '(-‿-)'}</div>
         <br />
         {
           data == true || data == null ?

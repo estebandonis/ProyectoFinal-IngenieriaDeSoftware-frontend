@@ -14,8 +14,7 @@
   margin-bottom: 20px;
 }
 
-.styles input{
-  background-color: #000000;
+.styles input[type=text], input[type=password], input[type=email]{
   border: none;
   border-radius: 10px;
   padding: 12px 15px;
@@ -24,7 +23,7 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-.styles input:focus {
+.styles input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
   background-color: #ffffff;
   outline: none;
   color: #000000;
@@ -32,12 +31,12 @@
   box-shadow:0 10px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-.styles input:hover{
+.styles input[type=text]:hover, input[type=password]:hover, input[type=email]:hover{
   width: 98%;
   box-shadow:0 10px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-.styles input:focus:hover{
+.styles input[type=text]:focus:hover, input[type=password]:focus:hover, input[type=email]:focus:hover{
   width: 98%;
 }
 
@@ -72,4 +71,16 @@
 .styles button:focus {
   border: none;
   outline: none;
+}
+
+.passwordSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.show{
+  width: 10px;
 }

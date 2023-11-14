@@ -56,12 +56,12 @@ const Navbar = ({ showBackButton }) => {
         <div>
             <AppBar expand="lg" className={estilos.styles} sticky="top">
                 <Toolbar>
-                    {showBackButton && (
-                        <IconButton onClick={handleBackButtonClick} color="inherit">
-                            <ArrowBackIcon />
-                        </IconButton>
-                    )}
                     <Box display="flex" justifyContent="start" width="33%">
+                        {showBackButton && (
+                            <IconButton onClick={handleBackButtonClick} color="inherit">
+                                <ArrowBackIcon />
+                            </IconButton>
+                        )}
                         {user.isLoggedIn ? 
                             <Button className={estilos.stylesButton} onClick={handleMenuClick} variant="text" color="inherit" >{user.correo}</Button> : 
                             <Button className={estilos.stylesButton} onClick={handleMenuClick} variant="text" color="inherit"> Perfil </Button>
