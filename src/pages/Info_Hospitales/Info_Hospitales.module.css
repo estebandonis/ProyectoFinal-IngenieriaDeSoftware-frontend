@@ -43,18 +43,16 @@ body{
 
 
 .description {
-  display: flex;
-  flex-direction: column;
-  text-align: start;
+  text-align: center;
 }
 
 .description p {
   background-color: rgb(0, 91, 121);
-  max-width: 500px;
+  max-width: 90%;
   border: solid;
   border-radius: 10px;
   padding: 10px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   word-wrap: break-word;
 }
 /* Media query para pantallas con un ancho de 600px o más */
