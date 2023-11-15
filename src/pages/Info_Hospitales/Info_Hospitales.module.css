@@ -60,7 +60,7 @@ body{
   word-wrap: break-word;
 }
 /* Media query para pantallas con un ancho de 600px o más */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 900px) {
   .informacion {
     flex-direction: row;
     justify-content: space-around;
