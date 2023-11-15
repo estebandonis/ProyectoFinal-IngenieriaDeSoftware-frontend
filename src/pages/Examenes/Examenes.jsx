@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { navigate } from '@store';
 import { useStoreon } from 'storeon/react';
-import { content, searchContainer, searchInput } from './Examenes.module.css';
+import { content, searchContainer } from './Examenes.module.css';
 import { Navbar, Examen } from '@components'; // Import the Examen component
 import { useApi } from '@hooks';
 import { styles, examenes_section } from './Examenes.module.css';
@@ -61,8 +61,7 @@ const Examenes = () => {
     <div className={content}>
       <Navbar showBackButton={true}/>
       <div className={searchContainer}>
-        <input type="text" className={searchInput} placeholder="Buscar" value={searchTerm} onChange={handleSearchTermChange} />
-        
+        <input type="text" placeholder="Buscar" value={searchTerm} onChange={handleSearchTermChange} />
       </div>
       {
           data!=null?
