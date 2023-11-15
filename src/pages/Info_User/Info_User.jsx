@@ -54,13 +54,7 @@ const Info_User = () => {
         <h1>{user.correo}</h1>
         <div className={informacion}>
           <div className={description}>
-            { showEditMenu && (
-              <>
-                <h2>Editar Perfil</h2>
-                <p>Funcionalidad aún no implementada</p>
-              </>
-            )}
-
+            <Button onClick={handlePasswordMenu}>Cambiar contraseña</Button>
             {
               changePasswordMenu && (
               <form>
