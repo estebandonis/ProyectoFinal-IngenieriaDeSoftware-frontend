@@ -10,6 +10,8 @@
   background-position: center;
 }
 
+
+/* Elimina el margen inferior del nombre del comentario en dispositivos móviles */
 .info_section {
   width: 100%; 
   margin: 63px auto 0; 
