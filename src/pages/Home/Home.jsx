@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { navigate } from '@store';
 import { useStoreon } from 'storeon/react';
-import { content, searchContainer, searchInput, zoneFilterContainer, zoneButton, zoneFilterInput, zoneDropdown, zoneDropdownContent } from './Home.module.css';
+import { content, container, searchContainer, searchInput, zoneFilterContainer, zoneButton, zoneFilterInput, zoneDropdown, zoneDropdownContent } from './Home.module.css';
 import { Navbar, BigPicture } from '@components';
 import { useApi } from '@hooks';
 import Slider from 'react-slick';
@@ -154,14 +154,17 @@ const Home = () => {
   return (
     <div className={content}>
       <Navbar />
-      <SearchBar searchTerm={searchTerm} handleSearchTermChange={handleSearchTermChange} />
-      <ZoneFilter
-        selectedZone={selectedZone}
-        zonasUnicas={zonasUnicas}
-        onSelectZone={handleZoneChange}
-        showDropdown={showZoneDropdown}
-        toggleDropdown={() => setShowZoneDropdown(!showZoneDropdown)}
-      />
+      <div className={container}>
+        <SearchBar searchTerm={searchTerm} handleSearchTermChange={handleSearchTermChange} />
+        <ZoneFilter
+          selectedZone={selectedZone}
+          zonasUnicas={zonasUnicas}
+          onSelectZone={handleZoneChange}
+          showDropdown={showZoneDropdown}
+          toggleDropdown={() => setShowZoneDropdown(!showZoneDropdown)}
+        />
+      </div>
+      
       {loading ? (
         <h2>Cargando</h2>
       ) : (
