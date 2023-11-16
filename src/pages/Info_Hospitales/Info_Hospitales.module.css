@@ -51,15 +51,22 @@ body {
   word-wrap: break-word;
 }
 
+/* Media query for screens wider than 1200px */
+@media only screen and (min-width: 1200px) {
+  .info_section {
+    margin-top: 5vw;
+  }
+
+  .informacion img {
+    max-width: 300px;
+  }
+}
+
 /* Media query for screens wider than 900px */
 @media only screen and (min-width: 900px) {
   .informacion {
     flex-direction: row;
     justify-content: space-around;
-  }
-
-  .description {
-    text-align: start;
   }
 
   .description p {
@@ -79,8 +86,22 @@ body {
   }
 }
 
-/* Adjustments for mobile devices */
-@media only screen and (max-width: 600px) {
+/* Media query for screens wider than 600px */
+@media only screen and (min-width: 600px) {
+  .comentario,
+  .rating {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rating input {
+    width: 70%;
+    margin-top: 10px;
+  }
+}
+
+/* Media query for small devices */
+@media only screen and (max-width: 480px) {
   .comentario,
   .rating {
     flex-direction: column;
@@ -99,7 +120,7 @@ body {
 
 .reviews span {
   color: gold;
-  font-size: 1.25em;
+  font-size: 20px;
 }
 
 .lower_parts {
@@ -110,7 +131,7 @@ body {
   border-radius: 50px 50px 0 0;
   border: 5px solid black;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   padding-bottom: 50px;
 }
@@ -119,7 +140,7 @@ body {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  width: 100%;
+  width: 50%;
 }
 
 .reviews h1, .servicios h1 {
@@ -155,7 +176,7 @@ body {
   margin: 5px;
   border: 1px solid #dcdcdc;
   border-radius: 5px;
-  font-size: 1em;
+  font-size: 2em;
 }
 
 .addReview textarea {
@@ -165,7 +186,7 @@ body {
 }
 
 .addReview input[type="email"], .rating input {
-  width: 80%;
+  width: 40%;
   height: 50px;
 }
 
