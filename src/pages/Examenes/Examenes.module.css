@@ -42,14 +42,14 @@
   background-color: transparent;
 }
 
-input[type="text"] {
+.searchContainer input[type="text"] {
   width: 100%;
   height: 30px;
   font-size: 35px;
   line-height: 1;
 }
 
-input[type="text"]::placeholder {
+.searchContainer input[type="text"]::placeholder {
   color: white;
 }
 
