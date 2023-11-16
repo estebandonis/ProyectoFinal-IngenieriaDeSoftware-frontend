@@ -1,33 +1,28 @@
 .styles {
   width: 100%;
-  height: 100%; 
-  margin: 0px 180px;
+  height: auto; 
+  
 }
 
 .container{
-  height: 100vh;
-  width: 100vw;
-  background-image: url("https://wallpaperaccess.com/full/1153721.jpg");
+  background-image: url("https://wallpaperaccess.com/full/1153721.jpg");  /*Depende la conexion  a internet */
   background-size: cover;
   background-position: center;
-  display: flex;
-  justify-content: end;
 }
 
+
+/* Elimina el margen inferior del nombre del comentario en dispositivos móviles */
 .info_section {
-  width: 1000px;
-  margin-top: 100px;
-  height: 500px;
-  justify-content: center;
-  align-items: space-evenly;
-  background: rgb(1, 49, 94);
-  background: -webkit-linear-gradient(to right, rgb(37, 81, 129), rgb(77, 106, 134));
-  background: linear-gradient(to right, rgb(2, 52, 105), rgb(50, 78, 104));
-  background-repeat: no-repeat;
-  background-size: cover;
+  width: 100%; 
+  margin: 63px auto 0; 
+  height: 100%;
+  background-color: rgb(0, 41, 122);
+  border-radius: 50px 50px 0 0;
+  border-width: 5px;
   border-style: solid;
-  border-radius: 30px;
-  border-color: transparent;
+  color: #FFFFFF;
+  border-color: rgb(192, 243, 255);
+  align-items: space-evenly;
 }
 
 .info_section:focus{
