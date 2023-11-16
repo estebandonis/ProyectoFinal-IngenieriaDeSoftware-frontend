@@ -162,6 +162,44 @@ body {
   }
 }
 
+@media only screen and (min-width: 1600px) {
+  .info_section {
+    margin-top: 2vw;
+    padding: 2vw;
+  }
+
+  .informacion img {
+    max-width: 350px; 
+  }
+
+  .description p {
+    max-width: 600px; 
+    font-size: 1.1em; 
+  }
+
+  .lower_parts {
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1vw;
+  }
+
+  .reviews, .servicios {
+    width: 45%; 
+  }
+
+  .reviews h1, .servicios h1 {
+    font-size: 2.2em; 
+  }
+
+  .addReview textarea, .addReview input[type="email"], .rating input {
+    width: 50%; 
+  }
+
+  .addReview input[type="submit"] {
+    font-size: 1.2em; 
+  }
+}
+
 
 
 .reviews span {
