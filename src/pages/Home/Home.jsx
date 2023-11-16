@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { navigate } from '@store';
 import { useStoreon } from 'storeon/react';
 import { content, container, searchContainer, searchInput, zoneFilterContainer, zoneButton, zoneFilterInput, zoneDropdown, zoneDropdownContent } from './Home.module.css';
@@ -80,6 +81,8 @@ const Home = () => {
     };
   }, []);
 
+  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedZone, setSelectedZone] = useState('');
   const [filteredData, setFilteredData] = useState([]);
@@ -130,11 +133,17 @@ const Home = () => {
 
   const zonasUnicas = obtenerZonasUnicas(data);
 
-  const sliderSettings = {
+  const desktopSliderSettings = {
     slidesToShow: filteredData.length < 3 ? filteredData.length : 3,
     slidesToScroll: 1,
     infinite: false,
   };
+
+  const mobileSliderSettings = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: false,
+  }
 
   const handleClick = (card) => {
     const nuevo = {
@@ -168,7 +177,7 @@ const Home = () => {
       {loading ? (
         <h2>Cargando</h2>
       ) : (
-        <Slider {...sliderSettings}>
+        <Slider {...!isMobile ? desktopSliderSettings : mobileSliderSettings}>
           {filteredData.map((card, index) => (
             <BigPicture
               key={index}
