@@ -118,6 +118,52 @@ body {
   }
 }
 
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .info_section {
+    margin-top: 3vw;
+  }
+
+  .informacion {
+    flex-direction: column;
+    padding: 0 5%;
+  }
+
+  .informacion img {
+    width: 90%;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .description {
+    text-align: center;
+  }
+
+  .description p {
+    max-width: 80%;
+  }
+
+  .lower_parts {
+    flex-direction: column;
+    padding: 0 5%;
+  }
+
+  .reviews, .servicios {
+    width: 100%;
+  }
+
+  .reviews h1, .servicios h1 {
+    font-size: 1.5em;
+  }
+
+  .addReview textarea, .addReview input[type="email"], .rating input {
+    width: 90%;
+  }
+}
+
+
+
 .reviews span {
   color: gold;
   font-size: 20px;
