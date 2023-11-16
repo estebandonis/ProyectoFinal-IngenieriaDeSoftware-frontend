@@ -36,6 +36,7 @@ const ZoneFilter = ({ selectedZone, zonasUnicas, onSelectZone, showDropdown, tog
       />
       {showDropdown && (
         <div className={zoneDropdown}>
+          // In ZoneFilter.js
           <ul className={zoneDropdownContent}>
             {zonasUnicas.map((zona, index) => (
               <li key={index}>
@@ -53,6 +54,7 @@ const ZoneFilter = ({ selectedZone, zonasUnicas, onSelectZone, showDropdown, tog
               </button>
             </li>
           </ul>
+
         </div>
       )}
     </div>
