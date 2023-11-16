@@ -34,13 +34,12 @@ body{
 }
 
 .informacion img {
-  width: 100%;
+  width: 80%;
   max-width: 250px;
-  max-height: 350px;
   height: auto;
   justify-content: center;
   object-fit: cover;
-  margin-left: 100px;
+  margin: 0 auto;
   border: 5px solid #FFFFFF;
   margin-bottom: 20px;
 }
