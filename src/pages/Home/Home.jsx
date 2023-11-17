@@ -83,7 +83,7 @@ const Home = () => {
     };
   }, []);
 
-  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+  const isMobile = useMediaQuery({ query: `(max-width: 600px)` });
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedZone, setSelectedZone] = useState('');
@@ -138,13 +138,17 @@ const Home = () => {
   const desktopSliderSettings = {
     slidesToShow: filteredData.length < 3 ? filteredData.length : 3,
     slidesToScroll: 1,
-    infinite: false,
+    infinite: true,
+    initialSlide: 1,
+    swipeToSlide: true,
   };
 
   const mobileSliderSettings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: false,
+    swipeToSlide: true,
+    vertical: true,
   }
 
   const handleClick = (card) => {
@@ -161,7 +165,7 @@ const Home = () => {
     dispatch('hospital/set', nuevo);
     navigate('/info_hospitales');
   };
-
+  
   return (
     <div className={content}>
       <Navbar />

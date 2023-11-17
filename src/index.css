@@ -74,7 +74,7 @@ button:focus-visible {
   .slick-prev:before,
   .slick-next:before {
     font-size: 50px; /* Tamaño de fuente deseado */
-    color: darkgoldenrod; /* Color deseado */
+    color: rgb(0, 0, 0); /* Color deseado */
   }
 
 .slick-prev,
