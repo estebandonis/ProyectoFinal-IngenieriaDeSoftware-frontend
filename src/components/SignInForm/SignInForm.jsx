@@ -102,7 +102,7 @@ const SignInForm = () => {
           value={values.password}
           onChange={handleChangeContraseña}
         />
-        <div onClick={() => setShowPassword(!showPassword)}>{showPassword ? '(0‿0)' : '(-‿-)'}</div>
+        <div className={estilos.showButton} onClick={() => setShowPassword(!showPassword)}>{showPassword ? '(⓪‿⓪)' : '(─‿─)'}</div>
         <br />
         {
           data === true || data === null || typeof(data[0]) != "string"?

@@ -84,3 +84,23 @@
 .show{
   width: 10px;
 }
+
+.showButton{
+  width: 55px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+  padding: 5px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: black;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.showButton:hover {
+  background-color: #000000;
+  color: #ffffff;
+  transition: all .2s;
+  scale: 1.05;
+}
