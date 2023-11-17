@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import store, { navigate } from '@store'
+import React, { useEffect } from 'react';
 import { useStoreon } from 'storeon/react';
 import * as estilos from "./Info_Examen.module.css";
-import { Divider, Review, Servicio, Navbar } from '@components';
+import { Navbar } from '@components';
 
 const Info_Examen = () => {
   const { examen } = useStoreon('examen');

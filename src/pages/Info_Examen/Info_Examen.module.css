@@ -1,7 +1,15 @@
 .styles {
   width: 100%;
   height: auto; 
-  
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+
+.styles::-webkit-scrollbar{
+  display: none;
 }
 
 .container{
@@ -13,35 +21,18 @@
 
 /* Elimina el margen inferior del nombre del comentario en dispositivos móviles */
 .info_section {
-  width: 100%; 
-  margin: 63px auto 0; 
+  width: 95%; 
   height: 100%;
-  background-color: rgb(0, 41, 122);
-  border-radius: 50px 50px 0 0;
-  border-width: 5px;
-  border-style: solid;
+  background: rgb(5, 62, 115);
+  background: -webkit-linear-gradient(to right, rgb(41, 83, 128), rgb(97, 133, 168));
+  background: linear-gradient(to right, rgb(41, 83, 128), rgb(97, 133, 168));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  border-radius: 20px;
+  border: 2px solid black;
   color: #FFFFFF;
-  border-color: rgb(192, 243, 255);
   align-items: space-evenly;
-}
-
-.info_section:focus{
-  background-color: #ffffff;
-  color: #000000;
-  border: none;
-  padding: 12px 15px;
-  margin-top: -5px;
-  width: 95%;
-  box-shadow:0 10px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
-
-.info_section:hover{
-  width: 100%;
-  box-shadow:0 10px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
-
-.info_section:focus:hover{
-  width: 95%;
 }
 
 .info_section h1{
@@ -54,7 +45,10 @@
 .informacion {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .informacion img {
@@ -64,9 +58,11 @@
 }
 
 .description {
+  width: 100%;
+  min-width: 370px;
   display: flex;
   flex-direction: column;
-  text-align: start;
+  align-items: center;
 }
 
 .description h2{
@@ -78,16 +74,16 @@
 
 .description p {
   background-color: black;
-  width: 400px;
+  width: 80%;
   color: white;
   height: 170px;
   max-width: 500px;
   border: solid;
   border-radius: 15px;
   padding: 10px;
-  margin:0 auto;
   border-color: transparent;
   word-wrap: break-word;
+  text-align: start;
 }
 
 .lower_parts {
@@ -137,4 +133,20 @@
 
 .serviciosScroll::-webkit-scrollbar {
   display: none;
+}
+
+@media (max-width: 900px) {
+  .informacion {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .description {
+    width: 50%;
+  }
+
+  .informacion img {
+    width: 310px;
+    height: 210px;
+  }
 }
