@@ -1,7 +1,8 @@
 .styles {
   max-width: 600px;
-  min-width: 350px;
+  min-width: 300px;
   max-height: 100px;
+  width: 100%;
   height: 200px;
   padding: 12px 20px;
   margin: 10px;
