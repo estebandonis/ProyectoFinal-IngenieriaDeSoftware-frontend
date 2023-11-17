@@ -29,7 +29,6 @@
 .styles:hover {
   border-radius: 15px;
   animation-duration: 0.7s;
-  border-left: 8px solid rgb(97, 133, 168);
   border-bottom: 5px solid rgb(97, 133, 168);
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
