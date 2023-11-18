@@ -149,6 +149,7 @@ const Home = () => {
     infinite: false,
     swipeToSlide: true,
     vertical: true,
+    verticalSwiping: true,
   }
 
   const handleClick = (card) => {
